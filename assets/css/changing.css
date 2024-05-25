@@ -1,0 +1,97 @@
+.music-list-container {
+    display: flex;
+    flex-direction: row;
+    column-gap: 5em;
+    margin: auto;
+    width: 80%;
+}
+
+@media (min-width: 850px) {
+    .music-list-container {
+        flex-direction: row;
+    }
+
+    .one-person {
+        row-gap: 3em;
+    }
+
+    .number-of-the-day {
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        top: 10%;
+        left: 0; 
+        right: 0; 
+        margin-left: auto; 
+        margin-right: auto; 
+    }
+
+    #number {
+        font-size: 100;
+        opacity: 0.1;
+    }
+    
+}
+
+@media (max-width: 850px) {
+    .music-list-container {
+        padding-top: 1em;
+        flex-direction: column;
+        row-gap: 5em;
+    }
+
+    .one-person {
+        row-gap: 1em;
+    }
+
+    .number-of-the-day {
+        position: absolute;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        top: 10;
+        left: 0; 
+        right: 0; 
+        margin-left: auto; 
+        margin-right: auto; 
+    }
+
+    #number {
+        font-size: 70;
+        opacity: 0.1;
+    }
+    
+}
+
+.one-person {
+    display: flex;
+    width: 100%;
+    margin: auto;
+    flex-direction: column;
+}
+
+.one-person h2 {
+    display: flex;
+    font-size: 75;
+    margin: auto;
+    text-align: center;
+}
+
+.one-person h3 {
+    display: flex;
+    font-size: 50;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+}
+
+.one-person h4 {
+    display: flex;
+    font-size: 30;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+}
+
+

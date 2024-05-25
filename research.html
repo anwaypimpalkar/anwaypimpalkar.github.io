@@ -1,0 +1,223 @@
+<html>
+
+<head>
+    <title>Research | Anway Pimpalkar</title>
+    <meta charset="UTF-8">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-sm.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/assets/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
+    <script src="assets/js/scrolling.js"></script>
+
+    <script>
+        easyRead = true;
+
+        function changePublicationStyle() {
+            var easyReadElements = document.getElementsByClassName("easyRead");
+            var apaCitationElements = document.getElementsByClassName("apaCitation");
+            if (easyRead) {
+                for (i = 0; i < easyReadElements.length; i++) {
+                    easyReadElements[i].style.display = 'none';
+                }
+                for (i = 0; i < apaCitationElements.length; i++) {
+                    apaCitationElements[i].style.display = 'block';
+                }
+                easyRead = false;
+            } else {
+                for (i = 0; i < apaCitationElements.length; i++) {
+                    apaCitationElements[i].style.display = 'none';
+                }
+                for (i = 0; i < easyReadElements.length; i++) {
+                    easyReadElements[i].style.display = 'block';
+                }
+                easyRead = true;
+            }
+        }
+
+        function openInNewTab(obj) {
+            var goToLink = obj.getAttribute("href");
+            window.open(goToLink);
+        }
+
+        function goToPage(obj) {
+            var goToLink = obj.getAttribute("href");
+            window.location = goToLink;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var last_updated = document.getElementById("last_updated");
+            var d = new Date(document.lastModified);
+            var monthName = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+            var date = monthName[d.getMonth()] + " " + d.getFullYear();
+            last_updated.innerHTML = "homemade " + date;
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <canvas id="gradient-background-research"></canvas>
+
+    <div class="flex-container">
+
+        <div class="navbar">
+            <div class="nav">
+                <ul id="inner-navbar">
+                    <li><a href="index.html">Anway</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="works.html">Works</a></li>
+                    <li><a href="cv.html">CV</i></a></li>
+                    <li><a href="mailto:anway.pimpalkar@gmail.com"><i class="fa-regular fa-paper-plane"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="scrollable-content">
+                <div class="page-content">
+                    <div class="big-head">
+                        <h1>Research</h1>
+                    </div>
+
+                    <div class="big-subhead">
+                        <p>
+                            Bringing neuroengineering solutions to the real world.
+                        </p>
+                    </div>
+
+                    <div class="bio-content">
+                        <div class="bio-content-text">
+                            <div class="inline-subhead">
+                                <p>
+                                    Redefining Abilities, One Difference at a Time.
+                                </p>
+                            </div>
+                            <p>
+                                Individuals with disabilities are frequently limited in their ability to perform
+                                everyday. I dedicate my efforts to researching and designing innovative solutions aimed
+                                at addressing these challenges, specifically enhancing vision and restoring upper limb
+                                functionality. I create prosthetic devices that make a real difference in people's lives
+                                by blending tech advancements with a solid grasp of how the human body functions. My
+                                goal is to provide practical, efficient solutions that noticeably enhance the quality of
+                                life for those who rely on them.
+                            </p>
+                            <div class="white-space"></div>
+                            <div class="inline-subhead">
+                                <p>
+                                    Unraveling the Mysteries of the Human Brain.
+                                </p>
+                            </div>
+                            <p>
+                                The limited extent of our knowledge concerning the human brain is striking, considering
+                                its integral role in governing our actions. I am deeply intrigued by the intricacies of
+                                the brain and am motivated to delve deeper into understanding it. Specifically, I am
+                                keenly interested in exploring the mechanisms that underlie both motor function and
+                                sensory perception. My aim is to utilize this understanding in the enhancement and
+                                refinement of neural prostheses.
+                            </p>
+                        </div>
+                        <div class="research-content-other" style="margin-top: auto; margin-bottom: auto;">
+                            <div class="research-content-photo">
+                                <img src="assets/images/still-thinking.png">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vspacer"></div>
+
+                    <div class="content-section-head">
+                        <h2>Affiliations</h2>
+                    </div>
+
+                    <div class="three-column-boxes">
+
+                        <div class="experience-box link" onclick="goToPage(this)" href="unisa.html"
+                            style="background-color: #A51C30;">
+                            <img src="assets/images/uni-logos/Harvard_University_logo.svg">
+                            <hr>
+                            <p>Neural stimulation for cancer neuroscience.</p>
+                        </div>
+
+                        <div class="experience-box link" onclick="goToPage(this)" href="unisa.html"
+                            style="background-color: #0052a0;">
+                            <img src="assets/images/uni-logos/hamr-jhu.png">
+                            <hr>
+                            <p>Haptic interfaces for neuromuscular rehabilitation.</p>
+                        </div>
+
+                        <div class="experience-box link" onclick="" href="unisa.html"
+                            style="background-color: #002D72;">
+                            <img src="assets/images/uni-logos/musiic-jhu.png">
+                            <hr>
+                            <p>Revolutionizing retinal prosthetics with photoacoustics.</p>
+                        </div>
+
+                        <div class="experience-box link" onclick="goToPage(this)" href="iitbombay.html"
+                            style="background-color: #4d83bb;">
+                            <img src="assets/images/uni-logos/iit-bombay.png">
+                            <hr>
+                            <p>Do you predict the outcome of your actions before even moving?</p>
+                        </div>
+
+                        <div class="experience-box link" onclick="goToPage(this)" href="coep.html"
+                            style="background-color: #27225d;">
+                            <img src="assets/images/uni-logos/coep.png">
+                            <hr>
+                            <p>How does depression affect your brain structually?</p>
+                        </div>
+
+                        <div class="experience-box link" onclick="goToPage(this)" href="dalhousie.html"
+                            style="background-color: #FFD400;">
+                            <img src="assets/images/uni-logos/dal.png">
+                            <hr style="background-color:black;">
+                            <p style="color:black">Automating industrial wild blueberry harvesters.</p>
+                        </div>
+
+                        <div class="experience-box" style="background-color: #0a4c3a;">
+                            <img src="assets/images/uni-logos/betic.png">
+                            <hr>
+                            <p>Affordable hand rehabilitation aids for burn patients.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-left">
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/anwaypimpalkar/" target="_blank"><i
+                            class="link fa-brands fa-linkedin-in fa-xl footer-item"></i></a>
+                    <a href="https://github.com/anwaypimpalkar/" target="_blank"><i
+                            class="link fa-brands fa-github fa-xl footer-item"></i></a>
+                    <a href="https://open.spotify.com/user/anway1908" target="_blank"><i
+                            class="link fa-brands fa-spotify fa-xl footer-item"></i></a>
+                </div>
+                <div class="line"></div>
+                <div class="email">
+                    <p class="footer-item"> <a class="link footer-item" href="mailto:anway.pimpalkar@gmail.com"
+                            target="_blank" style="white-space: nowrap;"><i class="fa-solid fa-at fa-sm footer-item"
+                                fa-xl></i>
+                            anway.pimpalkar@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p class="footer-item"><i class="fa-solid fa-code"></i> <a id="last_updated"></a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

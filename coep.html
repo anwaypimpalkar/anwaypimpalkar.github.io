@@ -1,0 +1,143 @@
+<html>
+
+<head>
+    <title>IIT Bombay | Anway Pimpalkar</title>
+    <meta charset="UTF-8">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-sm.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/assets/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
+    <script src="assets/js/scrolling.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var last_updated = document.getElementById("last_updated");
+            var d = new Date(document.lastModified);
+            var monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            var date = d.getDate() + " " + monthName[d.getMonth()] + " " + d.getFullYear();
+            last_updated.innerHTML = "homemade " + date;
+        });
+    </script>
+</head>
+
+<body>
+
+    <canvas id="gradient-background-coep"></canvas>
+
+    <div class="flex-container">
+
+        <div class="navbar">
+            <div class="nav">
+                <ul id="inner-navbar">
+                    <li><a href="index.html">Anway</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="works.html">Works</a></li>
+                    <li><a href="cv.html">CV</i></a></li>
+                    <li><a href="mailto:anway.pimpalkar@gmail.com"><i class="fa-regular fa-paper-plane"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="scrollable-content">
+                <div class="page-content">
+
+                    <div class="research-big-head">
+                        <h1 class="bigger-head">COEP</h1>
+                        <h1 style="margin: 0;" class="coep"></h1>
+                    </div>
+
+                    <div class="summary">
+                        <div class="summary-section">
+                            <div class="summary-item">
+                                <h5 class="subtitle">Overview</h5>
+                                <p>Developed novel deep learning pipelines for MRI skull stripping and Major Depressive
+                                    Disorder (MDD) detection.</p>
+                            </div>
+                            <div class="summary-item">
+                                <h5 class="subtitle">Role</h5>
+                                <p>Undergraduate Researcher</p>
+                            </div>
+                            <div class="summary-item">
+                                <h5 class="subtitle">Team</h5>
+                                <p>
+                                    <a class="coep link" href="https://www.coep.org.in/mycoep/rkpextccoepacin"
+                                        target="_blank">Dr. Rashmika Patole</a>, Advisor
+                                    <br><a class="coep link" href="https://www.coep.org.in/mycoep/kamblekappscicoepacin"
+                                        target="_blank">Dr. Ketaki Kamble</a>, Advisor
+                                    <br><a class="coep link"
+                                        href="https://scholar.google.co.in/citations?user=o00RYkgAAAAJ&hl=en"
+                                        target="_blank">Dr. Mahesh Shindikar</a>, Advisor
+                                </p>
+                            </div>
+                            <div class="summary-item">
+                                <h5 class="subtitle">Timeline</h5>
+                                <p>August to July 2023</p>
+                            </div>
+                        </div>
+                        <div class="summary-image">
+                            <img src="assets/images/still-thinking.png" style="opacity: 0.5;">
+                        </div>
+                    </div>
+                    <div class="writeup">
+                        <hr class="hr-lighter">
+                        <div class="writeup-section">
+                            <h5 class="subtitle">Background</h5>
+                            <h2 class="coep">What is Skull Stripping?</h2>
+                            <p>Skull stripping, in the context of medical imaging and neuroimaging, is a process used to
+                                remove or separate the skull and other non-brain tissues from an image or scan of the
+                                brain. The primary goal of skull stripping is to isolate the brain tissue so that it can
+                                be analyzed, measured, or reconstructed accurately without interference from surrounding
+                                structures such as the skull, scalp, or soft tissues. This is a crucial step in various
+                                neuroimaging applications, including brain segmentation, volume measurement, and the
+                                creation of 3D brain models for research and medical diagnosis. Skull stripping
+                                algorithms and techniques are commonly used in MRI (Magnetic Resonance Imaging) and CT
+                                (Computed Tomography) scans of the brain to improve the accuracy of brain analysis.</p>
+                        </div>
+                        <div class="writeup-section">
+                            <h5 class="subtitle">Background</h5>
+                            <h2 class="coep">What is Sense of Agency?</h2>
+                            <p>Lorem ipsum dolor sit amet. Ut facere ratione ut dolorem voluptatem sed natus provident
+                                hic laborum nesciunt. Non maxime neque vel quia voluptatum ut reprehenderit quod ad odio
+                                asperiores. Et voluptate laudantium ab distinctio reprehenderit sed quia officiis est
+                                accusamus ipsam. Ea itaque dolore hic corrupti temporibus aut voluptas quis At ratione
+                                quibusdam est ullam velit et quos molestiae?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-left">
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/anwaypimpalkar/" target="_blank"><i
+                            class="link fa-brands fa-linkedin-in fa-xl"></i></a>
+                    <a href="https://github.com/anwaypimpalkar/" target="_blank"><i
+                            class="link fa-brands fa-github fa-xl"></i></a>
+                    <a href="https://open.spotify.com/user/anway1908" target="_blank"><i
+                            class="link fa-brands fa-spotify fa-xl"></i></a>
+                </div>
+                <div class="line"></div>
+                <div class="email">
+                    <p> <a class="link" href="mailto:anway.pimpalkar@gmail.com" target="_blank"
+                            style="white-space: nowrap;"><i class="fa-solid fa-at fa-sm" fa-xl></i>
+                            anway.pimpalkar@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p><i class="fa-solid fa-code"></i> <a id="last_updated"></a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

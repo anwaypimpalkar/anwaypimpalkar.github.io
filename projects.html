@@ -1,0 +1,478 @@
+<html>
+
+<head>
+    <title>Projects | Anway Pimpalkar</title>
+    <meta charset="UTF-8">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-sm.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/assets/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
+    <script src="assets/js/scrolling.js"></script>
+
+    <script>
+        function openInNewTab(obj) {
+            var goToLink = obj.getAttribute("href");
+            window.open(goToLink);
+        }
+
+        function goToPage(obj) {
+            var goToLink = obj.getAttribute("href");
+            window.location = goToLink;
+        }
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var last_updated = document.getElementById("last_updated");
+            var d = new Date(document.lastModified);
+            var monthName = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+            var date = monthName[d.getMonth()] + " " + d.getFullYear();
+            last_updated.innerHTML = "homemade " + date;
+        });
+    </script>
+
+    <style>
+        .project-text {
+            color: black !important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="gradient-background-projects"></canvas>
+
+    <div class="flex-container grid">
+
+        <div class="navbar">
+            <div class="nav">
+                <ul id="inner-navbar">
+                    <li><a href="index.html">Anway</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="works.html">Works</a></li>
+                    <li><a href="cv.html">CV</i></a></li>
+                    <li><a href="mailto:anway.pimpalkar@gmail.com"><i class="fa-regular fa-paper-plane"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="scrollable-content">
+                <div class="page-content">
+                    <div class="big-head">
+                        <h1>Projects</h1>
+                    </div>
+
+                    <div class="big-subhead project-text">
+                        <p>
+                            Everything I've worked on, from the past to the present.
+                        </p>
+                    </div>
+
+                    <!-- <div class="content-section-head">
+                        <h2>Ongoing</h2>
+                    </div> -->
+
+                    <!-- <div class="vspacer"></div> -->
+
+                    <!-- <div class="content-section-head">
+                        <h2>Ongoing</h2>
+                    </div> -->
+
+                    <div class="research-content-item-container">
+
+                        <div class="research-content-project-box project-d link project-text" onclick="goToPage(this)"
+                            href="pneumatactors.html">
+                            <div class="research-content-project-details">
+                                <div class="research-title">
+                                    Pneumatactor Arrays for Vibrotactile Feedback
+                                </div>
+                                <div class="research-details">
+                                    <div class="research-detail-item">
+                                        <i class="fa-regular fa-gears fa-sm"></i>
+                                        <a>Haptic Interface Design Project</a>
+                                    </div>
+                                    <div class="research-detail-item">
+                                        <i class="fa-regular fa-calendar fa-sm"></i>
+                                        <a>October 2023 - April 2024</a>
+                                    </div>
+                                </div>
+                                <div class="research-description">
+                                    Soft and conformable pneumatic tactile interfaces have the potential to complement
+                                    traditional rigid systems by offering more natural and subtle feedback. This
+                                    presents the need for economical, scalable miniaturized systems adept in providing
+                                    high-frequency vibrotactile stimuli. We present the development of a novel
+                                    silicone-based pneumatic vibrotactor (pneumatactor) array controlled by a sequence
+                                    of high-frequency air valves engineered to deliver vibrotactile feedback.
+                                </div>
+                            </div>
+                            <div class="research-content-project-cover">
+                                <img src="/assets/images/projects/pneumatactor-cover.jpg">
+                            </div>
+                        </div>
+
+                        <div class="research-content-project-box project-d link" onclick="goToPage(this)"
+                            href="https://github.com/anwaypimpalkar/picoboo-thermal-imaging-surveillance-system">
+                            <div class="research-content-project-details">
+                                <div class="research-title">
+                                    Presurgical Risk Stratification using ECGs
+                                </div>
+                                <div class="research-details">
+                                    <div class="research-detail-item">
+                                        <i class="fa-regular fa-gears fa-sm"></i>
+                                        <a>Precision Care Medicine Project</a>
+                                    </div>
+                                    <div class="research-detail-item">
+                                        <i class="fa-regular fa-calendar fa-sm"></i>
+                                        <a>September 2023 - Present</a>
+                                    </div>
+                                </div>
+                                <div class="research-description">
+                                    Surgical decision-making hinges on precise risk assessments, yet the role of
+                                    electrocardiography (ECG) in evaluating surgical risks is often debated, despite its
+                                    widespread use. In our study, we analyzed 12-lead ECGs from 28,661 adult patients
+                                    before major noncardiac surgeries, utilizing the MIMIC-IV dataset. We developed and
+                                    trained convolutional neural network (CNN)-based models to predict significant
+                                    post-surgical complications such as acute myocardial infarction (MI), in-hospital
+                                    mortality (IHM), and a composite of MI, 30-day mortality, and stroke.
+                                </div>
+                            </div>
+                            <div class="research-content-project-cover">
+                                <img src="/assets/images/projects/ecg-risk-stratification.jpg">
+                            </div>
+                        </div>
+
+                        <div class="research-content-project-box project-d link" onclick="goToPage(this)"
+                            href="https://github.com/anwaypimpalkar/picoboo-thermal-imaging-surveillance-system">
+                            <div class="research-content-project-details">
+                                <div class="research-title">
+                                    Photoacoustic Retinal Prosthesis
+                                </div>
+                                <div class="research-details">
+                                    <div class="research-detail-item">
+                                        <i class="fa-regular fa-star fa-sm"></i>
+                                        <a>Graduate Research Assistant - MUSiiC Lab, Johns Hopkins</a>
+                                    </div>
+                                    <div class="research-detail-item">
+                                        <i class="fa-regular fa-calendar fa-sm"></i>
+                                        <a>October 2023 - Present</a>
+                                    </div>
+                                </div>
+                                <div class="research-description">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.
+                                </div>
+                            </div>
+                            <div class="research-content-project-cover">
+                                <img src="/assets/images/still-thinking.png">
+                            </div>
+                        </div>
+
+                        <div class="vspacer"></div>
+
+                        <div class="content-section-head">
+                            <h2>Completed</h2>
+                        </div>
+
+                        <div class="research-content-item-container">
+
+                            <div class="research-content-project-box project-d link" onclick="goToPage(this)"
+                                href="https://github.com/anwaypimpalkar/picoboo-thermal-imaging-surveillance-system">
+                                <div class="research-content-project-details">
+                                    <div class="research-title">
+                                        ContROLLcraft - Minecraft Controller for the Differently Abled
+                                    </div>
+                                    <div class="research-details">
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-gears fa-sm"></i>
+                                            <a>Graduate Bioinstrumentation Project</a>
+                                        </div>
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-calendar fa-sm"></i>
+                                            <a>November 2023</a>
+                                        </div>
+                                    </div>
+                                    <div class="research-description">
+                                        Introducing our innovative Minecraft contROLLer! Crafted to emulate a mouse and
+                                        keyboard experience, this unique device is exclusively foot-operated. With one
+                                        box dedicated to movement control—walking, running, and direction via a
+                                        precision roller—and another for jumping, crouching, and block interactions,
+                                        this controller brings a new level of immersion to your Minecraft adventures.
+                                    </div>
+                                </div>
+                                <div class="research-content-project-cover">
+                                    <img src="/assets/images/projects/controllcraft-cover.jpg">
+                                </div>
+                            </div>
+
+                            <div class="research-content-project-box  link" onclick="goToPage(this)"
+                                href="https://github.com/anwaypimpalkar/smartElevatorSystem">
+                                <div class="research-content-project-details">
+                                    <div class="research-title">
+                                        Electrophysiological Correlates of Prospective Sense of Agency
+                                    </div>
+                                    <div class="research-details">
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-star fa-sm"></i>
+                                            <a>Undergraduate Dissertation</a>
+                                        </div>
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-location-dot fa-sm"></i>
+                                            <a>IIT Bombay - India</a>
+                                        </div>
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-calendar fa-sm"></i>
+                                            <a>July - September 2021</a>
+                                        </div>
+                                    </div>
+                                    <div class="research-description">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum.
+                                    </div>
+                                </div>
+                                <div class="research-content-project-cover">
+                                    <img src="/assets/images/still-thinking.png">
+                                </div>
+                            </div>
+
+                            <div class="research-content-project-box  link" onclick="goToPage(this)"
+                                href="https://github.com/anwaypimpalkar/smartElevatorSystem">
+                                <div class="research-content-project-details">
+                                    <div class="research-title">
+                                        Deep Learning based MRI Processing and Skull Stripping
+                                    </div>
+                                    <div class="research-details">
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-star fa-sm"></i>
+                                            <a>Undergraduate Research Assistant</a>
+                                        </div>
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-calendar fa-sm"></i>
+                                            <a>July - September 2021</a>
+                                        </div>
+                                    </div>
+                                    <div class="research-description">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum.
+                                    </div>
+                                </div>
+                                <div class="research-content-project-cover">
+                                    <img src="/assets/images/still-thinking.png">
+                                </div>
+                            </div>
+
+                            <div class="research-content-project-box  link" onclick="goToPage(this)"
+                                href="https://github.com/anwaypimpalkar/smartElevatorSystem">
+                                <div class="research-content-project-details">
+                                    <div class="research-title">
+                                        Wild Blueberry Harvester Automation
+                                    </div>
+                                    <div class="research-details">
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-gears fa-sm"></i>
+                                            <a>Mitacs Research Internship</a>
+                                        </div>
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-gears fa-sm"></i>
+                                            <a>Dalhousie University - Canada</a>
+                                        </div>
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-calendar fa-sm"></i>
+                                            <a>July - September 2021</a>
+                                        </div>
+                                    </div>
+                                    <div class="research-description">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum.
+                                    </div>
+                                </div>
+                                <div class="research-content-project-cover">
+                                    <img src="/content/dalhousie/cover-image.jpg">
+                                </div>
+                            </div>
+
+                            <div class="research-content-project-box  link" onclick="goToPage(this)"
+                                href="https://github.com/anwaypimpalkar/smartElevatorSystem">
+                                <div class="research-content-project-details">
+                                    <div class="research-title">
+                                        Hand Rehabilitation Device for Acute Burn Patients
+                                    </div>
+                                    <div class="research-details">
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-gears fa-sm"></i>
+                                            <a>Research Internship</a>
+                                        </div>
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-gears fa-sm"></i>
+                                            <a>Queliz Lifetech - Pune, India</a>
+                                        </div>
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-calendar fa-sm"></i>
+                                            <a>July - September 2021</a>
+                                        </div>
+                                    </div>
+                                    <div class="research-description">
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                                        culpa qui officia deserunt mollit anim id est laborum.
+                                    </div>
+                                </div>
+                                <div class="research-content-project-cover">
+                                    <img src="/assets/images/still-thinking.png">
+                                </div>
+                            </div>
+
+                            <div class="research-content-project-box  link" onclick="goToPage(this)"
+                                href="https://github.com/anwaypimpalkar/smartElevatorSystem">
+                                <div class="research-content-project-details">
+                                    <div class="research-title">
+                                        TinyMLevator - Smart Elevator using Embedded ML
+                                    </div>
+                                    <div class="research-details">
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-gears fa-sm"></i>
+                                            <a>Undergraduate Design Project</a>
+                                        </div>
+                                        <div class="research-detail-item">
+                                            <i class="fa-solid fa-award"></i>
+                                            <a>IEEE Best Project Award</a>
+                                        </div>
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-calendar fa-sm"></i>
+                                            <a>June 2021</a>
+                                        </div>
+                                    </div>
+                                    <div class="research-description">
+                                        Embedded ML at it's current pace is finding applications in every nook and
+                                        cranny of the world. TinyMLevator brings it to the elevator industry. It
+                                        consists of two main parts: detecting people and recognizing speech to enable a
+                                        user standing in front of the elevator to simply speak where he intends to go.
+                                        As easy as that!
+                                    </div>
+                                </div>
+                                <div class="research-content-project-cover">
+                                    <img src="/assets/images/projects/tinyMLevator-cover.jpg">
+                                </div>
+                            </div>
+
+                            <div class="research-content-project-box project-d link" onclick="goToPage(this)"
+                                href="https://github.com/anwaypimpalkar/picoboo-thermal-imaging-surveillance-system">
+                                <div class="research-content-project-details">
+                                    <div class="research-title">
+                                        PicoBoo - Thermal Security System with Motion Tracking
+                                    </div>
+                                    <div class="research-details">
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-gears fa-sm"></i>
+                                            <a>Undergraduate Design Project</a>
+                                        </div>
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-calendar fa-sm"></i>
+                                            <a>April 2022</a>
+                                        </div>
+                                    </div>
+                                    <div class="research-description">
+                                        PicoBoo utilizes thermal imaging and lightweight CNNs as the foundation for its
+                                        security system, operating on a Raspberry Pi. Using data from a FLIR
+                                        T420bx Thermal Imaging Camera, we created a human image training dataset,
+                                        implementing an optimized EfficientNet-Lite neural network for high-accuracy
+                                        human tracking in thermal camera video streams. The detections are displayed
+                                        through a web app for easy browser access.
+                                    </div>
+                                </div>
+                                <div class="research-content-project-cover">
+                                    <img src="/assets/images/projects/picoboo-cover.jpg">
+                                </div>
+                            </div>
+
+                            <div class="research-content-project-box  link" onclick="goToPage(this)"
+                                href="https://github.com/anwaypimpalkar/smartElevatorSystem">
+                                <div class="research-content-project-details">
+                                    <div class="research-title">
+                                        CovPrev - App-enabled COVID-19 Symptom Testing Unit
+                                    </div>
+                                    <div class="research-details">
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-gears fa-sm"></i>
+                                            <a>Microcontroller Design Project</a>
+                                        </div>
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-calendar fa-sm"></i>
+                                            <a>March 2021</a>
+                                        </div>
+                                    </div>
+                                    <div class="research-description">
+                                        During the COVID-19 pandemic, the need for safety measures like
+                                        social distancing and sanitization could not have been understated. Enter
+                                        CovPrev: an affordable unit targeting
+                                        crucial symptoms—high body temperature and low SpO₂ levels—with specialized
+                                        sensors. Deployable in bustling areas, CovPrev integrates a sanitization spray,
+                                        thermometer, pulse oximeter sensors, and a data analysis system accessible
+                                        through a cross-platform app.
+                                    </div>
+                                </div>
+                                <div class="research-content-project-cover">
+                                    <img src="/assets/images/projects/covprev-cover.jpg">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-left">
+                    <div class="socials">
+                        <a href="https://www.linkedin.com/in/anwaypimpalkar/" target="_blank"><i
+                                class="link fa-brands fa-linkedin-in fa-xl footer-item"></i></a>
+                        <a href="https://github.com/anwaypimpalkar/" target="_blank"><i
+                                class="link fa-brands fa-github fa-xl footer-item"></i></a>
+                        <a href="https://open.spotify.com/user/anway1908" target="_blank"><i
+                                class="link fa-brands fa-spotify fa-xl footer-item"></i></a>
+                    </div>
+                    <div class="line"></div>
+                    <div class="email">
+                        <p class="footer-item"> <a class="link footer-item" href="mailto:anway.pimpalkar@gmail.com"
+                                target="_blank" style="white-space: nowrap;"><i class="fa-solid fa-at fa-sm footer-item"
+                                    fa-xl></i>
+                                anway.pimpalkar@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <p class="footer-item"><i class="fa-solid fa-code"></i> <a id="last_updated"></a></p>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

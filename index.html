@@ -1,0 +1,166 @@
+<html style="scroll-behavior: smooth;">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<head>
+
+    <title>Anway Pimpalkar</title>
+    <meta charset="UTF-8">
+
+
+    <link rel="stylesheet" href="assets/css/typed.css">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-sm.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+    <link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/assets/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
+
+    <script>
+        window.onscroll = function () {
+            var height = $(window).height();
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop < 0.1 * height) {
+                $('.button-arrow').fadeIn(100);
+            } else {
+                $('.button-arrow').fadeOut(100);
+            }
+
+        };
+
+        function isMobileDevice() {
+            return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+        }
+
+        function scroll100vh() {
+            document.getElementById("introduction").scrollIntoView();
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var last_updated = document.getElementById("last_updated");
+            var d = new Date(document.lastModified);
+            var monthName = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+            var date = monthName[d.getMonth()] + " " + d.getFullYear();
+            last_updated.innerHTML = "homemade " + date;
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <canvas id="gradient-background-home"></canvas>
+
+    <div class="flex-container">
+
+        <div class="navbar">
+            <div class="nav">
+                <ul id="inner-navbar">
+                    <li><a href="index.html">Anway</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="projects.html">Portfolio</a></li>
+                    <li><a href="works.html">Works</a></li>
+                    <li><a href="cv.html">CV</i></a></li>
+                    <li><a href="mailto:anway.pimpalkar@gmail.com"><i class="fa-regular fa-paper-plane"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="landing">
+                <a onclick="scroll100vh()" class="button-arrow link">
+                    <div class="button__arrow button__arrow--down"></div>
+                </a>
+                <div class="scrollable-content">
+                    <div class="page-content" style="height: 70vh; justify-content: center;">
+                        <div class="typed-box">
+                            <h1>Hi, I'm Anway.</h1>
+                        </div>
+                        <div class="typed-box">
+                            <h1>I like <span class="typed-para"></span></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="introduction" id="introduction">
+                <div class="bio-page">
+                    <div class="bio-subheading">
+                        <h2>I work on neural prostheses and medical devices.</h2>
+                    </div>
+                    <div class="bio-content">
+                        <div class="bio-content-text" style="margin-left: 1em; 
+                        margin-right: 1em;">
+                            <p>
+                                I'm Anway Pimpalkar, currently a Master's Student majoring in Biomedical Engineering at
+                                <a href="https://www.jhu.edu" target="_blank" class="hopkins link">Johns Hopkins
+                                    University</a>, USA. My passion lies in harnessing the power of engineering to
+                                bridge the gap between disability and ability, aiming to significantly enhance the
+                                quality of life for individuals with neural impairments.
+                            </p>
+                            <!-- <p>
+                                An electronics engineering undergrad from <a href="https://www.coep.org.in/"
+                                    target="_blank" class="coep-link link">College of
+                                    Engineering Pune</a>, India, much of my work has flavours of embedded
+                                hardware, software, and mechanical design.
+                            </p> -->
+                            <p>
+                                While my research page outlines my professional endeavors, it doesn't reveal the diverse
+                                experiences that shaped me. Over the past couple years, I discovered the art of rowing,
+                                immersed myself in team and event management, and embraced a myriad of other passions.
+                                Beyond that, I thrive on the excitement of championing underdogs in F1 and relishing the
+                                outdoors.
+                            </p>
+                            <p>
+                                Oh, I also have a knack for crafting playlists that suit every vibe. You'll find a
+                                selection of them on my Spotify profile.
+                            </p>
+                        </div>
+
+                        <div class="bio-content-other">
+                            <div class="bio-content-photo">
+                                <img src="assets/images/anway.png">
+                            </div>
+                            <iframe style="border-radius:12px; width:80%; margin-left: auto; margin-right: auto;"
+                                src="https://open.spotify.com/embed/playlist/37i9dQZF1Epo2aWEwWgupR?utm_source=generator&theme=0"
+                                width="100%" height="152" frameBorder="0" allowfullscreen=""
+                                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                                loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <div class="footer-left">
+                        <div class="socials">
+                            <a href="https://www.linkedin.com/in/anwaypimpalkar/" target="_blank"><i
+                                    class="link fa-brands fa-linkedin-in fa-xl footer-item"></i></a>
+                            <a href="https://github.com/anwaypimpalkar/" target="_blank"><i
+                                    class="link fa-brands fa-github fa-xl footer-item"></i></a>
+                            <a href="https://open.spotify.com/user/anway1908" target="_blank"><i
+                                    class="link fa-brands fa-spotify fa-xl footer-item"></i></a>
+                        </div>
+                        <div class="line"></div>
+                        <div class="email">
+                            <p class="footer-item"> <a class="link footer-item" href="mailto:anway.pimpalkar@gmail.com"
+                                    target="_blank" style="white-space: nowrap;"><i
+                                        class="fa-solid fa-at fa-sm footer-item" fa-xl></i>
+                                    anway.pimpalkar@gmail.com</a></p>
+                        </div>
+                    </div>
+                    <div class="footer-right">
+                        <p class="footer-item"><i class="fa-solid fa-code"></i> <a id="last_updated"></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

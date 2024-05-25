@@ -1,0 +1,1193 @@
+@charset "UTF-8";
+.typed-para::before {
+  content: "​";
+  content: "​"/"building neural interfaces. 🧠";
+  alt: "building neural interfaces. 🧠";
+  white-space: break-spaces;
+  will-change: content;
+  animation: typed-0 11.07s linear 1s infinite forwards;
+}
+.typed-para::after {
+  content: "​";
+  position: relative;
+  display: inline-block;
+  padding-right: 0.1ch;
+  border-right: 2px solid currentColor;
+  white-space: nowrap;
+  animation: typed-0-caret 0.75s linear 1s infinite forwards;
+}
+@keyframes typed-0 {
+  0%, 0.4506711834% {
+    content: "​b";
+    content: "​b"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  0.4516711834%, 0.9023423668% {
+    content: "​bu";
+    content: "​bu"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  0.9033423668%, 1.3540135501% {
+    content: "​bui";
+    content: "​bui"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  1.3550135501%, 1.8056847335% {
+    content: "​buil";
+    content: "​buil"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  1.8066847335%, 2.2573559169% {
+    content: "​build";
+    content: "​build"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  2.2583559169%, 2.7090271003% {
+    content: "​buildi";
+    content: "​buildi"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  2.7100271003%, 3.1606982836% {
+    content: "​buildin";
+    content: "​buildin"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  3.1616982836%, 3.612369467% {
+    content: "​building";
+    content: "​building"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  3.613369467%, 4.0640406504% {
+    content: "​building ";
+    content: "​building "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  4.0650406504%, 4.5157118338% {
+    content: "​building n";
+    content: "​building n"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  4.5167118338%, 4.9673830172% {
+    content: "​building ne";
+    content: "​building ne"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  4.9683830172%, 5.4190542005% {
+    content: "​building neu";
+    content: "​building neu"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  5.4200542005%, 5.8707253839% {
+    content: "​building neur";
+    content: "​building neur"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  5.8717253839%, 6.3223965673% {
+    content: "​building neura";
+    content: "​building neura"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  6.3233965673%, 6.7740677507% {
+    content: "​building neural";
+    content: "​building neural"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  6.7750677507%, 7.2257389341% {
+    content: "​building neural ";
+    content: "​building neural "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  7.2267389341%, 7.6774101174% {
+    content: "​building neural i";
+    content: "​building neural i"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  7.6784101174%, 8.1290813008% {
+    content: "​building neural in";
+    content: "​building neural in"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  8.1300813008%, 8.5807524842% {
+    content: "​building neural int";
+    content: "​building neural int"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  8.5817524842%, 9.0324236676% {
+    content: "​building neural inte";
+    content: "​building neural inte"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  9.0334236676%, 9.4840948509% {
+    content: "​building neural inter";
+    content: "​building neural inter"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  9.4850948509%, 9.9357660343% {
+    content: "​building neural interf";
+    content: "​building neural interf"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  9.9367660343%, 10.3874372177% {
+    content: "​building neural interfa";
+    content: "​building neural interfa"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  10.3884372177%, 10.8391084011% {
+    content: "​building neural interfac";
+    content: "​building neural interfac"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  10.8401084011%, 11.2907795845% {
+    content: "​building neural interface";
+    content: "​building neural interface"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  11.2917795845%, 11.7424507678% {
+    content: "​building neural interfaces";
+    content: "​building neural interfaces"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  11.7434507678%, 12.1941219512% {
+    content: "​building neural interfaces.";
+    content: "​building neural interfaces."/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  12.1951219512%, 12.6457931346% {
+    content: "​building neural interfaces. ";
+    content: "​building neural interfaces. "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  12.6467931346%, 22.4922249322% {
+    content: "​building neural interfaces. 🧠";
+    content: "​building neural interfaces. 🧠"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  22.4932249322%, 22.853561879% {
+    content: "​building neural interfaces. ";
+    content: "​building neural interfaces. "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  22.854561879%, 23.2148988257% {
+    content: "​building neural interfaces.";
+    content: "​building neural interfaces."/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  23.2158988257%, 23.5762357724% {
+    content: "​building neural interfaces";
+    content: "​building neural interfaces"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  23.5772357724%, 23.9375727191% {
+    content: "​building neural interface";
+    content: "​building neural interface"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  23.9385727191%, 24.2989096658% {
+    content: "​building neural interfac";
+    content: "​building neural interfac"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  24.2999096658%, 24.6602466125% {
+    content: "​building neural interfa";
+    content: "​building neural interfa"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  24.6612466125%, 25.0215835592% {
+    content: "​building neural interf";
+    content: "​building neural interf"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  25.0225835592%, 25.3829205059% {
+    content: "​building neural inter";
+    content: "​building neural inter"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  25.3839205059%, 25.7442574526% {
+    content: "​building neural inte";
+    content: "​building neural inte"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  25.7452574526%, 26.1055943993% {
+    content: "​building neural int";
+    content: "​building neural int"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  26.1065943993%, 26.466931346% {
+    content: "​building neural in";
+    content: "​building neural in"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  26.467931346%, 26.8282682927% {
+    content: "​building neural i";
+    content: "​building neural i"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  26.8292682927%, 27.1896052394% {
+    content: "​building neural ";
+    content: "​building neural "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  27.1906052394%, 27.5509421861% {
+    content: "​building neural";
+    content: "​building neural"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  27.5519421861%, 27.9122791328% {
+    content: "​building neura";
+    content: "​building neura"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  27.9132791328%, 28.2736160795% {
+    content: "​building neur";
+    content: "​building neur"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  28.2746160795%, 28.6349530262% {
+    content: "​building neu";
+    content: "​building neu"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  28.6359530262%, 28.9962899729% {
+    content: "​building ne";
+    content: "​building ne"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  28.9972899729%, 29.3576269196% {
+    content: "​building n";
+    content: "​building n"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  29.3586269196%, 29.7189638663% {
+    content: "​building ";
+    content: "​building "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  29.7199638663%, 30.080300813% {
+    content: "​building";
+    content: "​building"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  30.081300813%, 30.4416377597% {
+    content: "​buildin";
+    content: "​buildin"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  30.4426377597%, 30.8029747064% {
+    content: "​buildi";
+    content: "​buildi"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  30.8039747064%, 31.1643116531% {
+    content: "​build";
+    content: "​build"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  31.1653116531%, 31.5256485998% {
+    content: "​buil";
+    content: "​buil"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  31.5266485998%, 31.8869855465% {
+    content: "​bui";
+    content: "​bui"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  31.8879855465%, 32.2483224932% {
+    content: "​bu";
+    content: "​bu"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  32.2493224932%, 32.6096594399% {
+    content: "​b";
+    content: "​b"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  32.6106594399%, 37.1263712737% {
+    content: "​";
+    content: "​"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f69999;
+    color: #f69999;
+    color: #f69999;
+  }
+  37.1273712737%, 37.5780424571% {
+    content: "​m";
+    content: "​m"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  37.5790424571%, 38.0297136405% {
+    content: "​ma";
+    content: "​ma"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  38.0307136405%, 38.4813848238% {
+    content: "​mak";
+    content: "​mak"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  38.4823848238%, 38.9330560072% {
+    content: "​maki";
+    content: "​maki"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  38.9340560072%, 39.3847271906% {
+    content: "​makin";
+    content: "​makin"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  39.3857271906%, 39.836398374% {
+    content: "​making";
+    content: "​making"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  39.837398374%, 40.2880695574% {
+    content: "​making ";
+    content: "​making "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  40.2890695574%, 40.7397407407% {
+    content: "​making r";
+    content: "​making r"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  40.7407407407%, 41.1914119241% {
+    content: "​making ro";
+    content: "​making ro"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  41.1924119241%, 41.6430831075% {
+    content: "​making rob";
+    content: "​making rob"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  41.6440831075%, 42.0947542909% {
+    content: "​making robo";
+    content: "​making robo"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  42.0957542909%, 42.5464254743% {
+    content: "​making robot";
+    content: "​making robot"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  42.5474254743%, 42.9980966576% {
+    content: "​making robots";
+    content: "​making robots"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  42.9990966576%, 43.449767841% {
+    content: "​making robots.";
+    content: "​making robots."/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  43.450767841%, 43.9014390244% {
+    content: "​making robots. ";
+    content: "​making robots. "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  43.9024390244%, 53.747870822% {
+    content: "​making robots. 🦾";
+    content: "​making robots. 🦾"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  53.748870822%, 54.1092077687% {
+    content: "​making robots. ";
+    content: "​making robots. "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  54.1102077687%, 54.4705447154% {
+    content: "​making robots.";
+    content: "​making robots."/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  54.4715447154%, 54.8318816621% {
+    content: "​making robots";
+    content: "​making robots"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  54.8328816621%, 55.1932186089% {
+    content: "​making robot";
+    content: "​making robot"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  55.1942186089%, 55.5545555556% {
+    content: "​making robo";
+    content: "​making robo"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  55.5555555556%, 55.9158925023% {
+    content: "​making rob";
+    content: "​making rob"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  55.9168925023%, 56.277229449% {
+    content: "​making ro";
+    content: "​making ro"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  56.278229449%, 56.6385663957% {
+    content: "​making r";
+    content: "​making r"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  56.6395663957%, 56.9999033424% {
+    content: "​making ";
+    content: "​making "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  57.0009033424%, 57.3612402891% {
+    content: "​making";
+    content: "​making"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  57.3622402891%, 57.7225772358% {
+    content: "​makin";
+    content: "​makin"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  57.7235772358%, 58.0839141825% {
+    content: "​maki";
+    content: "​maki"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  58.0849141825%, 58.4452511292% {
+    content: "​mak";
+    content: "​mak"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  58.4462511292%, 58.8065880759% {
+    content: "​ma";
+    content: "​ma"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  58.8075880759%, 59.1679250226% {
+    content: "​m";
+    content: "​m"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  59.1689250226%, 63.6846368564% {
+    content: "​";
+    content: "​"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #b0b0f8;
+    color: #b0b0f8;
+    color: #b0b0f8;
+  }
+  63.6856368564%, 64.1363080397% {
+    content: "​b";
+    content: "​b"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  64.1373080397%, 64.5879792231% {
+    content: "​br";
+    content: "​br"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  64.5889792231%, 65.0396504065% {
+    content: "​bri";
+    content: "​bri"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  65.0406504065%, 65.4913215899% {
+    content: "​brin";
+    content: "​brin"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  65.4923215899%, 65.9429927733% {
+    content: "​bring";
+    content: "​bring"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  65.9439927733%, 66.3946639566% {
+    content: "​bringi";
+    content: "​bringi"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  66.3956639566%, 66.84633514% {
+    content: "​bringin";
+    content: "​bringin"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  66.84733514%, 67.2980063234% {
+    content: "​bringing";
+    content: "​bringing"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  67.2990063234%, 67.7496775068% {
+    content: "​bringing ";
+    content: "​bringing "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  67.7506775068%, 68.2013486902% {
+    content: "​bringing A";
+    content: "​bringing A"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  68.2023486902%, 68.6530198735% {
+    content: "​bringing AI";
+    content: "​bringing AI"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  68.6540198735%, 69.1046910569% {
+    content: "​bringing AI ";
+    content: "​bringing AI "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  69.1056910569%, 69.5563622403% {
+    content: "​bringing AI t";
+    content: "​bringing AI t"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  69.5573622403%, 70.0080334237% {
+    content: "​bringing AI to";
+    content: "​bringing AI to"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  70.0090334237%, 70.459704607% {
+    content: "​bringing AI to ";
+    content: "​bringing AI to "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  70.460704607%, 70.9113757904% {
+    content: "​bringing AI to h";
+    content: "​bringing AI to h"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  70.9123757904%, 71.3630469738% {
+    content: "​bringing AI to he";
+    content: "​bringing AI to he"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  71.3640469738%, 71.8147181572% {
+    content: "​bringing AI to hea";
+    content: "​bringing AI to hea"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  71.8157181572%, 72.2663893406% {
+    content: "​bringing AI to heal";
+    content: "​bringing AI to heal"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  72.2673893406%, 72.7180605239% {
+    content: "​bringing AI to healt";
+    content: "​bringing AI to healt"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  72.7190605239%, 73.1697317073% {
+    content: "​bringing AI to health";
+    content: "​bringing AI to health"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  73.1707317073%, 73.6214028907% {
+    content: "​bringing AI to healthc";
+    content: "​bringing AI to healthc"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  73.6224028907%, 74.0730740741% {
+    content: "​bringing AI to healthca";
+    content: "​bringing AI to healthca"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  74.0740740741%, 74.5247452575% {
+    content: "​bringing AI to healthcar";
+    content: "​bringing AI to healthcar"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  74.5257452575%, 74.9764164408% {
+    content: "​bringing AI to healthcare";
+    content: "​bringing AI to healthcare"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  74.9774164408%, 75.4280876242% {
+    content: "​bringing AI to healthcare.";
+    content: "​bringing AI to healthcare."/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  75.4290876242%, 75.8797588076% {
+    content: "​bringing AI to healthcare. ";
+    content: "​bringing AI to healthcare. "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  75.8807588076%, 85.7261906052% {
+    content: "​bringing AI to healthcare. 🩺";
+    content: "​bringing AI to healthcare. 🩺"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  85.7271906052%, 86.0875275519% {
+    content: "​bringing AI to healthcare. ";
+    content: "​bringing AI to healthcare. "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  86.0885275519%, 86.4488644986% {
+    content: "​bringing AI to healthcare.";
+    content: "​bringing AI to healthcare."/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  86.4498644986%, 86.8102014453% {
+    content: "​bringing AI to healthcare";
+    content: "​bringing AI to healthcare"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  86.8112014453%, 87.1715383921% {
+    content: "​bringing AI to healthcar";
+    content: "​bringing AI to healthcar"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  87.1725383921%, 87.5328753388% {
+    content: "​bringing AI to healthca";
+    content: "​bringing AI to healthca"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  87.5338753388%, 87.8942122855% {
+    content: "​bringing AI to healthc";
+    content: "​bringing AI to healthc"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  87.8952122855%, 88.2555492322% {
+    content: "​bringing AI to health";
+    content: "​bringing AI to health"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  88.2565492322%, 88.6168861789% {
+    content: "​bringing AI to healt";
+    content: "​bringing AI to healt"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  88.6178861789%, 88.9782231256% {
+    content: "​bringing AI to heal";
+    content: "​bringing AI to heal"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  88.9792231256%, 89.3395600723% {
+    content: "​bringing AI to hea";
+    content: "​bringing AI to hea"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  89.3405600723%, 89.700897019% {
+    content: "​bringing AI to he";
+    content: "​bringing AI to he"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  89.701897019%, 90.0622339657% {
+    content: "​bringing AI to h";
+    content: "​bringing AI to h"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  90.0632339657%, 90.4235709124% {
+    content: "​bringing AI to ";
+    content: "​bringing AI to "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  90.4245709124%, 90.7849078591% {
+    content: "​bringing AI to";
+    content: "​bringing AI to"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  90.7859078591%, 91.1462448058% {
+    content: "​bringing AI t";
+    content: "​bringing AI t"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  91.1472448058%, 91.5075817525% {
+    content: "​bringing AI ";
+    content: "​bringing AI "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  91.5085817525%, 91.8689186992% {
+    content: "​bringing AI";
+    content: "​bringing AI"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  91.8699186992%, 92.2302556459% {
+    content: "​bringing A";
+    content: "​bringing A"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  92.2312556459%, 92.5915925926% {
+    content: "​bringing ";
+    content: "​bringing "/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  92.5925925926%, 92.9529295393% {
+    content: "​bringing";
+    content: "​bringing"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  92.9539295393%, 93.314266486% {
+    content: "​bringin";
+    content: "​bringin"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  93.315266486%, 93.6756034327% {
+    content: "​bringi";
+    content: "​bringi"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  93.6766034327%, 94.0369403794% {
+    content: "​bring";
+    content: "​bring"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  94.0379403794%, 94.3982773261% {
+    content: "​brin";
+    content: "​brin"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  94.3992773261%, 94.7596142728% {
+    content: "​bri";
+    content: "​bri"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  94.7606142728%, 95.1209512195% {
+    content: "​br";
+    content: "​br"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  95.1219512195%, 95.4822881662% {
+    content: "​b";
+    content: "​b"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+  95.4832881662%, 100% {
+    content: "​";
+    content: "​"/"building neural interfaces. 🧠";
+    alt: "building neural interfaces. 🧠";
+    color: #f4bb81;
+    color: #f4bb81;
+    color: #f4bb81;
+  }
+}
+@keyframes typed-0-caret {
+  75% {
+    border-color: transparent;
+  }
+}/*# sourceMappingURL=typed.css.map */

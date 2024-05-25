@@ -1,0 +1,704 @@
+<html>
+
+<head>
+    <title>CV | Anway Pimpalkar</title>
+    <meta charset="UTF-8">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-sm.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/assets/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <script>
+        function undoAnimations() {
+            styleElem.innerHTML = ".box::before {display: none;}";
+            document.getElementById('box').style.boxShadow = 'none';
+            document.querySelector('#scroll-start').scrollIntoView({
+                behavior: 'smooth'
+            });
+            setTimeout(() => openCV(), 100);
+        }
+
+        function openCV() {
+            var goToLink = document.getElementById('downloadCV').getAttribute("href");
+            window.location = goToLink;
+        }
+
+        function downloadCV() {
+            document.getElementById('box').style.boxShadow = '0 0 20px 3px grey';
+            setTimeout(() => runScanner(), 1500);
+        }
+
+        function runScanner() {
+            styleElem = document.head.appendChild(document.createElement("style"));
+            styleElem.innerHTML = ".box::before {display: flex;}";
+
+            // setTimeout(() => document.querySelector('.scroll-end').scrollIntoView({
+            //     behavior: 'smooth'
+            // }), 400);
+
+            setTimeout(() => $('.scrollable-content', html, body).animate({
+                scrollTop: $('.scroll-end').offset().top
+            }, 2700
+            ), 300);
+
+            // setTimeout(() => undoAnimations(), 3000);
+            // var audio = new Audio('/assets/scan.mp3');
+            // audio.play();
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="flex-container">
+        <div class="navbar">
+
+            <div class="brand">
+                <div class="logo">
+                    <a href="/">
+                        <img src="https://zainkho.com/zk-logo.svg">
+                    </a>
+                </div>
+                <div class="name">
+                    <p>Anway Pimpalkar</p>
+                </div>
+            </div>
+
+            <div class="nav">
+                <ul>
+                    <li><a href="index.html">Anway</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <!-- <li><a href="#">Projects</a></li> -->
+                    <li><a href="cv.html">CV</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+
+        <div class="content">
+            <div class="scrollable-content" id="scrollable-content">
+                <a id="scroll-start"></a>
+                <div class="page-content">
+                    <div class="cv-page-header-with-download">
+                        <h1>CV</h1>
+                        <div>
+                            <button href="/content/(2023 July T2) CV - Anway Pimpalkar.pdf" id="downloadCV"
+                                class="button link" type="button" onclick="downloadCV()">Download</button>
+                        </div>
+                    </div>
+
+                    <hr class="hr-bold">
+
+                    <div class="box" id="box">
+                        <div class="cv-container">
+                            <div class="cv-column-large">
+                                <div class="cv-heading">
+                                    <h3>Research Experience</h3>
+                                </div>
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">University of South Australia</div>
+                                    <div class="cv-item-subheading">Research Intern | Prof. Mark Billinghurst
+                                    </div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;July 2023 - Present
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            &nbsp;Adelaide, Australia (Remote)
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-details">
+                                        <ul>
+                                            <li>Detecting cybersickness using physiological signals during VR
+                                                experiences.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">Indian Institute of Technology (IIT) Bombay</div>
+                                    <div class="cv-item-subheading">Research Intern | Dr. Nivethida Thirugnanasambandam
+                                    </div>
+                                    <div class="cv-item-domains">
+                                        <div class="cv-item-domain">Python</div>
+                                        <div class="cv-item-domain">MATLAB</div>
+                                        <div class="cv-item-domain">Machine Learning</div>
+                                        <div class="cv-item-domain">Behavioral Neuroscience</div>
+                                    </div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Dec 2022 – July 2023
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            &nbsp;Mumbai, India (Hybrid)
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-details">
+                                        <ul>
+                                            <li>Elucidated the electrophysiological correlates of Sense of Agency using
+                                                a novel feature engineering and machine learning approach.</li>
+                                            <li>Identified pre-movement EEG features that can predict the quantitative
+                                                intentional binding in healthy individuals.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">COEP Technological University</div>
+                                    <div class="cv-item-subheading">Undergraduate Researcher | Dr. Rashmika Patole</div>
+                                    <div class="cv-item-domains">
+                                        <div class="cv-item-domain">Python</div>
+                                        <div class="cv-item-domain">TensorFlow</div>
+                                        <div class="cv-item-domain">Deep Learning</div>
+                                        <div class="cv-item-domain">Neuroimaging</div>
+                                        <div class="cv-item-domain">Neuropsychology</div>
+                                    </div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Aug 2022 – July 2023
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            &nbsp;Pune, India (On-site)
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-details">
+                                        <ul>
+                                            <li>Founding member of the Biomedical Engineering Research Group, leading 15
+                                                students in neuroengineering research.</li>
+                                            <li>Identified regional brain volume changes seen in the structural MRIs of
+                                                Major Depressive Disorder patients using deep learning.</li>
+                                            <li>U-Net based skull stripping pipelines with 99.75% accuracy robust to the
+                                                multi-scanner variability.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">Dalhousie University | Mitacs Globalink</div>
+                                    <div class="cv-item-subheading">Research Intern | Dr. Travis Esau</div>
+                                    <div class="cv-item-domains">
+                                        <div class="cv-item-domain">Python</div>
+                                        <div class="cv-item-domain">Arduino</div>
+                                        <div class="cv-item-domain">Computer Vision</div>
+                                        <div class="cv-item-domain">Point Clouds</div>
+                                        <div class="cv-item-domain">Sensors and Imaging</div>
+                                    </div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;May 2022 – Aug 2022
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            &nbsp;Nova Scotia, Canada (On-site)
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-details">
+                                        <ul>
+                                            <li>Awarded and funded through Mitacs Globalink, a highly competitive
+                                                program for undergraduates worldwide.</li>
+                                            <li>Worked on the automation of commercial wild blueberry harvesters to
+                                                improve yield and minimize operator stress.</li>
+                                            <li>Implemented real-time point cloud segmentation and volumetric analysis
+                                                of harvested wild blueberries within a ±10% accuracy range using
+                                                industrial Time-of-Flight & RGB imaging tools.</li>
+                                            <li>Designed a control system to automate the harvester head with millimeter
+                                                precision from multi-spectral drone data.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">Queliz Lifetech Pvt. Ltd.</div>
+                                    <div class="cv-item-subheading">Research Intern | Electronics Subsystem</div>
+                                    <div class="cv-item-domains">
+                                        <div class="cv-item-domain">C++</div>
+                                        <div class="cv-item-domain">Rehabilitation Sciences</div>
+                                        <div class="cv-item-domain">OpenCV</div>
+                                        <div class="cv-item-domain">Control Systems</div>
+                                        <div class="cv-item-domain">STM32</div>
+                                    </div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Jun 2021 – Sept 2021
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            &nbsp;Pune, India (Remote)
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-details">
+                                        <ul>
+                                            <li>Awarded and funded through Mitacs Globalink, a highly competitive
+                                                program for undergraduates worldwide.</li>
+                                            <li>Worked on the automation of commercial wild blueberry harvesters to
+                                                improve yield and minimize operator stress.</li>
+                                            <li>Implemented real-time point cloud segmentation and volumetric analysis
+                                                of harvested wild blueberries within a ±10% accuracy range using
+                                                industrial Time-of-Flight & RGB imaging tools.</li>
+                                            <li>Designed a control system to automate the harvester head with millimeter
+                                                precision from multi-spectral drone data.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cv-column-small">
+                                <div class="cv-heading">
+                                    <h3>Education</h3>
+                                </div>
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">MSE, Biomedical Engineering</div>
+                                    <div class="cv-item-subheading">Johns Hopkins University, USA</div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Starting Aug 2023
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">BTech, Electronics & Telecommunication Engineering
+                                    </div>
+                                    <div class="cv-item-subheading">College of Engineering Pune, India</div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Aug 2019 – May 2023
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-graduation-cap"></i>
+                                            &nbsp;First Class with Distinction
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="cv-heading">
+                                    <h3>Certifications</h3>
+                                </div>
+                                <div class="cv-item cv-certification-items">
+                                    <div class="cv-item-heading">Introduction to Neurohacking in R</div>
+                                    <div class="cv-item-heading">Neuroscience for Neuroimaging</div>
+                                    <div class="cv-item-heading">Deep Learning Specialization</div>
+                                    <div class="cv-item-heading">Web Programming with Python and JS</div>
+                                    <div class="cv-item-heading">TinyML Specialization</div>
+                                    <div class="cv-item-heading">Using Python for Research</div>
+                                </div>
+
+                                <div class="cv-heading">
+                                    <h3>Achievements</h3>
+                                </div>
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">Best Paper Award</div>
+                                    <div class="cv-item-subheading">2nd International Conference on Biomedical
+                                        Engineering Science and Technology, India</div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Feb 2023
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">Best Project Award</div>
+                                    <div class="cv-item-subheading">5th IEEE National Level Project Competition, India
+                                    </div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Jun 2021
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="cv-heading">
+                                    <h3>Proficiencies</h3>
+                                </div>
+
+                                <div class="cv-item">
+                                    <div class="cv-item-domains">
+                                        <div class="cv-item-domain">Python</div>
+                                        <div class="cv-item-domain">R</div>
+                                        <div class="cv-item-domain">C/C++</div>
+                                        <div class="cv-item-domain">JavaScript</div>
+                                        <div class="cv-item-domain">CSS</div>
+                                        <div class="cv-item-domain">HTML</div>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-item-domains">
+                                        <div class="cv-item-domain">MATLAB</div>
+                                        <div class="cv-item-domain">TensorFlow</div>
+                                        <div class="cv-item-domain">scikit-learn</div>
+                                        <div class="cv-item-domain">Linux</div>
+                                        <div class="cv-item-domain">Git</div>
+                                        <div class="cv-item-domain">Proteus</div>
+                                        <div class="cv-item-domain">Arduino</div>
+                                        <div class="cv-item-domain">Raspberry Pi</div>
+                                        <div class="cv-item-domain">LaTeX</div>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-item-domains">
+                                        <div class="cv-item-domain">Machine Learning</div>
+                                        <div class="cv-item-domain">Embedded ML (TinyML)</div>
+                                        <div class="cv-item-domain">Signal and Image Processing</div>
+                                        <div class="cv-item-domain">Sensors</div>
+                                        <div class="cv-item-domain">Data Analytics and Visualization</div>
+                                        <div class="cv-item-domain">Feature Engineering</div>
+                                        <div class="cv-item-domain">Neuroscience</div>
+                                        <div class="cv-item-domain">Biosignal Collection and Processing</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cv-container">
+                            <div class="cv-column-single">
+                                <div class="cv-heading">
+                                    <h3>Publications</h3>
+                                </div>
+                                <div class="cv-item">
+                                    <div class="cv-publication-item">
+                                        <div class="cv-item-heading">[2]</div>
+                                        <div>
+                                            <div class="cv-item-heading">Pimpalkar A*., Niture D. Building Contactless
+                                                Elevators with tinyML using Person Detection and Keyword Spotting.</div>
+                                            <div class="cv-item-subheading">Under review for IEEE Micro: Special Issue
+                                                on
+                                                tinyML. 2023.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-publication-item">
+                                        <div class="cv-item-heading">[1]</div>
+                                        <div>
+                                            <div class="cv-item-heading">Pimpalkar A*., Patole R., Kamble K., Shindikar
+                                                M.
+                                                Performance Evaluation of Vanilla, Residual, and Dense 2D U-Net
+                                                Architectures for Skull Stripping of Augmented 3D T1-weighted MRI Head
+                                                Scans.</div>
+                                            <div class="cv-item-subheading">Under review for Springer’s Communications
+                                                in
+                                                Computer and Information Science Series. 2023.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="cv-heading">
+                                    <h3>Projects</h3>
+                                </div>
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">PicoBoo - Thermal Imagery based Security System using
+                                        Deep
+                                        Learning</div>
+                                    <div class="cv-project-subheading">
+                                        <div class="cv-item-subheading">Prof. Srinivas Mahajan</div>
+                                        <div class="cv-item-domains">
+                                            <div class="cv-item-domain">C++</div>
+                                            <div class="cv-item-domain">Rehabilitation Sciences</div>
+                                            <div class="cv-item-domain">OpenCV</div>
+                                            <div class="cv-item-domain">Control Systems</div>
+                                            <div class="cv-item-domain">STM32</div>
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Jan 2022 – May 2022
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            &nbsp;College of Engineering Pune, India
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-details">
+                                        <ul>
+                                            <li>Developed a Raspberry Pi 4B based security system, combining its
+                                                capabilities with edge optimized CNNs trained on a collected thermal
+                                                image
+                                                dataset using a FLIR T420 thermal camera.</li>
+                                            <li>Enabled remote access to the system's inferences through a PaaS model
+                                                with a
+                                                web interface.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">TinyMLevator - Smart Elevator System using Embedded
+                                        Machine
+                                        Learning</div>
+                                    <div class="cv-project-subheading">
+                                        <div class="cv-item-subheading">Prof. Deeplaxmi Niture</div>
+                                        <div class="cv-item-domains">
+                                            <div class="cv-item-domain">Python</div>
+                                            <div class="cv-item-domain">C++</div>
+                                            <div class="cv-item-domain">TinyML</div>
+                                            <div class="cv-item-domain">Deep Learning</div>
+                                            <div class="cv-item-domain">Microcontrollers</div>
+                                            <div class="cv-item-domain">IoT</div>
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Apr 2021 – May 2021
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            &nbsp;College of Engineering Pune, India
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-details">
+                                        <ul>
+                                            <li>Best Project Award at the 5th IEEE National Level Project Competition.
+                                            </li>
+                                            <li>Constructed a novel multi-tenant TinyML based device using an Arduino
+                                                Nano
+                                                33 BLE Sense capable of detecting a person in front of an elevator and
+                                                identifying a number spoken, indicating the floor the user would like to
+                                                reach.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">CovPrev - COVID-19 Symptom Checking and Sanitization
+                                        Unit
+                                        with App</div>
+                                    <div class="cv-project-subheading">
+                                        <div class="cv-item-subheading">Prof. Neelima Kolhare</div>
+                                        <div class="cv-item-domains">
+                                            <div class="cv-item-domain">C++</div>
+                                            <div class="cv-item-domain">Sensors and Actuators</div>
+                                            <div class="cv-item-domain">Microcontrollers</div>
+                                            <div class="cv-item-domain">IoT</div>
+                                            <div class="cv-item-domain">Web Development</div>
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Feb 2021 – Mar 2021
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            &nbsp;College of Engineering Pune, India
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-details">
+                                        <ul>
+                                            <li>Designed a pandemic-relevant system using physiological sensors and
+                                                assemblies to provide selective entry to venues based on an individual’s
+                                                indicators with a mobile application to access to real-time graphical
+                                                visualizations.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="cv-heading">
+                                    <h3>Conference Activity</h3>
+                                </div>
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">2nd International Conference on Biomedical Engineering
+                                        Science and Technology</div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Feb 2023
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            &nbsp;NIT Raipur, India
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-users-line"></i>
+                                            &nbsp;Oral Presentation
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-award"></i>
+                                            &nbsp;Best Paper Award
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">3rd No Garland Neuroscience (NGN) Conference</div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Feb 2023
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            &nbsp;IISER Pune, India
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-users-line"></i>
+                                            &nbsp;Oral and Poster Presentation
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">Canadian Society for Bioengineering 2022 AGM Conference
+                                    </div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Jul 2022
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-location-dot"></i>
+                                            &nbsp;Charlottetown, Canada
+                                        </div>
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-users-line"></i>
+                                            &nbsp;Organizing Volunteer
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="cv-heading">
+                                    <h3>Extra-Curriculars and Leadership Roles</h3>
+                                </div>
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">COEP’s Data Science and Artificial Intelligence Club
+                                    </div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Sep 2020 – May 2023
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-details">
+                                        <ul>
+                                            <li>As the Research Lead, led the projects of 49 members, focused on
+                                                tracking
+                                                vehicles on campus and NLP text generation.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">COEP Rowing Team</div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Jan 2020 – May 2023
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-details">
+                                        <ul>
+                                            <li>Won multiple race events and awards commending enthusiasm and skill.
+                                                Represented Pune City at inter-zonal races.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <hr class="hr-cv">
+
+                                <a class="scroll-end"></a>
+
+                                <div class="cv-item">
+                                    <div class="cv-item-heading">COEP Impressions (Annual Cultural Festival)</div>
+                                    <div class="cv-item-logistics">
+                                        <div class="cv-item-logistics-item">
+                                            <i class="fa-solid fa-calendar"></i>
+                                            &nbsp;Aug 2019 – Jun 2022
+                                        </div>
+                                    </div>
+                                    <div class="cv-item-details">
+                                        <ul>
+                                            <li>Helmed the planning and execution of celebrity appearances, concerts,
+                                                and competitions as the Events & Proshows Head.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-left">
+            <div class="socials">
+                <a href="https://www.linkedin.com/in/anwaypimpalkar/" target="_blank"><i
+                        class="link fa-brands fa-linkedin-in fa-xl"></i></a>
+                <a href="https://github.com/anwaypimpalkar/" target="_blank"><i
+                        class="link fa-brands fa-github fa-xl"></i></a>
+                <a href="https://open.spotify.com/user/anway1908" target="_blank"><i
+                        class="link fa-brands fa-spotify fa-xl"></i></a>
+            </div>
+            <div class="line"></div>
+            <div class="email">
+                <p> <a class="link" href="mailto:anway.pimpalkar@gmail.com" target="_blank"
+                        style="white-space: nowrap;"><i class="fa-solid fa-at fa-sm" fa-xl></i>
+                        anway.pimpalkar@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right">
+            <p><i class="fa-solid fa-code"></i> <a id="last_updated"></a></p>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

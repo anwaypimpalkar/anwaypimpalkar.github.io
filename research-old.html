@@ -1,0 +1,632 @@
+<html>
+
+<head>
+    <title>Research | Anway Pimpalkar</title>
+    <meta charset="UTF-8">
+
+    <link rel="icon" type="image/x-icon" href="/assets/favicon-sm.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/assets/fontawesome/css/brands.css" rel="stylesheet">
+    <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
+    <script src="assets/js/scrolling.js"></script>
+
+    <script>
+        easyRead = true;
+
+        function changePublicationStyle() {
+            var easyReadElements = document.getElementsByClassName("easyRead");
+            var apaCitationElements = document.getElementsByClassName("apaCitation");
+            if (easyRead) {
+                for (i = 0; i < easyReadElements.length; i++) {
+                    easyReadElements[i].style.display = 'none';
+                }
+                for (i = 0; i < apaCitationElements.length; i++) {
+                    apaCitationElements[i].style.display = 'block';
+                }
+                easyRead = false;
+            } else {
+                for (i = 0; i < apaCitationElements.length; i++) {
+                    apaCitationElements[i].style.display = 'none';
+                }
+                for (i = 0; i < easyReadElements.length; i++) {
+                    easyReadElements[i].style.display = 'block';
+                }
+                easyRead = true;
+            }
+        }
+
+        function openInNewTab(obj) {
+            var goToLink = obj.getAttribute("href");
+            window.open(goToLink);
+        }
+
+        function goToPage(obj) {
+            var goToLink = obj.getAttribute("href");
+            window.location = goToLink;
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <canvas id="gradient-background-research"></canvas>
+
+    <div class="flex-container">
+
+        <script>
+            function onHoverMind() {
+                document.querySelector('#mind-popup-svg').style.fill = 'rgba(18,39,59,0.8)';
+            }
+
+            function onLeaveMind() {
+                document.querySelector('#mind-popup-svg').style.fill = 'rgba(0,0,0,0.0)';
+            }
+
+            function onHoverML() {
+                document.querySelector('#ml-popup-svg').style.fill = 'rgba(18,39,59,0.8)';
+            }
+
+            function onLeaveML() {
+                document.querySelector('#ml-popup-svg').style.fill = 'rgba(0,0,0,0.0)';
+            }
+        </script>
+
+        <svg id="mind-popup-svg" height="200px" width="200px" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 488 488" xml:space="preserve">
+            <g transform="translate(0 -540.36)">
+                <g>
+                    <g>
+                        <path d="M336.485,713.314c0.5-2.6,0.9-5.401,0.9-8.401c0-29.104-25.996-52.808-57.891-52.808
+                        c-13.898,0-27.696,5.101-37.994,13.602c-10.698-8.701-24.296-13.602-38.394-13.602c-15.098,0-29.395,5.301-40.094,15.102
+                        c-10.998,10.001-16.997,23.403-16.997,37.706c0,3.801,0.4,7.501,1.1,10.902c-15.898,9.601-25.796,26.104-25.796,44.106
+                        c0,9.601,2.3,18.203,7.099,26.104c-4.599,7.801-7.099,16.802-7.099,25.904c0,18.103,9.099,34.205,24.896,44.206
+                        c-0.2,2.7-0.2,5.301-0.2,7.801c0,14.302,6.099,27.704,16.997,37.706c10.698,9.701,24.896,15.102,40.094,15.102
+                        c14.098,0,27.596-4.901,38.394-13.602c10.398,8.601,24.096,13.602,37.994,13.602c31.895,0,57.891-23.703,57.891-52.708
+                        c0-1.8-0.1-3.601-0.3-5.301c18.497-9.201,30.395-27.104,30.395-46.707c0-9.101-2.5-18.003-7.099-25.904
+                        c4.799-7.901,7.099-16.502,7.099-26.104C367.481,740.118,355.183,722.015,336.485,713.314z M340.585,792.225
+                        c4.599,5.701,6.999,12.502,6.999,19.703c0,13.602-9.998,26.104-24.796,31.005c-4.799,1.6-7.699,6.501-6.699,11.502
+                        c0.6,3.401,1.3,6.701,1.3,9.501c0,18.103-16.997,32.805-37.894,32.805c-11.598,0-23.396-5.401-29.995-13.802
+                        c-1.8-2.3-4.599-3.701-7.599-3.801c-0.1,0-0.1,0-0.2,0l0,0c-2.9,0-5.699,1.2-7.399,3.701
+                        c-7.699,8.901-18.997,14.102-30.995,14.102c-20.497,0-37.094-14.702-37.094-32.805c0-3.6,0-7.301,0.8-9.301
+                        c2-4.901-0.2-10.502-4.999-12.802c-12.798-6.101-20.497-17.303-20.497-30.004c0-7.201,2.4-14.002,6.999-19.703
+                        c3-3.701,3-8.901,0-12.602c-4.799-5.901-6.999-12.202-6.999-19.703c0-12.702,8.399-24.404,21.497-29.704
+                        c2.5-1,4.499-3,5.499-5.501s1-5.301-0.1-7.801c-1.6-3.601-2.3-7.401-2.3-12.102c0-18.103,16.697-32.805,37.094-32.805
+                        c11.898,0,23.196,5.101,30.995,14.102c2,2.3,4.799,3.601,7.799,3.5c3-0.1,5.699-1.5,7.599-3.801
+                        c6.699-8.401,18.397-13.802,29.995-13.802c20.897,0,37.894,14.702,37.894,32.805c0,3.701-1.2,7.201-2.6,11.302
+                        c-0.8,2.6-0.6,5.501,0.7,7.901s3.499,4.201,6.199,4.901c15.198,4.101,25.796,16.802,25.796,30.905
+                        c0,7.501-2.2,13.702-6.999,19.703C337.585,783.324,337.585,788.525,340.585,792.225z" />
+                        <path d="M261.797,767.122l-21.397,7.201l13.198-37.205c1.8-5.201-0.9-11.002-6.099-12.802c-5.199-1.8-10.998,0.9-12.798,6.101
+                        l-20.097,56.608c-1.3,3.701-0.4,7.701,2.3,10.401c2.7,2.8,6.699,3.701,10.298,2.5l21.297-7.201l-13.898,38.706
+                        c-1.9,5.201,0.8,10.902,5.999,12.802c1.1,0.4,2.3,0.6,3.399,0.6l0,0c4.099,0,7.899-2.6,9.599-6.701l20.797-58.109
+                        c1.3-3.601,0.4-7.701-2.3-10.402C269.396,766.822,265.397,765.922,261.797,767.122z" />
+                        <polygon points="244,630.702 244,630.702 244,630.702 			" />
+                        <path d="M227.603,597.897c3,2.5,7.099,3,10.598,1.3l1.3-0.6l-5.199,19.603c-1.4,5.301,1.8,10.802,7.099,12.202
+                        c0.9,0.2,1.7,0.3,2.6,0.3c4.399,0,8.499-3,9.498-7.501l10.798-40.506c1-3.801-0.3-7.801-3.299-10.302s-7.199-3-10.698-1.3
+                        l-1.6,0.8l4.799-19.103c1.4-5.301-1.8-10.702-7.199-12.102c-5.299-1.4-10.698,1.8-12.098,7.201l-9.998,39.806
+                        C223.303,591.496,224.603,595.397,227.603,597.897z" />
+                        <path d="M53.43,609.199L71.327,620.5c-3.299,1.3-5.699,4.401-6.199,8.001c-0.5,3.901,1.3,7.701,4.599,9.801l35.494,22.203
+                        c1.7,1,3.499,1.5,5.299,1.5c3.299,0,6.599-1.7,8.499-4.701c2.9-4.701,1.5-10.902-3.199-13.802l-16.897-10.602
+                        c3.299-1.3,5.599-4.301,6.099-7.901c0.5-3.901-1.3-7.701-4.599-9.801l-36.294-22.903c-4.699-3-10.798-1.6-13.798,3.1
+                        C47.331,600.097,48.731,606.198,53.43,609.199z" />
+                        <path d="M105.322,908.342l-36.294,22.903c-3.399,2.1-5.099,5.901-4.599,9.801c0.5,3.601,2.9,6.601,6.299,7.901L53.63,959.35
+                        c-4.699,2.8-6.199,9.001-3.299,13.702c1.8,3.1,5.099,4.801,8.499,4.801v0c1.7,0,3.499-0.4,5.299-1.3l36.294-22.203
+                        c3.399-2,5.199-5.901,4.699-9.801c-0.5-3.801-3.099-7.001-6.699-8.201l17.597-11.102c4.699-3,6.099-9.101,3.099-13.802
+                        C116.12,906.742,110.021,905.342,105.322,908.342z" />
+                        <path d="M260.997,970.051c-3-2.5-7.199-3-10.698-1.3l-1.6,0.8l4.799-19.103c1.4-5.301-1.8-10.702-7.199-12.102
+                        c-5.299-1.4-10.698,1.8-12.098,7.201l-9.998,39.806c-0.9,3.801,0.4,7.701,3.399,10.202c3,2.5,7.099,3,10.598,1.3l1.3-0.6
+                        l-5.199,19.603c-1.4,5.301,1.8,10.802,7.099,12.202c0.9,0.2,1.7,0.3,2.6,0.3c4.399,0,8.499-3,9.498-7.501l10.798-40.506
+                        C265.297,976.552,263.997,972.552,260.997,970.051z" />
+                        <polygon points="244,1028.36 244,1028.36 244,1028.36 			" />
+                        <path d="M378.279,662.006L378.279,662.006c1.8,0,3.699-0.5,5.299-1.6l35.494-22.203c3.299-2,5.099-5.901,4.599-9.801
+                        c-0.5-3.801-3.099-6.901-6.699-8.101l17.597-11.002c4.699-3,6.099-9.101,3.099-13.802c-3-4.701-9.099-6.001-13.798-3.1
+                        l-36.294,22.903c-3.399,2.1-5.099,5.901-4.599,9.801c0.6,3.701,3.099,6.801,6.599,8.001l-16.597,10.401
+                        c-4.699,2.9-6.099,9.101-3.2,13.802C371.68,660.306,374.979,662.006,378.279,662.006z" />
+                        <path d="M434.47,959.35l-16.597-10.401c3.499-1.2,6.099-4.301,6.599-8.001c0.5-3.901-1.3-7.701-4.599-9.801l-36.294-22.903
+                        c-4.699-3-10.798-1.6-13.798,3.1s-1.6,10.802,3.1,13.802l17.597,11.102c-3.599,1.2-6.199,4.301-6.699,8.101
+                        c-0.5,3.901,1.3,7.701,4.599,9.801l35.494,22.203c1.7,1,3.499,1.5,5.299,1.5l0,0c3.399,0,6.599-1.6,8.499-4.701
+                        C440.569,968.451,439.169,962.25,434.47,959.35z" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+
+        <svg id="ml-popup-svg" height="200px" width="200px" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <title>machine-learning</title>
+            <meta charset="UTF-8">
+
+            <link rel="icon" type="image/x-icon" href="/assets/favicon-sm.png">
+            <g id="Layer_2" data-name="Layer 2">
+                <g id="invisible_box" data-name="invisible box">
+                    <rect width="48" height="48" fill="none" />
+                </g>
+                <g id="Q3_icons" data-name="Q3 icons">
+                    <path
+                        d="M31,33a2,2,0,0,0,2-2V28h1.5a1.5,1.5,0,0,0,0-3H33V23h1.5a1.5,1.5,0,0,0,0-3H33V17a2,2,0,0,0-2-2H28V13.5a1.5,1.5,0,0,0-3,0V15H23V13.5a1.5,1.5,0,0,0-3,0V15H17a2,2,0,0,0-2,2v3H13.5a1.5,1.5,0,0,0,0,3H15v2H13.5a1.5,1.5,0,0,0,0,3H15v3a2,2,0,0,0,2,2h3v1.5a1.5,1.5,0,0,0,3,0V33h2v1.5a1.5,1.5,0,0,0,3,0V33ZM18,18H30V30H18Z" />
+                    <rect x="21" y="21" width="6" height="6" />
+                    <g>
+                        <path
+                            d="M45.6,18.7,41,14.9V7.5a1,1,0,0,0-.6-.9L30.5,2.1h-.4l-.6.2-.5.3v6a1.5,1.5,0,0,0,3,0V7.2l5,2.3v7.4l1.5,1.2L42,20.9v6.2l-3.5,2.8L37,31.1v7.4l-5,2.3V39.5a1.5,1.5,0,0,0-3,0v6l.5.3.6.2h.4l9.9-4.5a1,1,0,0,0,.6-.9V33.1l4.6-3.8a.9.9,0,0,0,.4-.8v-9A.8.8,0,0,0,45.6,18.7Z" />
+                        <path
+                            d="M17.9,2h-.4L7.6,6.6a1,1,0,0,0-.6.9v7.4L2.4,18.7a.8.8,0,0,0-.4.8v9a.9.9,0,0,0,.4.8L7,33.1v7.4a1,1,0,0,0,.6.9l9.9,4.5h.4l.6-.2.5-.3v-6a1.5,1.5,0,0,0-3,0v1.3l-5-2.3V31.1L9.5,29.9,6,27.1V20.9l3.5-2.8L11,16.9V9.5l5-2.3V8.5a1.5,1.5,0,0,0,3,0v-6l-.5-.3Z" />
+                    </g>
+                </g>
+            </g>
+        </svg>
+
+        <div class="navbar">
+            <div class="nav">
+                <ul id="inner-navbar">
+                    <li><a href="index.html">Anway</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <!-- <li><a href="notes.html">Notes</a></li> -->
+                    <li><a href="cv.html">CV</i></a></li>
+                    <!-- <li><a href="stuff.html"><i class="fa-solid fa-camera-retro"></i></a></li> -->
+                    <li><a href="mailto:anway.pimpalkar@gmail.com"><i class="fa-regular fa-paper-plane"></i></a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="content">
+            <div class="scrollable-content">
+                <div class="page-content">
+                    <div class="big-head">
+                        <h1>Research</h1>
+                    </div>
+
+                    <div class="big-subhead">
+                        <!-- <p>
+                            I have found my passion in three domains -<a class="svg-popup" onmouseover="onHoverMind()"
+                                onmouseleave="onLeaveMind()">understanding our mind,</a><a class="svg-popup"
+                                onmouseover="onHoverML()" onmouseleave="onLeaveML()">teaching machines,</a> and building
+                            devices for easier lives. My work focuses on bringing them together.
+                        </p> -->
+                        <p>
+                            I have found my passion in three domains - understanding our mind, teaching machines, and
+                            building
+                            devices for easier lives. My work focuses on bringing them together.
+                        </p>
+                    </div>
+
+                    <div class="content-section-head">
+                        <h2>Experience</h2>
+                    </div>
+
+                    <!-- <hr class="hr-lighter"> -->
+                    <div class="three-column-boxes">
+
+                        <div class="experience-box link" onclick="" href="unisa.html"
+                            style="background-color: #002D72;">
+                            <img src="assets/images/uni-logos/musiic-jhu.png">
+                            <hr>
+                            <p>Can photoacoustics revolutionize retinal prosthetics?</p>
+                        </div>
+
+                        <div class="experience-box link" onclick="goToPage(this)" href="unisa.html"
+                            style="background-color: #0052a0;">
+                            <img src="assets/images/uni-logos/unisa.png">
+                            <hr>
+                            <p>Can you predict VR cybersickness using physiological signals?</p>
+                        </div>
+
+                        <div class="experience-box link" onclick="goToPage(this)" href="iitbombay.html"
+                            style="background-color: #4d83bb;">
+                            <img src="assets/images/uni-logos/iit-bombay.png">
+                            <hr>
+                            <p>Can you predict the outcome of your actions before even moving?</p>
+                        </div>
+
+                        <div class="experience-box link" onclick="goToPage(this)" href="coep.html"
+                            style="background-color: #27225d;">
+                            <img src="assets/images/uni-logos/coep.png">
+                            <hr>
+                            <p>How does depression affect your brain structually?</p>
+                        </div>
+
+                        <div class="experience-box link" onclick="goToPage(this)" href="dalhousie.html"
+                            style="background-color: #FFD400;">
+                            <img src="assets/images/uni-logos/dal.png">
+                            <hr style="background-color:black;">
+                            <p style="color:black">How can we automate industrial wild blueberry harvesters to improve
+                                yield?</p>
+                        </div>
+
+                        <div class="experience-box" style="background-color: #0a4c3a;">
+                            <img src="assets/images/uni-logos/betic.png">
+                            <hr>
+                            <p>Building affordable hand rehabilitation aids for burn patients.</p>
+                        </div>
+                    </div>
+
+                    <div class="vspacer"></div>
+
+                    <div class="content-section-head">
+                        <h2>Projects</h2>
+                    </div>
+
+                    <div class="research-content-item-container">
+
+                        <!-- <div class="research-content-project-box project-d link" onclick="goToPage(this)" href="https://github.com/anwaypimpalkar/picoboo-thermal-imaging-surveillance-system">
+                            <div class="research-content-project-details">
+                                <div class="research-title">
+                                    PicoBoo
+                                </div>
+                                <div class="research-description">
+                                    Security System with Motion Tracking using Thermal Imaging and Deep Learning
+                                </div>
+                                <div class="research-date">
+                                    <i class="fa-regular fa-calendar fa-sm"></i>
+                                    April 2022
+                                </div>
+                            </div>
+                            <div class="research-content-project-cover">
+                                <img src="/assets/images/projects/picoboo-cover.jpg">
+                            </div>
+                        </div>
+
+                        <div class="research-content-project-box project-d link" onclick="goToPage(this)" href="https://github.com/anwaypimpalkar/picoboo-thermal-imaging-surveillance-system">
+                            <div class="research-content-project-details">
+                                <div class="research-title">
+                                    PicoBoo
+                                </div>
+                                <div class="research-description">
+                                    Security System with Motion Tracking using Thermal Imaging and Deep Learning
+                                </div>
+                                <div class="research-date">
+                                    <i class="fa-regular fa-calendar fa-sm"></i>
+                                    April 2022
+                                </div>
+                            </div>
+                            <div class="research-content-project-cover">
+                                <img src="/assets/images/projects/picoboo-cover.jpg">
+                            </div>
+                        </div> -->
+
+                        <div class="research-content-project-box project-d link" onclick="goToPage(this)"
+                            href="https://github.com/anwaypimpalkar/picoboo-thermal-imaging-surveillance-system">
+                            <div class="research-content-project-details">
+                                <div class="research-title">
+                                    PicoBoo
+                                </div>
+                                <div class="research-description">
+                                    Security System with Motion Tracking using Thermal Imaging and Deep Learning
+                                </div>
+                                <div class="research-date">
+                                    <i class="fa-regular fa-calendar fa-sm"></i>
+                                    April 2022
+                                </div>
+                            </div>
+                            <div class="research-content-project-cover">
+                                <img src="/assets/images/projects/picoboo-cover.jpg">
+                            </div>
+                        </div>
+
+                        <div class="research-content-project-box project-d link" onclick="goToPage(this)"
+                            href="https://github.com/anwaypimpalkar/smartElevatorSystem">
+                            <div class="research-content-project-details">
+                                <div class="research-title">
+                                    TinyMLevator
+                                </div>
+                                <div class="research-description">
+                                    Smart Elevator Systems using Embedded Machine Learning and Fire Safety Mechanisms
+                                </div>
+                                <div class="research-date">
+                                    <i class="fa-regular fa-calendar fa-sm"></i>
+                                    June 2021
+                                </div>
+                            </div>
+                            <div class="research-content-project-cover">
+                                <img src="/assets/images/projects/tinyMLevator-cover.jpg">
+                            </div>
+                        </div>
+
+                        <div class="research-content-project-box project-d link" onclick="goToPage(this)"
+                            href="https://github.com/anwaypimpalkar/autonomousCovidSymptomTestingUnit">
+                            <div class="research-content-project-details">
+                                <div class="research-title">
+                                    CovPrev
+                                </div>
+                                <div class="research-description">
+                                    Autonomous COVID-19 Symptom Testing And Sanitization Unit With Cross-Platform App
+                                </div>
+                                <div class="research-date">
+                                    <i class="fa-regular fa-calendar fa-sm"></i>
+                                    March 2021
+                                </div>
+                            </div>
+                            <div class="research-content-project-cover">
+                                <img src="/assets/images/projects/covprev-cover.jpg">
+                            </div>
+                        </div>
+
+                        <!-- MOBILE -->
+
+                        <div class="research-content-gallery-item-box project-m link" onclick="goToPage(this)"
+                            href="https://github.com/anwaypimpalkar/picoboo-thermal-imaging-surveillance-system">
+                            <div class="research-content-gallery-item-cover">
+                                <img src="/assets/images/projects/picoboo-cover.jpg">
+                            </div>
+                            <div class="research-content-project-details">
+                                <div class="research-title">
+                                    PicoBoo
+                                </div>
+                                <div class="research-description">
+                                    Security System with Motion Tracking using Thermal Imaging and Deep Learning
+                                </div>
+                                <div class="research-date">
+                                    <i class="fa-regular fa-calendar fa-sm"></i>
+                                    April 2022
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="research-content-gallery-item-box project-m link" onclick="goToPage(this)"
+                            href="https://github.com/anwaypimpalkar/smartElevatorSystem">
+                            <div class="research-content-gallery-item-cover">
+                                <img src="/assets/images/projects/tinyMLevator-cover.jpg">
+                            </div>
+                            <div class="research-content-project-details">
+                                <div class="research-title">
+                                    TinyMLevator
+                                </div>
+                                <div class="research-description">
+                                    Smart Elevator Systems using Embedded Machine Learning and Fire Safety Mechanisms
+                                </div>
+                                <div class="research-date">
+                                    <i class="fa-regular fa-calendar fa-sm"></i>
+                                    June 2021
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="research-content-gallery-item-box project-m link" onclick="goToPage(this)"
+                            href="https://github.com/anwaypimpalkar/autonomousCovidSymptomTestingUnit">
+                            <div class="research-content-gallery-item-cover">
+                                <img src="/assets/images/projects/covprev-cover.jpg">
+                            </div>
+                            <div class="research-content-project-details">
+                                <div class="research-title">
+                                    CovPrev
+                                </div>
+                                <div class="research-description">
+                                    Autonomous COVID-19 Symptom Testing And Sanitization Unit With Cross-Platform App
+                                </div>
+                                <div class="research-date">
+                                    <i class="fa-regular fa-calendar fa-sm"></i>
+                                    March 2021
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="vspacer"></div>
+
+                    <div class="content-section-head">
+                        <h2>Publications</h2>
+                    </div>
+
+                    <div class="research-content-item-container">
+
+                        <div class="research-content-notebook-item">
+                            <div class="list-inner">
+                                <div class="notebook-stamp link">
+                                    <span class="stamp stamp-award">
+                                        <i class="fa-solid fa-trophy fa-2xl"></i>Best<br>Project<br>Award
+                                    </span>
+                                </div>
+                                <ul class="publication-notebook-list">
+                                    <li class="publication-title research-title">
+                                        <div class="publication-title-line publication-notebook-line"></div>
+                                        <div class="publication-title notebook-text" style="padding-top: 1em;">
+                                            Contactless Elevators with tinyML using Person Detection and Keyword
+                                            Spotting
+                                        </div>
+                                    </li>
+                                    <li class="research-description">
+                                        <div class="publication-notebook-line"></div>
+                                        <i class="fa-solid fa-pen fa-sm notebook-text"></i>
+                                        <div class="notebook-text">
+                                            Anway Pimpalkar* and Deeplaxmi Niture
+                                        </div>
+                                    </li>
+                                    <li class="research-description">
+                                        <div class="publication-notebook-line"></div>
+                                        <i class="fa-regular fa-calendar fa-sm notebook-text"></i>
+                                        <div class="notebook-text">
+                                            Submitted April 2023
+                                        </div>
+                                    </li>
+                                    <li class="research-description">
+                                        <div class="publication-notebook-line"></div>
+                                        <i class="fa-solid fa-clock fa-sm notebook-text"></i>
+                                        <div class="notebook-text">
+                                            Under review for 'IEEE Micro: Special Issue on tinyML'
+                                        </div>
+                                    </li>
+                                    <li class="list-empty-line">
+                                        <div class="publication-notebook-line"></div>
+                                        <br>
+                                    </li>
+                                    <li class="list-empty-line">
+                                        <div class="publication-notebook-line"></div>
+                                        <br>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="research-content-notebook-item">
+                            <div class="list-inner">
+                                <div class="notebook-stamp link">
+                                    <span class="stamp stamp-award">
+                                        <i class="fa-solid fa-trophy fa-2xl"></i>
+                                        <a>Best<br>Paper<br>Award</a>
+                                    </span>
+                                </div>
+                                <ul class="publication-notebook-list">
+                                    <li class="research-title">
+                                        <div class="publication-title-line publication-notebook-line"></div>
+                                        <div class="publication-title notebook-text" style="padding-top: 1em;">
+                                            Performance Evaluation of Vanilla, Residual, and Dense 2D U-Net
+                                            Architectures
+                                            for Skull Stripping of Augmented 3D T1-weighted MRI Head Scans
+                                        </div>
+                                    </li>
+                                    <li class="research-description">
+                                        <div class="publication-notebook-line"></div>
+                                        <i class="fa-solid fa-pen fa-sm notebook-text"></i>
+                                        <div class="notebook-text">
+                                            Anway Pimpalkar*, Rashmika Patole, Ketaki Kamble, and Mahesh Shindikar
+                                        </div>
+                                    </li>
+                                    <li class="research-description">
+                                        <div class="publication-notebook-line"></div>
+                                        <i class="fa-regular fa-calendar fa-sm notebook-text"></i>
+                                        <div class="notebook-text">
+                                            August 2023
+                                        </div>
+                                    </li>
+                                    <li class="research-description">
+                                        <div class="publication-notebook-line"></div>
+                                        <i class="fa-solid fa-book fa-sm notebook-text"></i>
+                                        <div class="notebook-text">
+                                            Communications in Computer and Information Science
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="publication-notebook-line"></div>
+                                        <div class="research-content-item-badges">
+                                            <span class="pdf-badge badge link" onclick="openInNewTab(this)"
+                                                href="https://arxiv.org/pdf/2211.16570" target="_blank"><i
+                                                    class="fa-solid fa-file-pdf" style="color: #ffffff;">
+                                                </i>&nbsp;&nbsp;Read PDF</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="vspacer"></div>
+
+                    <div class="content-section-head">
+                        <h2>Conferences</h2>
+                    </div>
+
+                    <div class="research-content-item-container">
+                        <div class="research-content-gallery-item-box">
+                            <div class="research-content-gallery-item-cover">
+                                <img src="/assets/images/conferences/icbest-cover.jpg">
+                            </div>
+                            <div class="research-content-gallery-item-details">
+                                <div class="research-title">
+                                    2nd International Conference on Biomedical Engineering Science and Technology
+                                </div>
+                                <table class="research-content-item-table">
+                                    <tr class="research-description">
+                                        <td class="icon"><i class="fa-solid fa-location-dot fa-sm"></i></td>
+                                        <td>NIT - Raipur, India</td>
+                                    </tr>
+                                    <tr class="research-description">
+                                        <td class="icon"><i class="fa-regular fa-calendar fa-sm"></i></td>
+                                        <td>February 2023</td>
+                                    </tr>
+                                    <tr class="research-description">
+                                        <td class="icon"><i class="fa-solid fa-users-line fa-sm"></i></td>
+                                        <td>Oral Presentation</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="research-content-gallery-item-box">
+                            <div class="research-content-gallery-item-cover">
+                                <img src="/assets/images/conferences/ngn-cover.jpg">
+                            </div>
+                            <div class="research-content-gallery-item-details">
+                                <div class="research-title">
+                                    3rd No Garland Neuroscience (NGN) Conference
+                                </div>
+                                <table class="research-content-item-table">
+                                    <tr class="research-description">
+                                        <td class="icon"><i class="fa-solid fa-location-dot fa-sm"></i></td>
+                                        <td>IISER - Pune, India</td>
+                                    </tr>
+                                    <tr class="research-description">
+                                        <td class="icon"><i class="fa-regular fa-calendar fa-sm"></i></td>
+                                        <td>February 2023</td>
+                                    </tr>
+                                    <tr class="research-description">
+                                        <td class="icon"><i class="fa-solid fa-users-line fa-sm"></i></td>
+                                        <td>Oral and Poster Presentation</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="research-content-gallery-item-box">
+                            <div class="research-content-gallery-item-cover">
+                                <img src="/assets/images/conferences/csbe-cover.jpg">
+                            </div>
+                            <div class="research-content-gallery-item-details">
+                                <div class="research-title">
+                                    Canadian Society for Bioengineering 2022 AGM Conference
+                                </div>
+                                <table class="research-content-item-table">
+                                    <tr class="research-description">
+                                        <td class="icon"><i class="fa-solid fa-location-dot fa-sm"></i></td>
+                                        <td>Charlottetown, Canada</td>
+                                    </tr>
+                                    <tr class="research-description">
+                                        <td class="icon"><i class="fa-regular fa-calendar fa-sm"></i></td>
+                                        <td>July 2022</td>
+                                    </tr>
+                                    <tr class="research-description">
+                                        <td class="icon"><i class="fa-solid fa-users-line fa-sm"></i></td>
+                                        <td>Organizing Volunteer</td>
+                                    </tr>
+                                </table>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-left">
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/anwaypimpalkar/" target="_blank"><i
+                            class="link fa-brands fa-linkedin-in fa-xl"></i></a>
+                    <a href="https://github.com/anwaypimpalkar/" target="_blank"><i
+                            class="link fa-brands fa-github fa-xl"></i></a>
+                    <a href="https://open.spotify.com/user/anway1908" target="_blank"><i
+                            class="link fa-brands fa-spotify fa-xl"></i></a>
+                </div>
+                <div class="line"></div>
+                <div class="email">
+                    <p> <a class="link" href="mailto:anway.pimpalkar@gmail.com" target="_blank"
+                            style="white-space: nowrap;"><i class="fa-solid fa-at fa-sm" fa-xl></i>
+                            anway.pimpalkar@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="footer-right">
+                <p><i class="fa-solid fa-code"></i> <a id="last_updated"></a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
