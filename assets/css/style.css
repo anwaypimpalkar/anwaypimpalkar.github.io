@@ -124,6 +124,19 @@ body {
     -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
 
+#gradient-background-harvard {
+    position: absolute;
+    z-index: 0;
+    display: block;
+    width:100%;
+    background: linear-gradient(-45deg, #ff6969 , #d34949, #620000, #da3232);
+	background-size: 400% 400%;
+	animation: gradient 8s ease infinite;
+	height: 80%;
+    opacity: 0.7;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+
 #gradient-background-iitb {
     position: absolute;
     z-index: 0;
@@ -576,6 +589,11 @@ td {
     color: #e5ab00 !important;
 }
 
+.harvard {
+    color: #A51C30 !important;
+    font-weight: bold;
+}
+
 .unisa {
     color: #0052a0 !important;
     font-weight: bold;
@@ -939,7 +957,7 @@ td {
 }
 
 .summary-funding {
-    height: 3em;
+    height: 2em;
     padding: 1em
 }
 
@@ -1180,6 +1198,7 @@ to {
 
     .research-big-head .bigger-head {
         font-size: 80;
+        color: black;
     }
 
     .big-subhead p {
