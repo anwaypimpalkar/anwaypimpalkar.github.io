@@ -15,7 +15,25 @@
     <link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet">
     <link href="/assets/fontawesome/css/brands.css" rel="stylesheet">
     <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
+    <script>
+        function openInNewTab(obj) {
+            var goToLink = obj.getAttribute("href");
+            window.open(goToLink);
+        }
 
+        function goToPage(obj) {
+            var goToLink = obj.getAttribute("href");
+            window.location = goToLink;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var last_updated = document.getElementById("last_updated");
+            var d = new Date(document.lastModified);
+            var monthName = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+            var date = monthName[d.getMonth()] + " " + d.getFullYear();
+            last_updated.innerHTML = "homemade " + date;
+        });
+    </script>
     <style>
         ::selection {
             background: #896600;
@@ -48,7 +66,7 @@
                 <div class="page-content">
 
                     <div class="research-big-head">
-                        <h1 class="bigger-head" style="color: #5b4400;">Dalhousie University</h1>
+                        <h1 class="bigger-head" style="color: #5b4400;">Dalhousie University, Canada</h1>
                         <h1 style="margin: 0;" class="dal">Let's get some wild blueberries.<img style="height: 1em;"
                                 src="/assets/icons/blueberries.svg"></h1>
                     </div>
@@ -73,7 +91,11 @@
                                 <h5 class="subtitle">Team</h5>
                                 <p>
                                     <a class="dal link" href="https://dalams.ca/faculty-members/" target="_blank">
-                                        Dr. Travis Esau</a>, Principal Investigator
+                                        Prof. Travis Esau</a>, Principal Investigator
+                                    <br>
+                                    <a class="dal link" href="https://www.linkedin.com/in/connor-mullins-eit-501991149/"
+                                        target="_blank">
+                                        Connor Mullins</a>, Grad Student
                                 </p>
                             </div>
                             <div class="summary-item">
@@ -109,21 +131,57 @@
                             <img src="content/dalhousie/wild-blueberries.jpeg" style="width: 100%;">
                         </div>
                         <div class="writeup-section">
-                            <h5 class="subtitle">Background</h5>
-                            <h2 class="dal">Wild Blueberries!</h2>
-                            <p>Wild blueberries grow low to the ground in rocky areas, showcasing a bold, untamed flavor
-                                that sets them apart from cultivated varieties. They're packed with antioxidants and
-                                nutrients, making them a powerhouse of goodness. Their versatility makes them a great
-                                addition to many dishes, adding a burst of freshness and a unique taste to everything
-                                from baked goods to salads.</p>
-                            <p>They typically reach less than a foot in height. Their harvesting process is meticulous,
-                                often done by hand or with specialized machinery that carefully collects the berries
-                                without harming the delicate plants. The fields of wild blueberries create a beautiful
-                                scene, with the small bushes covering the landscape in a lush green hue, adorned by the
-                                deep blue of the ripe berries.</p>
-                            <div style="display: flex; margin-left: auto; margin-right: auto; width: 70%;">
-                                <img src="content/dalhousie/wild-blueberries.jpeg" style="width: 100%;">
-                            </div>
+                            <h5 class="subtitle">Harvesting Them</h5>
+                            <h2 class="dal">Current Harvesting Methods</h2>
+                            <p>In the world of wild blueberry harvesting, large, sophisticated machines are employed to
+                                maximize efficiency and yield. These harvesters require meticulous adjustments to the
+                                harvester head height, speed, angle, and various other controls to ensure optimal
+                                performance. The harvested blueberries are then fed into large yellow bins, as
+                                demonstrated in the video below.
+                            </p>
+                            <video width="100%" autoplay="autoplay" muted loop>
+                                <source src="content/dalhousie/harvester-video.mp4" type="video/mp4" au />
+                            </video>
+                            <br><br>
+                            <p>The driver plays a crucial role, overseeing the operation, determining when bins are
+                                full, and replacing them as needed. However, the multitude of controls can be
+                                overwhelming for the operator. To address this challenge, our goal was to introduce
+                                automation to some of these tasks. <a class="dal" style="font-weight: bold;">We aimed to
+                                    automate
+                                    the measurement of
+                                    berry volume in the bins and the automatic switching of bins once they are full.</a>
+                                This
+                                advancement not only alleviates the burden on the driver but also enhances the
+                                efficiency and precision of the harvesting process.
+                            </p>
+                        </div>
+                        <div class="writeup-section">
+                            <h5 class="subtitle">Solution</h5>
+                            <h2 class="dal">Sensing Methodology Overview</h2>
+                            <p>To accurately measure the volume of berries in the bins, we implemented a camera-based
+                                system. A Time-of-Flight and RGB camera was strategically mounted on the harvester,
+                                facing downwards towards the bin. This setup utilizes image segmentation and
+                                point cloud processing algorithms to estimate the volume of the berries effectively.
+
+                                The system is designed to be robust, ensuring reliable performance in a variety of
+                                lighting conditions, including harsh sunlight. It also adapts to different bin depths
+                                and colors, making it a versatile solution for diverse harvesting environments. This
+                                technology significantly enhances the efficiency of the harvesting process by providing
+                                precise volume measurements and reducing the manual workload for the operator.</p>
+                            </p>
+                            <img src="content/dalhousie/camera-setup.jpg" style="width: 100%;">
+                        </div>
+                        <div class="writeup-section">
+                            <h5 class="subtitle">Memories</h5>
+                            <h2 class="dal">The Experience</h2>
+                            <p>My Mitacs internship was one of the most rewarding experiences of my life. I thoroughly
+                                enjoyed applying my skills to a practical and impactful project in the field -
+                                literally!
+
+                                I'm deeply grateful to the entire team who supported me throughout my stay, and to
+                                Mitacs for providing such a wonderful opportunity.</p>
+                            </p>
+                            <img src="content/dalhousie/dal-memories.png" style="width: 100%;">
                         </div>
                     </div>
                 </div>
@@ -151,6 +209,7 @@
                 <p class="footer-item"><i class="fa-solid fa-code"></i> <a id="last_updated"></a></p>
             </div>
         </div>
+    </div>
     </div>
 </body>
 
