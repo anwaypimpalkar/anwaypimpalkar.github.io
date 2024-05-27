@@ -15,25 +15,7 @@
     <link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet">
     <link href="../assets/fontawesome/css/brands.css" rel="stylesheet">
     <link href="../assets/fontawesome/css/solid.css" rel="stylesheet">
-    <script>
-        function openInNewTab(obj) {
-            var goToLink = obj.getAttribute("href");
-            window.open(goToLink);
-        }
-
-        function goToPage(obj) {
-            var goToLink = obj.getAttribute("href");
-            window.location = goToLink;
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            var last_updated = document.getElementById("last_updated");
-            var d = new Date(document.lastModified);
-            var monthName = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
-            var date = monthName[d.getMonth()] + " " + d.getFullYear();
-            last_updated.innerHTML = "homemade " + date;
-        });
-    </script>
+    <script src="../assets/js/script.js"></script>
     <style>
         ::selection {
             background: #896600;

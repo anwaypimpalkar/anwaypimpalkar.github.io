@@ -567,6 +567,10 @@ td {
     -webkit-text-fill-color: var(--main-selection-color);
 }
 
+.no-cursor {
+    cursor: not-allowed;
+}
+
 .iitb {
     color: #4d83bb !important;
 }
