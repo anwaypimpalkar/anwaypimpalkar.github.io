@@ -803,6 +803,12 @@ td {
     margin-right: 20px;
 }
 
+@media (max-width: 850px) {
+    .badge {
+        font-size: 12px;
+    }
+}
+
 .award-badge {
     background-color: goldenrod;
 }
@@ -1218,15 +1224,15 @@ to {
     }
 
     .research-big-head h1 {
-        font-size: 50;
-        color: #1e4263;
+        font-size: 30;
+        /* color: #1e4263; */
         margin: 0;
         text-align: center;
         letter-spacing: -1;
     }
 
     .research-big-head .bigger-head {
-        font-size: 60;
+        font-size: 45;
     }
 
     .big-subhead p {
