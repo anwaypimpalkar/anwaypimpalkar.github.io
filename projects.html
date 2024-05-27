@@ -4,7 +4,7 @@
     <title>Projects | Anway Pimpalkar</title>
     <meta charset="UTF-8">
 
-    <link rel="icon" type="image/x-icon" href="/assets/favicon-sm.png">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon-sm.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -38,11 +38,31 @@
             var date = monthName[d.getMonth()] + " " + d.getFullYear();
             last_updated.innerHTML = "homemade " + date;
         });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const notyets = document.getElementsByClassName("notyet");
+
+            for (let i = 0; i < notyets.length; i++) {
+                let notyet = notyets[i];
+
+                notyet.addEventListener("mouseover", () => {
+                    notyet.classList.add("no-cursor");
+                });
+
+                notyet.addEventListener("mouseout", () => {
+                    notyet.classList.remove("no-cursor");
+                });
+            }
+        });
     </script>
 
     <style>
         .project-text {
             color: black !important;
+        }
+
+        .no-cursor {
+            cursor: not-allowed;
         }
     </style>
 </head>
@@ -91,38 +111,7 @@
 
                     <div class="research-content-item-container">
 
-                        <div class="research-content-project-box project-d link project-text"
-                            onclick="openInNewTab(this)" href="pneumatactors.html">
-                            <div class="research-content-project-details">
-                                <div class="research-title">
-                                    Pneumatactor Arrays for Vibrotactile Feedback
-                                </div>
-                                <div class="research-details">
-                                    <div class="research-detail-item">
-                                        <i class="fa-regular fa-gears fa-sm"></i>
-                                        <a>Haptic Interface Design Project</a>
-                                    </div>
-                                    <div class="research-detail-item">
-                                        <i class="fa-regular fa-calendar fa-sm"></i>
-                                        <a>October 2023 - April 2024</a>
-                                    </div>
-                                </div>
-                                <div class="research-description">
-                                    Soft and conformable pneumatic tactile interfaces have the potential to complement
-                                    traditional rigid systems by offering more natural and subtle feedback. This
-                                    presents the need for economical, scalable miniaturized systems adept in providing
-                                    high-frequency vibrotactile stimuli. We present the development of a novel
-                                    silicone-based pneumatic vibrotactor (pneumatactor) array controlled by a sequence
-                                    of high-frequency air valves engineered to deliver vibrotactile feedback.
-                                </div>
-                            </div>
-                            <div class="research-content-project-cover">
-                                <img src="/content/projects/pneumatactors-cover2.gif">
-                            </div>
-                        </div>
-
-                        <div class="research-content-project-box project-d link" onclick="openInNewTab(this)"
-                            href="https://github.com/anwaypimpalkar/picoboo-thermal-imaging-surveillance-system">
+                        <div class="research-content-project-box project-d link notyet">
                             <div class="research-content-project-details">
                                 <div class="research-title">
                                     Presurgical Risk Stratification using ECGs
@@ -152,46 +141,82 @@
                             </div>
                         </div>
 
-                        <div class="research-content-project-box project-d link" onclick="openInNewTab(this)"
-                            href="https://github.com/anwaypimpalkar/picoboo-thermal-imaging-surveillance-system">
-                            <div class="research-content-project-details">
-                                <div class="research-title">
-                                    Photoacoustic Retinal Prosthesis
-                                </div>
-                                <div class="research-details">
-                                    <div class="research-detail-item">
-                                        <i class="fa-regular fa-star fa-sm"></i>
-                                        <a>Graduate Research Assistant - MUSiiC Lab, Johns Hopkins</a>
-                                    </div>
-                                    <div class="research-detail-item">
-                                        <i class="fa-regular fa-calendar fa-sm"></i>
-                                        <a>October 2023 - Present</a>
-                                    </div>
-                                </div>
-                                <div class="research-description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                                    deserunt mollit anim id est laborum.
-                                </div>
-                            </div>
-                            <div class="research-content-project-cover">
-                                <img src="/assets/images/still-thinking.png">
-                            </div>
-                        </div>
 
+
+                        <!-- 
                         <div class="vspacer"></div>
 
                         <div class="content-section-head">
                             <h2>Completed</h2>
+                        </div> -->
+
+                        <div class="research-content-project-box project-d link notyet">
+                            <div class="research-content-project-details">
+                                <div class="research-title">
+                                    Simulating Intracortical Microstimulation in MATLAB
+                                </div>
+                                <div class="research-details">
+                                    <div class="research-detail-item">
+                                        <i class="fa-regular fa-gears fa-sm"></i>
+                                        <a>Neural Implants and Interfaces Project</a>
+                                    </div>
+                                    <div class="research-detail-item">
+                                        <i class="fa-regular fa-calendar fa-sm"></i>
+                                        <a>April - May 2024</a>
+                                    </div>
+                                </div>
+                                <div class="research-description">
+                                    This MATLAB simulation project aims to replicate the decision-making process for
+                                    intracortical microstimulation in the human somatosensory cortex. It focuses on
+                                    emulating real-life choices required for effective stimulation during a pinch task
+                                    involving the index finger and thumb. The simulation considers various stimulation
+                                    parameters to optimize tactile sensations' quality and intensity. This project is
+                                    based on detailed protocols and processes, using MATLAB and Arduino, to simulate
+                                    electrode placement, optimal electrode configuration, data collection, and pulse
+                                    generation, enhancing the understanding of somatosensory feedback in prosthetics.
+                                </div>
+                            </div>
+                            <div class="research-content-project-cover">
+                                <img src="/content/projects/icms-matlab-cover.gif">
+                            </div>
                         </div>
+
 
                         <div class="research-content-item-container">
 
-                            <div class="research-content-project-box project-d link" onclick="openInNewTab(this)"
-                                href="https://github.com/anwaypimpalkar/picoboo-thermal-imaging-surveillance-system">
+                            <div class="research-content-project-box project-d link notyet">
+                                <div class="research-content-project-details">
+                                    <div class="research-title">
+                                        Pneumatactor Arrays for Vibrotactile Feedback
+                                    </div>
+                                    <div class="research-details">
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-gears fa-sm"></i>
+                                            <a>Haptic Interface Design Project</a>
+                                        </div>
+                                        <div class="research-detail-item">
+                                            <i class="fa-regular fa-calendar fa-sm"></i>
+                                            <a>October 2023 - April 2024</a>
+                                        </div>
+                                    </div>
+                                    <div class="research-description">
+                                        Soft and conformable pneumatic tactile interfaces have the potential to
+                                        complement
+                                        traditional rigid systems by offering more natural and subtle feedback. This
+                                        presents the need for economical, scalable miniaturized systems adept in
+                                        providing
+                                        high-frequency vibrotactile stimuli. We present the development of a novel
+                                        silicone-based pneumatic vibrotactor (pneumatactor) array controlled by a
+                                        sequence
+                                        of high-frequency air valves engineered to deliver vibrotactile feedback.
+                                    </div>
+                                </div>
+                                <div class="research-content-project-cover">
+                                    <img src="/content/projects/pneumatactors-cover2.gif">
+                                </div>
+                            </div>
+
+                            <div class="research-content-project-box project-d link notyet">
                                 <div class="research-content-project-details">
                                     <div class="research-title">
                                         ContROLLcraft - Minecraft Controller for the Differently Abled
@@ -219,8 +244,8 @@
                                 </div>
                             </div>
 
-                            <div class="research-content-project-box  link" onclick="openInNewTab(this)"
-                                href="https://github.com/anwaypimpalkar/smartElevatorSystem">
+                            <div class="research-content-project-box  link" onclick="goToPage(this)"
+                                href="affiliations/iitbombay.html">
                                 <div class="research-content-project-details">
                                     <div class="research-title">
                                         Electrophysiological Correlates of Prospective Sense of Agency
@@ -240,12 +265,14 @@
                                         </div>
                                     </div>
                                     <div class="research-description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum.
+                                        The feeling of being in control of our actions, known as the Sense of Agency, is
+                                        a fascinating aspect of human experience. This sensation, rooted in the brain's
+                                        response to the consequences of our actions, underpins our perception of
+                                        autonomy and active engagement in the world. Neuroscience seeks to unravel the
+                                        complexities behind this phenomenon, offering insights that span philosophy,
+                                        psychology, robotics, and AI. In this exploration, we delve into how the brain
+                                        generates this sense of control, examining the interplay of cognitive processes
+                                        and sensory feedback.
                                     </div>
                                 </div>
                                 <div class="research-content-project-cover">
@@ -253,8 +280,8 @@
                                 </div>
                             </div>
 
-                            <div class="research-content-project-box  link" onclick="openInNewTab(this)"
-                                href="coep.html">
+                            <div class="research-content-project-box  link" onclick="goToPage(this)"
+                                href="/affiliations/coep.html">
                                 <div class="research-content-project-details">
                                     <div class="research-title">
                                         Deep Learning based MRI Processing and Skull Stripping
@@ -270,12 +297,15 @@
                                         </div>
                                     </div>
                                     <div class="research-description">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                        nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                        culpa qui officia deserunt mollit anim id est laborum.
+
+                                        In the ever-evolving field of neuroimaging, skull stripping stands as a crucial
+                                        process, ensuring that brain scans are free from any surrounding tissue
+                                        interference. This meticulous task enhances the accuracy of brain analysis,
+                                        facilitating everything from segmentation to 3D modeling. While traditional
+                                        methods remain a gold standard, they are impractical for handling large datasets
+                                        efficiently. Enter deep learning techniques: by leveraging powerful U-Net
+                                        architectures, these advanced methods promise to revolutionize skull stripping,
+                                        making it faster and more reliable than ever before.
                                     </div>
                                 </div>
                                 <div class="research-content-project-cover">
@@ -283,8 +313,8 @@
                                 </div>
                             </div>
 
-                            <div class="research-content-project-box  link" onclick="openInNewTab(this)"
-                                href="dalhousie.html">
+                            <div class="research-content-project-box  link" onclick="goToPage(this)"
+                                href="/affiliations/dalhousie.html">
                                 <div class="research-content-project-details">
                                     <div class="research-title">
                                         Wild Blueberry Harvester Automation
@@ -316,7 +346,8 @@
                                 </div>
                             </div>
 
-                            <div class="research-content-project-box  link" onclick="openInNewTab(this)" href="">
+                            <div class="research-content-project-box  link" onclick="openInNewTab(this)"
+                                href="https://queliz.in/">
                                 <div class="research-content-project-details">
                                     <div class="research-title">
                                         Hand Rehabilitation Device for Acute Burn Patients
