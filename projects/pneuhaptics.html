@@ -20,6 +20,29 @@
     <script src="../assets/js/script.js"></script>
 </head>
 
+<style>
+    ::selection {
+        background: #896600;
+        color: #f4dd99;
+    }
+
+    .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        /* 0.5 of the width */
+        height: 0;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
 <body>
 
     <canvas id="gradient-background-unisa"></canvas>
@@ -88,7 +111,7 @@
                             </div>
                         </div>
                         <div class="summary-image">
-                            <img src="../content/hamr/hamr-cover.png" style="opacity: 1;">
+                            <img src="../content/hamr/pneumatactor-cover.png" style="opacity: 1;">
                         </div>
                     </div>
                     <div class="writeup">
@@ -126,14 +149,20 @@
                             <h2 class="hopkins">Demonstration</h2>
                             <p>To see the pneumatactor array in action, watch our demonstration video showcasing the
                                 device's ability to provide high-frequency vibrotactile feedback.</p>
+                            <div class="video-container">
+                                <iframe width="560" height="315"
+                                    src="https://www.youtube.com/embed/QHo6VvfkuQs?si=AO2BzO6kpnYwSFrK"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                            </div>
                         </div>
                         <div class="writeup-section">
                             <h5 class="subtitle">Long Beach, California</h5>
                             <h2 class="hopkins">IEEE Haptics Symposium</h2>
                             <p>This work was presented at the IEEE Haptics Symposium in sunny Long Beach, California, in
                                 April 2024. We showcased a work-in-progress paper and conducted a hands-on
-                                demonstration. Additionally, I volunteered at the conference, assisting with sessions
-                                and registration.</p>
+                                demonstration. I also served as a student volunteer at the conference!</p>
                             <img src="../content/hamr/ieee-hs2024.png" style="width: 100%;">
                         </div>
                     </div>
