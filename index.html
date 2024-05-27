@@ -23,6 +23,7 @@
     <link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet">
     <link href="/assets/fontawesome/css/brands.css" rel="stylesheet">
     <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
+    <script src="/assets/js/script.js"></script>
 
     <script>
         window.onscroll = function () {
@@ -36,21 +37,13 @@
 
         };
 
-        function isMobileDevice() {
-            return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
-        }
+        // function isMobileDevice() {
+        //     return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+        // }
 
         function scroll100vh() {
             document.getElementById("introduction").scrollIntoView();
         }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            var last_updated = document.getElementById("last_updated");
-            var d = new Date(document.lastModified);
-            var monthName = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
-            var date = monthName[d.getMonth()] + " " + d.getFullYear();
-            last_updated.innerHTML = "homemade " + date;
-        });
     </script>
 
 </head>
@@ -85,7 +78,7 @@
                             <h1>Hi, I'm Anway.</h1>
                         </div>
                         <div class="typed-box">
-                            <h1>I like <span class="typed-para"></span></h1>
+                            <h1>I build <span class="typed-para"></span></h1>
                         </div>
                     </div>
                 </div>
@@ -102,7 +95,7 @@
                                 I'm Anway Pimpalkar, currently a Master's Student majoring in Biomedical Engineering at
                                 <a href="https://www.jhu.edu" target="_blank" class="hopkins link">Johns Hopkins
                                     University</a>, USA. My passion lies in harnessing the power of engineering to
-                                bridge the gap between disability and ability, aiming to significantly enhance the
+                                bridge the gap between disability and ability, aiming to enhance the
                                 quality of life for individuals with neural impairments.
                             </p>
                             <!-- <p>

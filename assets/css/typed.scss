@@ -445,8 +445,8 @@ $__typed-id: 0;
 
 .typed-para {
     @include typed((
-		"building neural interfaces. 🧠": (color: #f69999),
-		"making robots. 🦾": (color: #b0b0f8),
-		"bringing AI to healthcare. 🩺": (color: #f4bb81)
+		"neural interfaces. 🧠": (color: #e97d7d),
+		"medical robots. 🦾": (color: #8888d5),
+		"AI tools for healthcare. 🩺": (color: #6188d0)
 	), 2, (caret-width: 2px));
 }
