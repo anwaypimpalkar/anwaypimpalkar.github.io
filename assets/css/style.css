@@ -1,7 +1,7 @@
 :root {
     --main-bg-color: white;
-    --main-selection-bg-color: white;
-    --main-selection-color: white;
+    --main-selection-bg-color: #002D72;
+    --main-selection-color: #68ACE5;
 }
 
 .html { 
@@ -53,7 +53,7 @@ body {
     /* background: linear-gradient(-45deg, #3A3C26, #A9AC5D, #E8E1DB, #6D6C3C); */
 	background-size: 400% 400%;
 	animation: gradient 8s ease infinite;
-	height: 80%;
+	height: 30%;
     opacity: 0.7;
     -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
