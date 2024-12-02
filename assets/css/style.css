@@ -49,11 +49,11 @@ body {
     z-index: 0;
     display: block;
     width:100%;
-    background: linear-gradient(-45deg, #4e62a7, #306a9e, #3d85c6, #674ea7);
+    background: linear-gradient(-45deg, #4e62a7, #bfa75d, #3d85c6, #306a9e);
     /* background: linear-gradient(-45deg, #3A3C26, #A9AC5D, #E8E1DB, #6D6C3C); */
 	background-size: 400% 400%;
 	animation: gradient 8s ease infinite;
-	height: 30%;
+	height: 80%;
     opacity: 0.7;
     -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
