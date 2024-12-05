@@ -71,6 +71,19 @@ body {
     -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
 
+#gradient-background-jhuhamr {
+    position: absolute;
+    z-index: 0;
+    display: block;
+    width:100%;
+    background: linear-gradient(-45deg,  #002D72, #0077D8, #68ACE5);
+	background-size: 400% 400%;
+	animation: gradient 8s ease infinite;
+	height: 100%;
+    opacity: 0.7;
+    -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+}
+
 #gradient-background-works {
     position: absolute;
     z-index: 0;
@@ -662,6 +675,19 @@ td {
     display:block;
     width: 100%;               
     background-color:#2a5d8a;
+    height: 5px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 25px;
+    opacity: 0.7;
+  }
+
+  .hr-lighter-hopkins {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;               
+    background-color:#002D72;
     height: 5px;
     margin-top: 20px;
     margin-bottom: 30px;

@@ -17,8 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
   var date = monthName[d.getMonth()] + " " + d.getFullYear();
   last_updated.innerHTML =
-    'homemade from scratch &nbsp;&nbsp; <i class="fa-solid fa-pencil"></i> ' +
-    date;
+    'homemade &nbsp;&nbsp; <i class="fa-solid fa-pencil"></i> ' + date;
 });
 
 function openInNewTab(obj) {
