@@ -139,61 +139,6 @@
                             </p>
                             <p></p>
                         </div>
-
-                        <div class="writeup-section">
-                            <h5 class="subtitle">Creating Test Conditions</h5>
-                            <h2 class="iitb">Probability Blocks to Simulate Outcome Predictability</h2>
-                            <p>A probability function was used to determine whether a tone is to be played as feedback
-                                to the voluntary movement or not. Probability functions of 0% (baseline), 50% and 75%
-                                were used to generate data in five blocks as shown below. All blocks were pooled for
-                                further steps.</p>
-                            <img src="../content/iitb/blocksTable.png" style="width: 100%;">
-                        </div>
-
-                        <div class="writeup-section">
-                            <h5 class="subtitle">Guided by Insight</h5>
-                            <h2 class="iitb">Tackling the Data</h2>
-                            <p>The aim of this methodology is to be able to classify between different sets of
-                                probability blocks based on extracted frequency and time domain features. Choosing the
-                                correct antagonistic blocks for binary classification will be helpful to establish the
-                                existence of EEG signal markers which exist as differences between these two blocks.</p>
-                            <p>The collected EEG data is analyzed subject-wise using the <a class="iitb">Welch’s
-                                    Method</a> for spectral density estimation. Based on these features extracted across
-                                different frequency ranges, they are attempted to be classified into the different
-                                probability blocks. Along with the frequency domain features, two time domain features
-                                are also computed for each EEG channel. To maintain information of the generic shape of
-                                the EEG amplitude, the overall <a class="iitb">Area Under the Curve (AUC)</a> and <a
-                                    class="iitb">slope</a> is computed.</p>
-                            <p>Different standardization techniques, feature selection methods, and machine learning
-                                models were tried and tested in this approach.</p>
-                            <div style="display: flex; margin-left: auto; margin-right: auto; width: 70%;">
-                                <img src="../content/iitb/methodology.png" style="width: 100%;">
-                            </div>
-                        </div>
-
-                        <div class="writeup-section">
-                            <h5 class="subtitle">Drumroll</h5>
-                            <h2 class="iitb">Results</h2>
-                            <p>All the data processing steps are executed in MATLAB. Following this, the PSD and
-                                AUC/Slope features are also extracted in MATLAB using the <a class="code">pwelch</a> and
-                                <a class="code">trapz</a> functions. Once the features are extracted, they are imported
-                                to Python for the machine learning and analysis steps. The binary classifiers are built
-                                across three groups:
-                            </p>
-                            <ul style="list-style-type: '📌'; display: flex; flex-direction: column; gap: 0.5em;">
-                                <li>50 No Feedback vs 75 No Feedback</li>
-                                <li>50 Feedback vs 75 Feedback</li>
-                                <li>Baseline No Feedback vs 75 Feedback</li>
-                            </ul>
-                            <p style="margin-top: 0.5em;">Of the three mentioned binary classification problems, the <a
-                                    class="iitb">highest predictabilities were observed in the 50 No Feedback vs 75 No
-                                    Feedback blocks</a>. Upon examining the intentional binding effects, it was also
-                                observed that the judgement error is lower for the subjects in the 75 No Feedback block
-                                than the 50 No Feedback block. This bolsters the idea that one’s own actions and
-                                experiences are essentially related to predictions of outcomes rather than merely
-                                judgements drawn in hindsight after the fact.</p>
-                            <!-- <p>🔜 The complete methods and results will be discussed in forthcoming publications.</p> -->
-                        </div>
                     </div>
                 </div>
             </div>
