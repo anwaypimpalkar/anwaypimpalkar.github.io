@@ -53,7 +53,7 @@
             modificationDateElement.textContent = date;
         }
     </script> -->
-    <script>
+    <!-- <script>
         window.onload = function () {
             // Path to your PDF file
             var filePath = '/content/cv/Anway Pimpalkar - CV.pdf';
@@ -91,6 +91,55 @@
             var modificationDateElement = document.getElementById('modificationDate');
             modificationDateElement.textContent = date;
         }
+    </script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>
+        // Ensure pdfjsLib is defined
+        const pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+        // Specify the workerSrc (required for pdf.js to work properly)
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+
+        window.onload = async function () {
+            // Path to your PDF file
+            var filePath = '/content/cv/Anway Pimpalkar - CV.pdf';
+
+            try {
+                // Load the PDF file
+                const pdf = await pdfjsLib.getDocument(filePath).promise;
+                const metadata = await pdf.getMetadata();
+                const creationDate = metadata.info.CreationDate || 'Not Available';
+                displayCreationDate(formatCreationDate(creationDate));
+            } catch (error) {
+                console.error('Error loading PDF:', error);
+                displayCreationDate('Error fetching creation date');
+            }
+        };
+
+        function formatCreationDate(dateString) {
+            if (!dateString || dateString === 'Not Available') return 'N/A';
+
+            // Parse the PDF date format (D:YYYYMMDDHHmmSS)
+            const match = /D:(\d{4})(\d{2})(\d{2})?(\d{2})?(\d{2})?(\d{2})?/.exec(dateString);
+            if (match) {
+                const year = match[1];
+                const month = match[2] - 1; // JavaScript months are 0-based
+                const day = match[3] || '01';
+                const dateObj = new Date(year, month, day);
+
+                // Format date in the same way as formatModificationDate
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                return dateObj.toLocaleDateString(undefined, options);
+            }
+
+            return 'N/A'; // Return 'N/A' if parsing fails
+        }
+
+
+        function displayCreationDate(date) {
+            const creationDateElement = document.getElementById('creationDate');
+            creationDateElement.textContent = date;
+        }
     </script>
 
 </head>
@@ -123,7 +172,7 @@
 
                     <div class="big-subhead">
                         <p><i class="fa-solid fa-pencil"></i> Updated
-                            <span id="modificationDate"></span>
+                            <span id="creationDate"></span>
                         </p>
                     </div>
 
