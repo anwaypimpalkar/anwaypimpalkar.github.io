@@ -5,7 +5,7 @@
   alt: "neural interfaces. 🧠";
   white-space: break-spaces;
   will-change: content;
-  animation: typed-0 10.17s linear 1s infinite forwards;
+  animation: typed-0 9.54s linear 1s infinite forwards;
 }
 .typed-para::after {
   content: "​";
@@ -17,7 +17,7 @@
   animation: typed-0-caret 0.75s linear 1s infinite forwards;
 }
 @keyframes typed-0 {
-  0%, 0.4906420846% {
+  0%, 0.5231090147% {
     content: "​n";
     content: "​n"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -25,7 +25,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  0.4916420846%, 0.9822841691% {
+  0.5241090147%, 1.0472180294% {
     content: "​ne";
     content: "​ne"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -33,7 +33,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  0.9832841691%, 1.4739262537% {
+  1.0482180294%, 1.571327044% {
     content: "​neu";
     content: "​neu"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -41,7 +41,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  1.4749262537%, 1.9655683382% {
+  1.572327044%, 2.0954360587% {
     content: "​neur";
     content: "​neur"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -49,7 +49,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  1.9665683382%, 2.4572104228% {
+  2.0964360587%, 2.6195450734% {
     content: "​neura";
     content: "​neura"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -57,7 +57,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  2.4582104228%, 2.9488525074% {
+  2.6205450734%, 3.1436540881% {
     content: "​neural";
     content: "​neural"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -65,7 +65,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  2.9498525074%, 3.4404945919% {
+  3.1446540881%, 3.6677631027% {
     content: "​neural ";
     content: "​neural "/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -73,7 +73,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  3.4414945919%, 3.9321366765% {
+  3.6687631027%, 4.1918721174% {
     content: "​neural i";
     content: "​neural i"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -81,7 +81,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  3.9331366765%, 4.4237787611% {
+  4.1928721174%, 4.7159811321% {
     content: "​neural in";
     content: "​neural in"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -89,7 +89,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  4.4247787611%, 4.9154208456% {
+  4.7169811321%, 5.2400901468% {
     content: "​neural int";
     content: "​neural int"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -97,7 +97,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  4.9164208456%, 5.4070629302% {
+  5.2410901468%, 5.7641991614% {
     content: "​neural inte";
     content: "​neural inte"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -105,7 +105,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  5.4080629302%, 5.8987050147% {
+  5.7651991614%, 6.2883081761% {
     content: "​neural inter";
     content: "​neural inter"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -113,7 +113,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  5.8997050147%, 6.3903470993% {
+  6.2893081761%, 6.8124171908% {
     content: "​neural interf";
     content: "​neural interf"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -121,7 +121,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  6.3913470993%, 6.8819891839% {
+  6.8134171908%, 7.3365262055% {
     content: "​neural interfa";
     content: "​neural interfa"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -129,7 +129,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  6.8829891839%, 7.3736312684% {
+  7.3375262055%, 7.8606352201% {
     content: "​neural interfac";
     content: "​neural interfac"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -137,7 +137,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  7.3746312684%, 7.865273353% {
+  7.8616352201%, 8.3847442348% {
     content: "​neural interface";
     content: "​neural interface"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -145,7 +145,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  7.866273353%, 8.3569154376% {
+  8.3857442348%, 8.9088532495% {
     content: "​neural interfaces";
     content: "​neural interfaces"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -153,7 +153,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  8.3579154376%, 8.8485575221% {
+  8.9098532495%, 9.4329622642% {
     content: "​neural interfaces.";
     content: "​neural interfaces."/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -161,7 +161,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  8.8495575221%, 9.3401996067% {
+  9.4339622642%, 9.9570712788% {
     content: "​neural interfaces. ";
     content: "​neural interfaces. "/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -169,7 +169,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  9.3411996067%, 20.0579970501% {
+  9.9580712788%, 21.3826477987% {
     content: "​neural interfaces. 🧠";
     content: "​neural interfaces. 🧠"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -177,7 +177,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  20.0589970501%, 20.4513107178% {
+  21.3836477987%, 21.8019350105% {
     content: "​neural interfaces. ";
     content: "​neural interfaces. "/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -185,7 +185,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  20.4523107178%, 20.8446243854% {
+  21.8029350105%, 22.2212222222% {
     content: "​neural interfaces.";
     content: "​neural interfaces."/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -193,7 +193,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  20.8456243854%, 21.2379380531% {
+  22.2222222222%, 22.640509434% {
     content: "​neural interfaces";
     content: "​neural interfaces"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -201,7 +201,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  21.2389380531%, 21.6312517207% {
+  22.641509434%, 23.0597966457% {
     content: "​neural interface";
     content: "​neural interface"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -209,7 +209,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  21.6322517207%, 22.0245653884% {
+  23.0607966457%, 23.4790838574% {
     content: "​neural interfac";
     content: "​neural interfac"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -217,7 +217,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  22.0255653884%, 22.417879056% {
+  23.4800838574%, 23.8983710692% {
     content: "​neural interfa";
     content: "​neural interfa"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -225,7 +225,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  22.418879056%, 22.8111927237% {
+  23.8993710692%, 24.3176582809% {
     content: "​neural interf";
     content: "​neural interf"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -233,7 +233,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  22.8121927237%, 23.2045063913% {
+  24.3186582809%, 24.7369454927% {
     content: "​neural inter";
     content: "​neural inter"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -241,7 +241,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  23.2055063913%, 23.597820059% {
+  24.7379454927%, 25.1562327044% {
     content: "​neural inte";
     content: "​neural inte"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -249,7 +249,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  23.598820059%, 23.9911337266% {
+  25.1572327044%, 25.5755199161% {
     content: "​neural int";
     content: "​neural int"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -257,7 +257,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  23.9921337266%, 24.3844473943% {
+  25.5765199161%, 25.9948071279% {
     content: "​neural in";
     content: "​neural in"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -265,7 +265,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  24.3854473943%, 24.7777610619% {
+  25.9958071279%, 26.4140943396% {
     content: "​neural i";
     content: "​neural i"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -273,7 +273,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  24.7787610619%, 25.1710747296% {
+  26.4150943396%, 26.8333815514% {
     content: "​neural ";
     content: "​neural "/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -281,7 +281,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  25.1720747296%, 25.5643883972% {
+  26.8343815514%, 27.2526687631% {
     content: "​neural";
     content: "​neural"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -289,7 +289,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  25.5653883972%, 25.9577020649% {
+  27.2536687631%, 27.6719559748% {
     content: "​neura";
     content: "​neura"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -297,7 +297,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  25.9587020649%, 26.3510157325% {
+  27.6729559748%, 28.0912431866% {
     content: "​neur";
     content: "​neur"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -305,7 +305,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  26.3520157325%, 26.7443294002% {
+  28.0922431866%, 28.5105303983% {
     content: "​neu";
     content: "​neu"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -313,7 +313,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  26.7453294002%, 27.1376430678% {
+  28.5115303983%, 28.9298176101% {
     content: "​ne";
     content: "​ne"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -321,7 +321,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  27.1386430678%, 27.5309567355% {
+  28.9308176101%, 29.3491048218% {
     content: "​n";
     content: "​n"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -329,7 +329,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  27.5319567355%, 32.4473775811% {
+  29.3501048218%, 34.5901949686% {
     content: "​";
     content: "​"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -337,7 +337,7 @@
     color: #e97d7d;
     color: #e97d7d;
   }
-  32.4483775811%, 32.9390196657% {
+  34.5911949686%, 35.1143039832% {
     content: "​m";
     content: "​m"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -345,7 +345,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  32.9400196657%, 33.4306617502% {
+  35.1153039832%, 35.6384129979% {
     content: "​me";
     content: "​me"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -353,7 +353,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  33.4316617502%, 33.9223038348% {
+  35.6394129979%, 36.1625220126% {
     content: "​med";
     content: "​med"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -361,7 +361,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  33.9233038348%, 34.4139459194% {
+  36.1635220126%, 36.6866310273% {
     content: "​medi";
     content: "​medi"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -369,7 +369,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  34.4149459194%, 34.9055880039% {
+  36.6876310273%, 37.2107400419% {
     content: "​medic";
     content: "​medic"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -377,7 +377,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  34.9065880039%, 35.3972300885% {
+  37.2117400419%, 37.7348490566% {
     content: "​medica";
     content: "​medica"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -385,7 +385,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  35.3982300885%, 35.8888721731% {
+  37.7358490566%, 38.2589580713% {
     content: "​medical";
     content: "​medical"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -393,7 +393,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  35.8898721731%, 36.3805142576% {
+  38.2599580713%, 38.783067086% {
     content: "​medical ";
     content: "​medical "/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -401,7 +401,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  36.3815142576%, 36.8721563422% {
+  38.784067086%, 39.3071761006% {
     content: "​medical r";
     content: "​medical r"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -409,7 +409,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  36.8731563422%, 37.3637984267% {
+  39.3081761006%, 39.8312851153% {
     content: "​medical ro";
     content: "​medical ro"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -417,7 +417,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  37.3647984267%, 37.8554405113% {
+  39.8322851153%, 40.35539413% {
     content: "​medical rob";
     content: "​medical rob"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -425,7 +425,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  37.8564405113%, 38.3470825959% {
+  40.35639413%, 40.8795031447% {
     content: "​medical robo";
     content: "​medical robo"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -433,7 +433,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  38.3480825959%, 38.8387246804% {
+  40.8805031447%, 41.4036121593% {
     content: "​medical robot";
     content: "​medical robot"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -441,7 +441,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  38.8397246804%, 39.330366765% {
+  41.4046121593%, 41.927721174% {
     content: "​medical robots";
     content: "​medical robots"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -449,7 +449,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  39.331366765%, 39.8220088496% {
+  41.928721174%, 42.4518301887% {
     content: "​medical robots.";
     content: "​medical robots."/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -457,7 +457,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  39.8230088496%, 40.3136509341% {
+  42.4528301887%, 42.9759392034% {
     content: "​medical robots. ";
     content: "​medical robots. "/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -465,7 +465,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  40.3146509341%, 51.0314483776% {
+  42.9769392034%, 54.4015157233% {
     content: "​medical robots. 🦾";
     content: "​medical robots. 🦾"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -473,7 +473,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  51.0324483776%, 51.4247620452% {
+  54.4025157233%, 54.820802935% {
     content: "​medical robots. ";
     content: "​medical robots. "/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -481,7 +481,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  51.4257620452%, 51.8180757129% {
+  54.821802935%, 55.2400901468% {
     content: "​medical robots.";
     content: "​medical robots."/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -489,7 +489,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  51.8190757129%, 52.2113893805% {
+  55.2410901468%, 55.6593773585% {
     content: "​medical robots";
     content: "​medical robots"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -497,7 +497,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  52.2123893805%, 52.6047030482% {
+  55.6603773585%, 56.0786645702% {
     content: "​medical robot";
     content: "​medical robot"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -505,7 +505,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  52.6057030482%, 52.9980167158% {
+  56.0796645702%, 56.497951782% {
     content: "​medical robo";
     content: "​medical robo"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -513,7 +513,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  52.9990167158%, 53.3913303835% {
+  56.498951782%, 56.9172389937% {
     content: "​medical rob";
     content: "​medical rob"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -521,7 +521,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  53.3923303835%, 53.7846440511% {
+  56.9182389937%, 57.3365262055% {
     content: "​medical ro";
     content: "​medical ro"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -529,7 +529,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  53.7856440511%, 54.1779577188% {
+  57.3375262055%, 57.7558134172% {
     content: "​medical r";
     content: "​medical r"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -537,7 +537,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  54.1789577188%, 54.5712713864% {
+  57.7568134172%, 58.1751006289% {
     content: "​medical ";
     content: "​medical "/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -545,7 +545,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  54.5722713864%, 54.9645850541% {
+  58.1761006289%, 58.5943878407% {
     content: "​medical";
     content: "​medical"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -553,7 +553,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  54.9655850541%, 55.3578987217% {
+  58.5953878407%, 59.0136750524% {
     content: "​medica";
     content: "​medica"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -561,7 +561,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  55.3588987217%, 55.7512123894% {
+  59.0146750524%, 59.4329622642% {
     content: "​medic";
     content: "​medic"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -569,7 +569,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  55.7522123894%, 56.144526057% {
+  59.4339622642%, 59.8522494759% {
     content: "​medi";
     content: "​medi"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -577,7 +577,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  56.145526057%, 56.5378397247% {
+  59.8532494759%, 60.2715366876% {
     content: "​med";
     content: "​med"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -585,7 +585,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  56.5388397247%, 56.9311533923% {
+  60.2725366876%, 60.6908238994% {
     content: "​me";
     content: "​me"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -593,7 +593,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  56.9321533923%, 57.32446706% {
+  60.6918238994%, 61.1101111111% {
     content: "​m";
     content: "​m"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -601,7 +601,7 @@
     color: #8888d5;
     color: #8888d5;
   }
-  57.32546706%, 62.2408879056% {
+  61.1111111111%, 66.3512012579% {
     content: "​";
     content: "​"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
@@ -609,415 +609,303 @@
     color: #8888d5;
     color: #8888d5;
   }
-  62.2418879056%, 62.7325299902% {
-    content: "​A";
-    content: "​A"/"neural interfaces. 🧠";
+  66.3522012579%, 66.8753102725% {
+    content: "​h";
+    content: "​h"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  62.7335299902%, 63.2241720747% {
-    content: "​AI";
-    content: "​AI"/"neural interfaces. 🧠";
+  66.8763102725%, 67.3994192872% {
+    content: "​he";
+    content: "​he"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  63.2251720747%, 63.7158141593% {
-    content: "​AI ";
-    content: "​AI "/"neural interfaces. 🧠";
+  67.4004192872%, 67.9235283019% {
+    content: "​hea";
+    content: "​hea"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  63.7168141593%, 64.2074562439% {
-    content: "​AI t";
-    content: "​AI t"/"neural interfaces. 🧠";
+  67.9245283019%, 68.4476373166% {
+    content: "​heal";
+    content: "​heal"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  64.2084562439%, 64.6990983284% {
-    content: "​AI to";
-    content: "​AI to"/"neural interfaces. 🧠";
+  68.4486373166%, 68.9717463312% {
+    content: "​healt";
+    content: "​healt"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  64.7000983284%, 65.190740413% {
-    content: "​AI too";
-    content: "​AI too"/"neural interfaces. 🧠";
+  68.9727463312%, 69.4958553459% {
+    content: "​health";
+    content: "​health"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  65.191740413%, 65.6823824975% {
-    content: "​AI tool";
-    content: "​AI tool"/"neural interfaces. 🧠";
+  69.4968553459%, 70.0199643606% {
+    content: "​healthc";
+    content: "​healthc"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  65.6833824975%, 66.1740245821% {
-    content: "​AI tools";
-    content: "​AI tools"/"neural interfaces. 🧠";
+  70.0209643606%, 70.5440733753% {
+    content: "​healthca";
+    content: "​healthca"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  66.1750245821%, 66.6656666667% {
-    content: "​AI tools ";
-    content: "​AI tools "/"neural interfaces. 🧠";
+  70.5450733753%, 71.0681823899% {
+    content: "​healthcar";
+    content: "​healthcar"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  66.6666666667%, 67.1573087512% {
-    content: "​AI tools f";
-    content: "​AI tools f"/"neural interfaces. 🧠";
+  71.0691823899%, 71.5922914046% {
+    content: "​healthcare";
+    content: "​healthcare"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  67.1583087512%, 67.6489508358% {
-    content: "​AI tools fo";
-    content: "​AI tools fo"/"neural interfaces. 🧠";
+  71.5932914046%, 72.1164004193% {
+    content: "​healthcare ";
+    content: "​healthcare "/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  67.6499508358%, 68.1405929204% {
-    content: "​AI tools for";
-    content: "​AI tools for"/"neural interfaces. 🧠";
+  72.1174004193%, 72.640509434% {
+    content: "​healthcare t";
+    content: "​healthcare t"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  68.1415929204%, 68.6322350049% {
-    content: "​AI tools for ";
-    content: "​AI tools for "/"neural interfaces. 🧠";
+  72.641509434%, 73.1646184486% {
+    content: "​healthcare to";
+    content: "​healthcare to"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  68.6332350049%, 69.1238770895% {
-    content: "​AI tools for h";
-    content: "​AI tools for h"/"neural interfaces. 🧠";
+  73.1656184486%, 73.6887274633% {
+    content: "​healthcare too";
+    content: "​healthcare too"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  69.1248770895%, 69.615519174% {
-    content: "​AI tools for he";
-    content: "​AI tools for he"/"neural interfaces. 🧠";
+  73.6897274633%, 74.212836478% {
+    content: "​healthcare tool";
+    content: "​healthcare tool"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  69.616519174%, 70.1071612586% {
-    content: "​AI tools for hea";
-    content: "​AI tools for hea"/"neural interfaces. 🧠";
+  74.213836478%, 74.7369454927% {
+    content: "​healthcare tools";
+    content: "​healthcare tools"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  70.1081612586%, 70.5988033432% {
-    content: "​AI tools for heal";
-    content: "​AI tools for heal"/"neural interfaces. 🧠";
+  74.7379454927%, 75.2610545073% {
+    content: "​healthcare tools.";
+    content: "​healthcare tools."/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  70.5998033432%, 71.0904454277% {
-    content: "​AI tools for healt";
-    content: "​AI tools for healt"/"neural interfaces. 🧠";
+  75.2620545073%, 75.785163522% {
+    content: "​healthcare tools. ";
+    content: "​healthcare tools. "/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  71.0914454277%, 71.5820875123% {
-    content: "​AI tools for health";
-    content: "​AI tools for health"/"neural interfaces. 🧠";
+  75.786163522%, 87.2107400419% {
+    content: "​healthcare tools. 🩺";
+    content: "​healthcare tools. 🩺"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  71.5830875123%, 72.0737295969% {
-    content: "​AI tools for healthc";
-    content: "​AI tools for healthc"/"neural interfaces. 🧠";
+  87.2117400419%, 87.6300272537% {
+    content: "​healthcare tools. ";
+    content: "​healthcare tools. "/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  72.0747295969%, 72.5653716814% {
-    content: "​AI tools for healthca";
-    content: "​AI tools for healthca"/"neural interfaces. 🧠";
+  87.6310272537%, 88.0493144654% {
+    content: "​healthcare tools.";
+    content: "​healthcare tools."/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  72.5663716814%, 73.057013766% {
-    content: "​AI tools for healthcar";
-    content: "​AI tools for healthcar"/"neural interfaces. 🧠";
+  88.0503144654%, 88.4686016771% {
+    content: "​healthcare tools";
+    content: "​healthcare tools"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  73.058013766%, 73.5486558505% {
-    content: "​AI tools for healthcare";
-    content: "​AI tools for healthcare"/"neural interfaces. 🧠";
+  88.4696016771%, 88.8878888889% {
+    content: "​healthcare tool";
+    content: "​healthcare tool"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  73.5496558505%, 74.0402979351% {
-    content: "​AI tools for healthcare.";
-    content: "​AI tools for healthcare."/"neural interfaces. 🧠";
+  88.8888888889%, 89.3071761006% {
+    content: "​healthcare too";
+    content: "​healthcare too"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  74.0412979351%, 74.5319400197% {
-    content: "​AI tools for healthcare. ";
-    content: "​AI tools for healthcare. "/"neural interfaces. 🧠";
+  89.3081761006%, 89.7264633124% {
+    content: "​healthcare to";
+    content: "​healthcare to"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  74.5329400197%, 85.2497374631% {
-    content: "​AI tools for healthcare. 🩺";
-    content: "​AI tools for healthcare. 🩺"/"neural interfaces. 🧠";
+  89.7274633124%, 90.1457505241% {
+    content: "​healthcare t";
+    content: "​healthcare t"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  85.2507374631%, 85.6430511308% {
-    content: "​AI tools for healthcare. ";
-    content: "​AI tools for healthcare. "/"neural interfaces. 🧠";
+  90.1467505241%, 90.5650377358% {
+    content: "​healthcare ";
+    content: "​healthcare "/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  85.6440511308%, 86.0363647984% {
-    content: "​AI tools for healthcare.";
-    content: "​AI tools for healthcare."/"neural interfaces. 🧠";
+  90.5660377358%, 90.9843249476% {
+    content: "​healthcare";
+    content: "​healthcare"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  86.0373647984%, 86.4296784661% {
-    content: "​AI tools for healthcare";
-    content: "​AI tools for healthcare"/"neural interfaces. 🧠";
+  90.9853249476%, 91.4036121593% {
+    content: "​healthcar";
+    content: "​healthcar"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  86.4306784661%, 86.8229921337% {
-    content: "​AI tools for healthcar";
-    content: "​AI tools for healthcar"/"neural interfaces. 🧠";
+  91.4046121593%, 91.8228993711% {
+    content: "​healthca";
+    content: "​healthca"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  86.8239921337%, 87.2163058014% {
-    content: "​AI tools for healthca";
-    content: "​AI tools for healthca"/"neural interfaces. 🧠";
+  91.8238993711%, 92.2421865828% {
+    content: "​healthc";
+    content: "​healthc"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  87.2173058014%, 87.609619469% {
-    content: "​AI tools for healthc";
-    content: "​AI tools for healthc"/"neural interfaces. 🧠";
+  92.2431865828%, 92.6614737945% {
+    content: "​health";
+    content: "​health"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  87.610619469%, 88.0029331367% {
-    content: "​AI tools for health";
-    content: "​AI tools for health"/"neural interfaces. 🧠";
+  92.6624737945%, 93.0807610063% {
+    content: "​healt";
+    content: "​healt"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  88.0039331367%, 88.3962468043% {
-    content: "​AI tools for healt";
-    content: "​AI tools for healt"/"neural interfaces. 🧠";
+  93.0817610063%, 93.500048218% {
+    content: "​heal";
+    content: "​heal"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  88.3972468043%, 88.789560472% {
-    content: "​AI tools for heal";
-    content: "​AI tools for heal"/"neural interfaces. 🧠";
+  93.501048218%, 93.9193354298% {
+    content: "​hea";
+    content: "​hea"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  88.790560472%, 89.1828741396% {
-    content: "​AI tools for hea";
-    content: "​AI tools for hea"/"neural interfaces. 🧠";
+  93.9203354298%, 94.3386226415% {
+    content: "​he";
+    content: "​he"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  89.1838741396%, 89.5761878073% {
-    content: "​AI tools for he";
-    content: "​AI tools for he"/"neural interfaces. 🧠";
+  94.3396226415%, 94.7579098532% {
+    content: "​h";
+    content: "​h"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";
     color: #6188d0;
     color: #6188d0;
     color: #6188d0;
   }
-  89.5771878073%, 89.9695014749% {
-    content: "​AI tools for h";
-    content: "​AI tools for h"/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  89.9705014749%, 90.3628151426% {
-    content: "​AI tools for ";
-    content: "​AI tools for "/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  90.3638151426%, 90.7561288102% {
-    content: "​AI tools for";
-    content: "​AI tools for"/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  90.7571288102%, 91.1494424779% {
-    content: "​AI tools fo";
-    content: "​AI tools fo"/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  91.1504424779%, 91.5427561455% {
-    content: "​AI tools f";
-    content: "​AI tools f"/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  91.5437561455%, 91.9360698132% {
-    content: "​AI tools ";
-    content: "​AI tools "/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  91.9370698132%, 92.3293834808% {
-    content: "​AI tools";
-    content: "​AI tools"/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  92.3303834808%, 92.7226971485% {
-    content: "​AI tool";
-    content: "​AI tool"/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  92.7236971485%, 93.1160108161% {
-    content: "​AI too";
-    content: "​AI too"/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  93.1170108161%, 93.5093244838% {
-    content: "​AI to";
-    content: "​AI to"/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  93.5103244838%, 93.9026381514% {
-    content: "​AI t";
-    content: "​AI t"/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  93.9036381514%, 94.2959518191% {
-    content: "​AI ";
-    content: "​AI "/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  94.2969518191%, 94.6892654867% {
-    content: "​AI";
-    content: "​AI"/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  94.6902654867%, 95.0825791544% {
-    content: "​A";
-    content: "​A"/"neural interfaces. 🧠";
-    alt: "neural interfaces. 🧠";
-    color: #6188d0;
-    color: #6188d0;
-    color: #6188d0;
-  }
-  95.0835791544%, 100% {
+  94.7589098532%, 100% {
     content: "​";
     content: "​"/"neural interfaces. 🧠";
     alt: "neural interfaces. 🧠";

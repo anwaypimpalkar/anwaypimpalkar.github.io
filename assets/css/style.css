@@ -1,7 +1,7 @@
 :root {
     --main-bg-color: white;
-    --main-selection-bg-color: #002D72;
-    --main-selection-color: #68ACE5;
+    --main-selection-bg-color: #474747;
+    --main-selection-color: #cccccc;
 }
 
 .html { 
@@ -142,7 +142,7 @@ body {
     z-index: 0;
     display: block;
     width:100%;
-    background: linear-gradient(-45deg, #ff6969 , #d34949, #620000, #da3232);
+    background: linear-gradient(-45deg, #ff6969 , #d34949, #ffb8b8, #da3232);
 	background-size: 400% 400%;
 	animation: gradient 8s ease infinite;
 	height: 80%;
@@ -270,7 +270,7 @@ body {
     }
 
     p, li {
-        font-size: 24px;
+        font-size: 20px;
         line-height: 1.5;
     }
 
@@ -554,6 +554,11 @@ body {
     transition: 0.3s;
 } */
 
+.current-nav {
+    background-color: rgba(0,0,0,0.1);
+    color: white;
+}
+
 .nav ul li:hover {
     /* background-color: rgba(16, 44, 53, 0.5); */
 }
@@ -596,6 +601,10 @@ td {
 
 .coep {
     color: #27225d !important;
+}
+
+.mclaren {
+    color: #ff8000 !important;
 }
 
 .coep-link {
@@ -694,6 +703,19 @@ td {
     display:block;
     width: 100%;               
     background-color:#002D72;
+    height: 5px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    border-radius: 25px;
+    opacity: 0.7;
+  }
+
+  .hr-lighter-harvard {
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;               
+    background-color:#A51C30;
     height: 5px;
     margin-top: 20px;
     margin-bottom: 30px;
@@ -1211,15 +1233,20 @@ to {
 }
 
 .inline-subhead {
-    padding: 0.5em 0 0.5em 0;
+    /* padding: 0.5em 0 0.5em 0; */
 }
 
 .inline-subhead p {
     color: #18354f;
     margin: auto;
     font-weight: bold;
-    font-size: 30;
+    font-size: 24 !important;
 }
+
+.research-big-head h1 {
+    /* text-transform: lowercase; */
+}
+
 
 @media (min-width: 850px) {
     .big-head h1 {
@@ -1230,7 +1257,7 @@ to {
     }
 
     .research-big-head h1 {
-        font-size: 60;
+        font-size: 40;
         color: #1e4263;
         margin: 0;
         text-align: center;
@@ -1238,12 +1265,12 @@ to {
     }
 
     .research-big-head .bigger-head {
-        font-size: 80;
+        font-size: 70;
         color: black;
     }
 
     .big-subhead p {
-        width:60%;
+        width:100%;
     }
 }
 
@@ -1380,7 +1407,13 @@ to {
     display: flex;
     flex-direction: column;
     row-gap: 1em;
+    margin-left: 1em; 
+    margin-right: 1em;
 }
+.bio-content-text p {
+    font-size: 20;
+}
+
 
 @media (min-width: 850px) {
 

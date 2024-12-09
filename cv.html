@@ -19,6 +19,40 @@
     <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
     <script src="assets/js/script.js"></script>
 
+    <!-- <script>
+        window.onload = function () {
+            // Path to your PDF file
+            var filePath = '/content/cv/Anway Pimpalkar - CV.pdf';
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('HEAD', filePath, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        var modificationDate = xhr.getResponseHeader('Last-Modified');
+                        var formattedDate = formatModificationDate(modificationDate);
+                        displayModificationDate(formattedDate);
+                    } else {
+                        displayModificationDate('N/A');
+                    }
+                }
+            };
+            xhr.send();
+        };
+
+        function formatModificationDate(dateString) {
+            if (!dateString) return 'N/A';
+
+            var dateObj = new Date(dateString);
+            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+            return dateObj.toLocaleDateString(undefined, options);
+        }
+
+        function displayModificationDate(date) {
+            var modificationDateElement = document.getElementById('modificationDate');
+            modificationDateElement.textContent = date;
+        }
+    </script> -->
     <script>
         window.onload = function () {
             // Path to your PDF file
@@ -29,6 +63,11 @@
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4) {
                     if (xhr.status === 200) {
+                        // Log all headers to the console
+                        console.log('All response headers:');
+                        console.log(xhr.getAllResponseHeaders());
+
+                        // Extract specific headers
                         var modificationDate = xhr.getResponseHeader('Last-Modified');
                         var formattedDate = formatModificationDate(modificationDate);
                         displayModificationDate(formattedDate);
@@ -83,7 +122,9 @@
                     </div>
 
                     <div class="big-subhead">
-                        <p><i class="fa-solid fa-pencil"></i> Updated <span id="modificationDate"></span></p>
+                        <p><i class="fa-solid fa-pencil"></i> Updated
+                            <span id="modificationDate"></span>
+                        </p>
                     </div>
 
                     <div class="vspacer"></div>
