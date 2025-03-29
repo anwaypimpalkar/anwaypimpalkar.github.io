@@ -1283,6 +1283,7 @@ to {
 }
 
 
+
 @media (min-width: 850px) {
     .big-head h1 {
         font-size: 100;
@@ -1307,9 +1308,28 @@ to {
     .big-subhead p {
         width:100%;
     }
+
+    .pdf-iframe {
+        display: block;
+      }
+  
+      .mobile-pdf-link {
+        display: none;
+      }
+}
+
+.pdf-iframe {
+    display: block;
 }
 
 @media (max-width: 850px) {
+    .pdf-iframe {
+      display: none;
+    }
+
+    .mobile-pdf-link {
+      display: block;
+    }
     .big-head h1 {
         text-align: center;
         font-size: 75;
