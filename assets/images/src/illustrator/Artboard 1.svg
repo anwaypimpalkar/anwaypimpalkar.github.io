@@ -11,12 +11,13 @@
         opacity: .75;
       }
 
-      .cls-3, .cls-4 {
+      .cls-3 {
         fill: #231f20;
       }
 
       .cls-4 {
-        stroke: #231f20;
+        fill: #bcbec0;
+        stroke: #a7a9ac;
         stroke-miterlimit: 10;
         stroke-width: 5px;
       }
@@ -31,6 +32,10 @@
       .cls-6 {
         fill: #e6e7e8;
       }
+
+      .cls-7 {
+        fill: #a7a9ac;
+      }
     </style>
   </defs>
   <rect class="cls-6" x="680.7" y="230.83" width="308.09" height="173.67" rx="12" ry="12"/>
@@ -39,10 +44,10 @@
     <circle class="cls-2" cx="444.77" cy="256.75" r="196.58"/>
     <circle class="cls-2" cx="316.94" cy="453.33" r="196.58"/>
   </g>
-  <text class="cls-5" transform="translate(44.97 187.4)"><tspan x="0" y="0">Neuroscience</tspan><tspan x="72.85" y="39.33">and</tspan><tspan x="30.96" y="78.65">Cognition</tspan></text>
+  <text class="cls-5" transform="translate(44.97 187.4)"><tspan x="0" y="0">Neuroscience</tspan><tspan x="72.85" y="39.33">and</tspan><tspan x="21.85" y="78.65">Perception</tspan></text>
   <text class="cls-5" transform="translate(470.21 187.4)"><tspan x="0" y="0">Robotics </tspan><tspan x="36.41" y="39.33">and </tspan><tspan x="10.03" y="78.65">Devices</tspan></text>
-  <text class="cls-5" transform="translate(269.85 511.42)"><tspan x="0" y="0">Patient</tspan><tspan x="-.89" y="39.33">Centric</tspan><tspan x="0" y="78.65">Design</tspan></text>
-  <circle class="cls-3" cx="320.86" cy="317.66" r="9.9"/>
+  <text class="cls-5" transform="translate(268.04 511.42)"><tspan x="0" y="0">Human</tspan><tspan x="-14.59" y="39.33">Centered</tspan><tspan x="1.82" y="78.65">Design</tspan></text>
+  <circle class="cls-7" cx="320.86" cy="317.66" r="15"/>
   <line class="cls-4" x1="320.86" y1="317.66" x2="680.7" y2="317.66"/>
   <g>
     <path class="cls-3" d="M702.56,251.1c0,.84-.27,1.54-.82,2.1-.55.55-1.25.83-2.09.83s-1.54-.28-2.09-.83c-.55-.55-.82-1.25-.82-2.1s.27-1.54.82-2.08c.55-.54,1.25-.82,2.09-.82s1.54.27,2.09.82c.55.54.82,1.24.82,2.08Z"/>
