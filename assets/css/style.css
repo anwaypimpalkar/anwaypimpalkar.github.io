@@ -12,7 +12,7 @@ html,
 body {
     margin: 0;
     height: 100%;
-    font-family: Albert Sans, sans-serif;
+    font-family: Helvetica, sans-serif;
     background-color: var(--main-bg-color);
 }
 
@@ -536,7 +536,7 @@ body {
 }
 
 .vspacer {
-    height: 2em;
+    height: 4em;
 }
 
 .inner-navbar-dalhousie li a{
@@ -1578,20 +1578,19 @@ to {
 
 .research-content-photo img {
     width:auto;
-    height:100%;
+    height:auto;
 }
 
 @media (min-width: 850px) {
     .research-content-photo img {
-        width:auto;
-        max-height:400px;
+        width:700px;
+        max-height:auto;
     }
 }
 
 @media (max-width: 850px) {
     .research-content-photo img {
         width:100%;
-        /* max-height: 250px; */
     }
 }
 
