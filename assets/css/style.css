@@ -63,11 +63,11 @@ body {
     z-index: 0;
     display: block;
     width:100%;
-    background: linear-gradient(-45deg, #a0ffa9, #00A9FF, #CDF5FD);
+    background: linear-gradient(-45deg, #004369, #d1deff, #1b7895);
 	background-size: 400% 400%;
 	animation: gradient 9s ease infinite;
 	height: 100%;
-    opacity: 0.7;
+    opacity: 0.9;
     -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
 }
 
@@ -1336,6 +1336,7 @@ to {
     .bio-subheading h2 {
         font-size: 50;
     }
+
     .bio-content-text p {
         font-size: 20;
     }
@@ -1345,7 +1346,7 @@ to {
 @media (max-width: 850px) {
     
     .bio-content {
-        flex-direction: column-reverse;
+        flex-direction: column;
         row-gap: 2em;
     }
 
@@ -1366,6 +1367,7 @@ to {
     .bio-subheading h2 {
         font-size: 40;
     }
+
 }
 
 .bio-page h2 {
@@ -1415,26 +1417,20 @@ to {
 }
 
 .research-content-photo {
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.research-content-photo img {
-    width:auto;
-    height:auto;
-}
 
 @media (min-width: 850px) {
-    .research-content-photo img {
-        width:700px;
-        max-height:auto;
+    .research-content-photo {
+        width:50%;
     }
 }
 
 @media (max-width: 850px) {
-    .research-content-photo img {
+    .research-content-photo {
         width:100%;
     }
 }
@@ -2037,19 +2033,29 @@ to {
 
 .typed-box h1 {
     color: #252525;
+    text-align: center;
+}
+
+.typed-box h2 {
+    color: #252525;
+    text-align: center;
 }
 
 @media (max-width: 850px) {
     .typed-box h1 {
-        font-size: 45;
-        text-align: center;
+        font-size: 50;
+    }   
+    .typed-box h2 {
+        font-size: 30;
     }   
 }
 
 @media (min-width: 850px) {
     .typed-box h1 {
         font-size: 80;
-        text-align: center;
+    }   
+    .typed-box h2 {
+        font-size: 60;
     }   
 }
 
