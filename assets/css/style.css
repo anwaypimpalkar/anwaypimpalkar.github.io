@@ -971,7 +971,7 @@ a i.footer-item {
 .scholar {
     /* background-color: #ff6969; */
     vertical-align: middle;
-    width: 1.7em;
+    width: 1.5em;
     -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
     filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
 }
@@ -1303,6 +1303,7 @@ to {
     margin: auto;
 }
 
+
 .bio-content-text {
     display: flex;
     flex-direction: column;
@@ -1348,6 +1349,10 @@ to {
     .bio-content {
         flex-direction: column;
         row-gap: 2em;
+    }
+
+    .for-research {
+        flex-direction: column-reverse;
     }
 
     .bio-content-text p {
@@ -1415,6 +1420,16 @@ to {
         border-radius: 50%;
     }
 }
+
+.research-content-photo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    
+}
+
 
 .research-content-photo {
     display: flex;
@@ -2025,6 +2040,7 @@ to {
         font-size: 16px;
         line-height: 1.5;
         color: #18354f;
+        width: 100%;
     }   
 
     .link-button {
@@ -2073,7 +2089,7 @@ to {
         font-size: 50;
     }   
     .typed-box h2 {
-        font-size: 30;
+        font-size: 28;
     }   
 }
 
