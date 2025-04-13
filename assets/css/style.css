@@ -201,36 +201,6 @@ body {
 	}
 }
 
-
-/* Testing */
-/* .navbar {
-    background-color: lightgrey;
-}
-
-.content{
-    background-color: lightblue;
-}
-
-.main-page-center {
-    background-color: pink;
-} 
-
-.nav ul{
-    background-color: aquamarine;
-}
-
-.brand{
-    background-color: lightcoral;
-}
-
-.socials {
-    background-color: wheat;
-}
-
-.page-content {
-    background-color: pink;
-} */
-
 ::selection {
     background: var(--main-selection-bg-color);
     color: var(--main-selection-color);
@@ -468,11 +438,11 @@ body {
     }
 
     .nav ul li {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: bold;
         border-radius: 25px;
         margin: 5px 0px 5px 0px;
-        padding: 0.3em 0.4em;
+        padding: 0.3em 0.8em;
         transition: 0.3s;
     }
 
