@@ -1,0 +1,73 @@
+[
+    {
+      "title": "Establishing Perceptual Equity in Multimodal Motor Rehabilitation",
+      "href": "/projects/pneumatactors.html",
+      "status": "International Conference on Rehabilitation Robotics at RehabWeek, 2025 (Accepted)",
+      "mention": "Best Student Paper Finalist",
+      "team": "With A. Michael West Jr., PhD, Jing Xu, PhD, Jeremy D. Brown, PhD at Johns Hopkins",
+      "description": "This project aims to evaluate how people perceive and match different forms of sensory stimuli in the context of neurorehabilitation tasks. Using a cross-modal matching paradigm, we calibrate visual and haptic stimuli in a way that establishes perceptual equity. This allows us to isolate true differences in task performance from simple differences in perceived intensity. Through statistical modeling and optimization, we propose a streamlined protocol that dramatically reduces experiment time to attain this equity, crucial for practical applications in clinical settings.",
+      "image": "/assets/images/projects/Placeholder.png",
+      "onclick": "goToPage"
+    },
+    {
+      "title": "At First Contact: Vibrations Encode Object Stiffness",
+      "href": "https://arxiv.org/pdf/2411.18507",
+      "status": "IEEE Sensors Letters (In Review, 2025) • arXiv 2411.18507<i class='iconoir-arrow-up-right'></i>",
+      "badge": "",
+      "team": "With Ariel Slepyan and Nitish V. Thakor, PhD at Johns Hopkins",
+      "description": "Introducing <span style=''>pneumatactors</span>, pneumatic tactors to provide decoupled pressure and vibrational stimuli.  Unlike traditional vibration motors, pneumatactors provide co-located, non-vibratory stimuli that can target slowly adapting mechanoreceptors, enabling more naturalistic, perceptually rich interactions. Designed for wearable human-machine interfaces, they offer a promising solution for delivering tactile feedback in motor training, rehabilitation, and immersive VR/AR applications.",
+      "image": "/assets/images/projects/FirstContactStiffnessEstimation.png",
+      "onclick": "openInNewTab"
+    },
+    {
+      "title": "Presurgical Risk Stratification using ECGs: An Explainable Approach",
+      "href": "/projects/pneumatactors.html",
+      "status": "British Journal of Anesthesiology (In Review, 2025) • medRxiv <i class='iconoir-arrow-up-right'></i>",
+      "mention": "Best Student Paper Finalist",
+      "team": "With Carl Harris, Ataes Aggarwal, Jiyuan Yang, Xiaojian Chen, Samuel Schmidgall, Sampath Rapuri, Joseph L. Greenstein, PhD, Casey Overby Taylor, PhD, Robert D. Stevens, MD PhD at Johns Hopkins",
+      "description": "Our deep learning fusion model integrates preoperative ECG waveforms with clinical data to outperform traditional risk scores in predicting major postoperative outcomes. By using counterfactual ECGs, it offers interpretable insights, linking waveform features to risk. This innovation paves the way for personalized, actionable interventions in surgical care.",
+      "image": "/assets/images/projects/Placeholder.png",
+      "onclick": "goToPage"
+    },
+    {
+      "title": "Electrophysiological Correlates of Prospective Sense of Agency",
+      "href": "/projects/pneumatactors.html",
+      "status": "Undergraduate Dissertation <i class='iconoir-arrow-up-right'></i>",
+      "mention": "",
+      "team": "With Nivethida Thirugnanasambandam, PhD at IIT Bombay",
+      "description": "The feeling of being in control of our actions, known as the Sense of Agency, is a fascinating aspect of human experience. This sensation, rooted in the brain's response to the consequences of our actions, underpins our perception of autonomy and active engagement in the world. Neuroscience seeks to unravel the complexities behind this phenomenon, offering insights that span philosophy, psychology, robotics, and AI. In this project, we delve into how the brain generates this sense of control, examining the interplay of cognitive processes and sensory feedback.",
+      "image": "/assets/images/projects/Placeholder.png",
+      "onclick": "goToPage"
+    },
+    {
+      "title": "Leveraging Deep Learning for Skull Stripping in T1-Weighted MRIs",
+      "href": "/projects/pneumatactors.html",
+      "status": "International Conference on Biomedical Engineering Science and Technology, 2023 <i class='iconoir-arrow-up-right'></i>",
+      "mention": "Best Paper Award",
+      "team": "With Rashmika Patole, PhD, Ketaki Kamble, PhD, Mahesh Shindikar, PhD at College of Engineering Pune",
+      "description": "In neuroimaging, skull stripping is vital for removing non-brain tissue from scans, improving accuracy in analysis, segmentation, and 3D modeling. While traditional methods are dependable, they struggle with large, multi-scanner datasets. Deep learning, powered by U-Net architectures, provides a faster, more efficient solution, robust against multi-scanner variability.",
+      "image": "/assets/images/projects/Placeholder.png",
+      "onclick": "goToPage"
+    },
+    {
+      "title": "Automating Wild Blueberry Harvesters to Reduce Operator Load and Improve Yield",
+      "href": "/projects/pneumatactors.html",
+      "status": "",
+      "mention": "Mitacs Globalink Research Award",
+      "team": "With Travis Esau, PhD at Dalhousie University",
+      "description": "Wild blueberries, celebrated for their bold flavor and nutrient richness, grow close to the ground in rocky terrains, posing challenges for automated harvesting. To address this, I developed a camera-vision-based system to automate berry volume measurement and bin switching during harvesting.<br><br>This project was funded by Mitacs Globalink, a prestigious program supporting top undergraduates from 17 countries for fully funded summer research in Canada.",
+      "image": "/assets/images/projects/Placeholder.png",
+      "onclick": "goToPage"
+    },
+    {
+      "title": "TinyMLevator: Smart Elevator using Embedded ML",
+      "href": "/projects/pneumatactors.html",
+      "status": "",
+      "mention": "IEEE National Best Project Award",
+      "team": "With Deeplaxmi Niture, PhD at College of Engineering Pune",
+      "description": "Embedded ML at it's current pace is finding applications in every nook and cranny of the world. TinyMLevator brings it to the elevator industry. It consists of two main parts: detecting people and recognizing speech to enable a user standing in front of the elevator to simply speak where he intends to go. As easy as that!",
+      "image": "/assets/images/projects/Placeholder.png",
+      "onclick": "goToPage"
+    }
+  ]
+  

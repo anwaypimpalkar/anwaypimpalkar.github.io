@@ -1,40 +1,57 @@
-document.addEventListener("DOMContentLoaded", function () {
-  var last_updated = document.getElementById("last_updated");
-  var d = new Date(document.lastModified);
-  var monthName = [
-    "january",
-    "february",
-    "march",
-    "april",
-    "may",
-    "june",
-    "july",
-    "august",
-    "september",
-    "october",
-    "november",
-    "december",
+// ⏱️ Insert last modified date after footer is loaded
+function updateLastUpdated() {
+  const last_updated = document.getElementById("last_updated");
+  if (!last_updated) return;
+
+  const d = new Date(document.lastModified);
+  const monthName = [
+    "january", "february", "march", "april", "may", "june",
+    "july", "august", "september", "october", "november", "december"
   ];
-  var date = monthName[d.getMonth()] + " " + d.getFullYear();
+  const date = monthName[d.getMonth()] + " " + d.getFullYear();
   last_updated.innerHTML =
     'homemade &nbsp;&nbsp; <i class="fa-solid fa-pencil"></i> ' + date;
-});
-
-function openInNewTab(obj) {
-  var goToLink = obj.getAttribute("href");
-  window.open(goToLink);
 }
 
+// 📄 Load external footer.html into placeholder
+function loadFooter() {
+  fetch("/footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
+      updateLastUpdated(); // Update after footer is loaded
+    })
+    .catch(error => console.error("Footer load error:", error));
+}
+
+// 🧭 Load external navbar.html into placeholder
+function loadNavbar() {
+  fetch("/navbar.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("navbar-placeholder").innerHTML = data;
+    })
+    .catch(error => console.error("Navbar load error:", error));
+}
+
+// 🌐 Open external link in new tab
+function openInNewTab(obj) {
+  const goToLink = obj.getAttribute("href");
+  window.open(goToLink, "_blank");
+}
+
+// 🔄 Go to internal page
 function goToPage(obj) {
-  var goToLink = obj.getAttribute("href");
+  const goToLink = obj.getAttribute("href");
   window.location = goToLink;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+// 🚫 Add 'no-cursor' to inactive elements on hover
+function setupNotYetHover() {
   const notyets = document.getElementsByClassName("notyet");
 
   for (let i = 0; i < notyets.length; i++) {
-    let notyet = notyets[i];
+    const notyet = notyets[i];
 
     notyet.addEventListener("mouseover", () => {
       notyet.classList.add("no-cursor");
@@ -44,4 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
       notyet.classList.remove("no-cursor");
     });
   }
+}
+
+// 🚀 Initialize all on DOM load
+document.addEventListener("DOMContentLoaded", () => {
+  loadNavbar();
+  loadFooter();
+  setupNotYetHover();
 });

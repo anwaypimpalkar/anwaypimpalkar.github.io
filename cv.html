@@ -19,80 +19,11 @@
     <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
     <script src="assets/js/script.js"></script>
 
-    <!-- <script>
-        window.onload = function () {
-            // Path to your PDF file
-            var filePath = '/content/cv/Anway Pimpalkar - CV.pdf';
 
-            var xhr = new XMLHttpRequest();
-            xhr.open('HEAD', filePath, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        var modificationDate = xhr.getResponseHeader('Last-Modified');
-                        var formattedDate = formatModificationDate(modificationDate);
-                        displayModificationDate(formattedDate);
-                    } else {
-                        displayModificationDate('N/A');
-                    }
-                }
-            };
-            xhr.send();
-        };
-
-        function formatModificationDate(dateString) {
-            if (!dateString) return 'N/A';
-
-            var dateObj = new Date(dateString);
-            var options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return dateObj.toLocaleDateString(undefined, options);
-        }
-
-        function displayModificationDate(date) {
-            var modificationDateElement = document.getElementById('modificationDate');
-            modificationDateElement.textContent = date;
-        }
-    </script> -->
-    <!-- <script>
-        window.onload = function () {
-            // Path to your PDF file
-            var filePath = '/content/cv/Anway Pimpalkar - CV.pdf';
-
-            var xhr = new XMLHttpRequest();
-            xhr.open('HEAD', filePath, true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        // Log all headers to the console
-                        console.log('All response headers:');
-                        console.log(xhr.getAllResponseHeaders());
-
-                        // Extract specific headers
-                        var modificationDate = xhr.getResponseHeader('Last-Modified');
-                        var formattedDate = formatModificationDate(modificationDate);
-                        displayModificationDate(formattedDate);
-                    } else {
-                        displayModificationDate('N/A');
-                    }
-                }
-            };
-            xhr.send();
-        };
-
-        function formatModificationDate(dateString) {
-            if (!dateString) return 'N/A';
-
-            var dateObj = new Date(dateString);
-            var options = { year: 'numeric', month: 'long', day: 'numeric' };
-            return dateObj.toLocaleDateString(undefined, options);
-        }
-
-        function displayModificationDate(date) {
-            var modificationDateElement = document.getElementById('modificationDate');
-            modificationDateElement.textContent = date;
-        }
-    </script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
+    </script>
     <script>
         // Ensure pdfjsLib is defined
         const pdfjsLib = window['pdfjs-dist/build/pdf'];
@@ -140,6 +71,68 @@
         }
     </script>
 
+    <script>
+        async function renderPDF(url, containerId) {
+            const loadingTask = pdfjsLib.getDocument(url);
+            const pdf = await loadingTask.promise;
+            const container = document.getElementById(containerId);
+
+            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                const page = await pdf.getPage(pageNum);
+                const viewport = page.getViewport({ scale: 1.5 });
+
+                const canvas = document.createElement('canvas');
+                canvas.className = 'pdf-page-canvas';
+                container.appendChild(canvas);
+
+                const context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                const renderContext = {
+                    canvasContext: context,
+                    viewport: viewport
+                };
+
+                await page.render(renderContext).promise;
+            }
+        }
+
+        function formatCreationDate(dateString) {
+            if (!dateString || dateString === 'Not Available') return 'N/A';
+
+            const match = /D:(\d{4})(\d{2})(\d{2})?/.exec(dateString);
+            if (match) {
+                const year = match[1];
+                const month = parseInt(match[2]) - 1;
+                const day = match[3] || '01';
+                const dateObj = new Date(year, month, day);
+                return dateObj.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
+            }
+
+            return 'N/A';
+        }
+
+        function displayCreationDate(date) {
+            document.getElementById('creationDate').textContent = date;
+        }
+
+        window.onload = async () => {
+            const filePath = '/content/cv/Anway Pimpalkar - CV.pdf';
+            try {
+                const pdf = await pdfjsLib.getDocument(filePath).promise;
+                const metadata = await pdf.getMetadata();
+                const creationDate = metadata.info.CreationDate || 'Not Available';
+                displayCreationDate(formatCreationDate(creationDate));
+            } catch (err) {
+                console.error('Metadata error:', err);
+                displayCreationDate('Error loading');
+            }
+
+            await renderPDF(filePath, 'pdf-container');
+        };
+    </script>
+
 </head>
 
 <body>
@@ -148,18 +141,7 @@
 
     <div class="flex-container">
 
-        <div class="navbar">
-            <div class="nav">
-                <ul id="inner-navbar">
-                    <li><a href="index.html">Anway</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <!-- <li><a href="works.html">Works</a></li> -->
-                    <li><a href="cv.html">CV</i></a></li>
-                    <li><a href="mailto:anway.pimpalkar@gmail.com"><i class="fa-regular fa-paper-plane"></i></a></li>
-                </ul>
-            </div>
-        </div>
+        <div id="navbar-placeholder" class="navbar"></div>
 
         <div class="content">
             <div class="scrollable-content">
@@ -174,44 +156,18 @@
                         </p>
                     </div>
 
-                    <div class="vspacer"></div>
-
-                    <div style="align-self: anchor-center;" class="hopkins link mobile-pdf-link">
-                        <a href="/content/cv/Anway Pimpalkar - CV.pdf" target="_blank">View CV</a>
+                    <div class="cv-wrapper">
+                        <iframe class="cv"
+                            src="/assets/js/pdfjs/web/viewer.html?file=/content/cv/Anway%20Pimpalkar%20-%20CV.pdf#zoom=auto"
+                            title="CV PDF"></iframe>
                     </div>
 
-                    <iframe class="pdf-iframe" src="/content/cv/Anway Pimpalkar - CV.pdf" width="100%" height="600px"
-                        scrolling="no" style="border: none;"></iframe>
 
                 </div>
             </div>
         </div>
 
-        <div class="footer">
-            <div class="footer-left">
-                <div class="socials">
-                    <a href="https://scholar.google.com/citations?user=9FS5qs0AAAAJ" target="_blank"><img
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Scholar_logo.svg/240px-Google_Scholar_logo.svg.png"
-                            class="link footer-item scholar"></a>
-                    <a href="https://www.linkedin.com/in/anwaypimpalkar/" target="_blank"><i
-                            class="link fa-brands fa-linkedin-in fa-xl footer-item"></i></a>
-                    <a href="https://github.com/anwaypimpalkar/" target="_blank"><i
-                            class="link fa-brands fa-github fa-xl footer-item"></i></a>
-                    <a href="https://open.spotify.com/user/anway1908" target="_blank"><i
-                            class="link fa-brands fa-spotify fa-xl footer-item"></i></a>
-                </div>
-                <div class="line"></div>
-                <div class="email">
-                    <p class="footer-item"> <a class="link footer-item" href="mailto:anway.pimpalkar@gmail.com"
-                            target="_blank" style="white-space: nowrap;"><i class="fa-solid fa-at fa-sm footer-item"
-                                fa-xl></i>
-                            anway.pimpalkar@gmail.com</a></p>
-                </div>
-            </div>
-            <div class="footer-right">
-                <p class="footer-item"><i class="fa-solid fa-code"></i> <a id="last_updated"></a></p>
-            </div>
-        </div>
+        <div id="footer-placeholder" class="footer"></div>
     </div>
 </body>
 

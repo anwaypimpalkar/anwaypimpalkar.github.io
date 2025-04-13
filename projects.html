@@ -17,6 +17,7 @@
     <link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet">
     <link href="/assets/fontawesome/css/brands.css" rel="stylesheet">
     <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
     <script src="assets/js/script.js"></script>
 
     <style>
@@ -24,6 +25,49 @@
             cursor: not-allowed;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('assets/data/projects.json')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('projects-container');
+                    data.forEach(project => {
+                        const box = document.createElement('div');
+                        box.className = 'research-content-project-box project-d';
+                        // box.setAttribute('onclick', `${project.onclick}(this)`);
+                        // box.setAttribute('href', project.href);
+
+                        box.innerHTML = `
+                            <div class="research-content-project-details">
+                                <div class="research-title">${project.title}</div>
+                                <div class="research-details">
+                                    ${project.status ? `
+                                    <div class="research-detail-item">
+                                        <i class="iconoir-book research-detail-icon"></i>
+                                        <a>${project.status}</a>
+                                    </div>` : ''}
+                                     ${project.mention ? `
+                                    <div class="research-detail-item" style="color:#d3af37;">
+                                        <i class="iconoir-trophy research-detail-icon"></i>
+                                        <a>${project.mention}</a>
+                                    </div>` : ''}
+                                     ${project.team ? `
+                                    <div class="research-detail-item">
+                                        <i class="iconoir-group research-detail-icon"></i>
+                                        <a>${project.team}</a>
+                                    </div>` : ''}
+                                </div>
+                                <div class="research-description">${project.description}</div>
+                            </div>
+                            <div class="research-content-project-cover">
+                                <img src="${project.image}">
+                            </div>
+                        `;
+                        container.appendChild(box);
+                    });
+                });
+        });
+    </script>
 </head>
 
 <body>
@@ -32,18 +76,7 @@
 
     <div class="flex-container">
 
-        <div class="navbar">
-            <div class="nav">
-                <ul id="inner-navbar">
-                    <li><a href="index.html">Anway</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                    <!-- <li><a href="works.html">Works</a></li> -->
-                    <li><a href="cv.html">CV</i></a></li>
-                    <li><a href="mailto:anway.pimpalkar@gmail.com"><i class="fa-regular fa-paper-plane"></i></a></li>
-                </ul>
-            </div>
-        </div>
+        <div id="navbar-placeholder" class="navbar"></div>
 
         <div class="content">
             <div class="scrollable-content">
@@ -52,11 +85,12 @@
                         <h1>Projects</h1>
                     </div>
 
-                    <div class="big-subhead project-text">
+                    <span class="vspacer"></span>
+                    <!-- <div class="big-subhead project-text">
                         <p>
                             I like building things. Here are some cool things I have built so far.
                         </p>
-                    </div>
+                    </div> -->
 
                     <!-- <div class="content-section-head">
                         <h2>Ongoing</h2>
@@ -68,7 +102,9 @@
                         <h2>Ongoing</h2>
                     </div> -->
 
-                    <div class="research-content-item-container">
+                    <div class="research-content-item-container" id="projects-container"></div>
+
+                    <!-- <div class="research-content-item-container">
 
                         <div class="research-content-project-box project-d link" onclick="openInNewTab(this)"
                             href="https://arxiv.org/pdf/2411.18507" target="new">
@@ -199,7 +235,6 @@
 
 
                         <div class="research-content-item-container">
-
                             <div class="research-content-project-box project-d notyet">
                                 <div class="research-content-project-details">
                                     <div class="research-title">
@@ -456,32 +491,11 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
-            <div class="footer">
-                <div class="footer-left">
-                    <div class="socials">
-                        <a href="https://www.linkedin.com/in/anwaypimpalkar/" target="_blank"><i
-                                class="link fa-brands fa-linkedin-in fa-xl footer-item"></i></a>
-                        <a href="https://github.com/anwaypimpalkar/" target="_blank"><i
-                                class="link fa-brands fa-github fa-xl footer-item"></i></a>
-                        <a href="https://open.spotify.com/user/anway1908" target="_blank"><i
-                                class="link fa-brands fa-spotify fa-xl footer-item"></i></a>
-                    </div>
-                    <div class="line"></div>
-                    <div class="email">
-                        <p class="footer-item"> <a class="link footer-item" href="mailto:anway.pimpalkar@gmail.com"
-                                target="_blank" style="white-space: nowrap;"><i class="fa-solid fa-at fa-sm footer-item"
-                                    fa-xl></i>
-                                anway.pimpalkar@gmail.com</a></p>
-                    </div>
-                </div>
-                <div class="footer-right">
-                    <p class="footer-item"><i class="fa-solid fa-code"></i> <a id="last_updated"></a></p>
-                </div>
-            </div>
+            <div id="footer-placeholder" class="footer"></div>
         </div>
 </body>
 
