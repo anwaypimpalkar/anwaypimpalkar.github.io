@@ -43,6 +43,24 @@
         function scroll100vh() {
             document.getElementById("introduction").scrollIntoView();
         }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            fetch('assets/data/updates.json')
+                .then(response => response.json())
+                .then(updates => {
+                    const container = document.getElementById("news-updates");
+
+                    updates.forEach(update => {
+                        const row = document.createElement("div");
+                        row.className = "news-row";
+                        row.innerHTML = `<span class="news-date"><p>${update.date}</p></span><span class="news-text"><p>${update.text}<p></span>`;
+                        container.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error("Error loading updates:", error);
+                });
+        });
     </script>
 
 </head>
@@ -102,8 +120,8 @@
                             <p>
                                 In Fall 2025, I’ll begin my PhD at <a href="https://seas.harvard.edu/" target="_blank"
                                     class="harvard link">Harvard University</a>, where I’ll continue exploring the
-                                intersection of neural and rehabilitation engineering. I’m driven to advance
-                                technologies that can make a meaningful clinical impact, working with engineers,
+                                intersection of neural and rehabilitation engineering. I hope to advance
+                                neurotechnologies that can make a meaningful clinical impact, working with engineers,
                                 clinicians, and entrepreneurs to bring innovative ideas to life. My work will be
                                 supported by the NDSEG and Harvard Prize Fellowships.
                             </p>
@@ -127,6 +145,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div id="footer-placeholder" class="footer"></div>
             </div>
         </div>
