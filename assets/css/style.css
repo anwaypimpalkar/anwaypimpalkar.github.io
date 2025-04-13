@@ -455,7 +455,7 @@ body {
     .page-content {
         display: flex;
         flex-direction: column;
-        padding: 20px;
+        padding: 0.5em;
         margin-top: 70px;
     }
     
@@ -1431,7 +1431,7 @@ to {
 
 @media (max-width: 850px) {
     .research-content-photo {
-        width:100%;
+        max-width:100%;
     }
 }
 
