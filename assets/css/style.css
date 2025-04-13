@@ -623,7 +623,7 @@ td {
 .link {
     text-decoration: underline;
     text-decoration-thickness: 0.5px;
-    color:#cccccc;
+    /* color:#cccccc; */
     cursor: pointer;
 }
 
@@ -2139,4 +2139,18 @@ to {
 .introduction {
     width: 100%;
 }
+
+.link-button {
+    display: inline-block;
+    padding: 0.3em 1em;
+    background-color: none;
+    color: #18354f;
+    border-radius: 4px;
+    border: 2px solid #18354f;
+    text-decoration: none;
+    font-size: 18px;
+    margin-top: 0.5rem;
+    transition: background-color 0.2s ease;
+}
+
 

@@ -34,39 +34,53 @@
                     data.forEach(project => {
                         const box = document.createElement('div');
                         box.className = 'research-content-project-box project-d';
-                        // box.setAttribute('onclick', `${project.onclick}(this)`);
-                        // box.setAttribute('href', project.href);
 
                         box.innerHTML = `
-                            <div class="research-content-project-details">
-                                <div class="research-title">${project.title}</div>
-                                <div class="research-details">
-                                    ${project.status ? `
-                                    <div class="research-detail-item">
-                                        <i class="iconoir-book research-detail-icon"></i>
-                                        <a>${project.status}</a>
-                                    </div>` : ''}
-                                     ${project.mention ? `
-                                    <div class="research-detail-item" style="color:#d3af37;">
-                                        <i class="iconoir-trophy research-detail-icon"></i>
-                                        <a>${project.mention}</a>
-                                    </div>` : ''}
-                                     ${project.team ? `
-                                    <div class="research-detail-item">
-                                        <i class="iconoir-group research-detail-icon"></i>
-                                        <a>${project.team}</a>
-                                    </div>` : ''}
-                                </div>
-                                <div class="research-description">${project.description}</div>
-                            </div>
-                            <div class="research-content-project-cover">
-                                <img src="${project.image}">
-                            </div>
-                        `;
+                    <div class="research-content-project-details">
+                        <div class="research-title">${project.title}</div>
+                        <div class="research-details">
+                            ${project.status ? `
+                            <div class="research-detail-item">
+                                <i class="iconoir-book research-detail-icon"></i>
+                                <span>${project.status}</span>
+                            </div>` : ''}
+                            ${project.mention ? `
+                            <div class="research-detail-item" style="color:#bc9f4c;">
+                                <i class="iconoir-trophy research-detail-icon"></i>
+                                <a>${project.mention}</a>
+                            </div>` : ''}
+                            ${project.team ? `
+                            <div class="research-detail-item">
+                                <i class="iconoir-group research-detail-icon"></i>
+                                <a>${project.team}</a>
+                            </div>` : ''}
+                            ${project.location ? `
+                            <div class="research-detail-item">
+                                <i class="iconoir-graduation-cap research-detail-icon"></i>
+                                <a>${project.location}</a>
+                            </div>` : ''}
+                            ${(project.paper || project.video || project.abstract || project.dissertation || project.poster || project.preprint || project.news) ? `
+                            <div class="research-project-link-btns">
+                                ${project.paper ? `<a href="${project.paper}" target="_blank" class="link link-button">Paper</a>` : ''}
+                                ${project.preprint ? `<a href="${project.preprint}" target="_blank" class="link link-button">Preprint</a>` : ''}
+                                ${project.news ? `<a href="${project.news}" target="_blank" class="link link-button">In News</a>` : ''}
+                                ${project.video ? `<a href="${project.video}" target="_blank" class="link link-button">Video</a>` : ''}
+                                ${project.abstract ? `<a href="${project.abstract}" target="_blank" class="link link-button">Abstract</a>` : ''}
+                                ${project.dissertation ? `<a href="${project.dissertation}" target="_blank" class="link link-button">Dissertation</a>` : ''}
+                                ${project.poster ? `<a href="${project.poster}" target="_blank" class="link link-button">Poster</a>` : ''}
+                            </div>` : ''}
+                        </div>
+                        <div class="research-description">${project.description}</div>
+                    </div>
+                    <div class="research-content-project-cover">
+                        <img src="${project.image}">
+                    </div>
+                `;
                         container.appendChild(box);
                     });
                 });
         });
+
     </script>
 </head>
 
@@ -86,21 +100,6 @@
                     </div>
 
                     <span class="vspacer"></span>
-                    <!-- <div class="big-subhead project-text">
-                        <p>
-                            I like building things. Here are some cool things I have built so far.
-                        </p>
-                    </div> -->
-
-                    <!-- <div class="content-section-head">
-                        <h2>Ongoing</h2>
-                    </div> -->
-
-                    <!-- <div class="vspacer"></div> -->
-
-                    <!-- <div class="content-section-head">
-                        <h2>Ongoing</h2>
-                    </div> -->
 
                     <div class="research-content-item-container" id="projects-container"></div>
 
