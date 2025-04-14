@@ -52,23 +52,42 @@
                         <div class="research-details">
                             ${project.status ? `
                             <div class="research-detail-item">
-                                <i class="iconoir-book research-detail-icon"></i>
-                                <span>${project.status}</span>
+                                <span class="research-detail-icon">
+                                    <i class="fa-solid fa-book-open-reader"></i>
+                                </span>
+                                <span class="research-detail-text">
+                                    <span>${project.status}</span>
+                                </span>
                             </div>` : ''}
+
                             ${project.mention ? `
                             <div class="research-detail-item" style="color:#bc9f4c;">
-                                <i class="iconoir-trophy research-detail-icon"></i>
-                                <a>${project.mention}</a>
+                                <span class="research-detail-icon">
+                                    <i class="fa-solid fa-award"></i>
+                                </span>
+                                <span class="research-detail-text">
+                                    <span>${project.mention}</span>
+                                </span>
                             </div>` : ''}
+
                             ${project.team ? `
                             <div class="research-detail-item">
-                                <i class="iconoir-group research-detail-icon"></i>
-                                <a>${project.team}</a>
+                                <span class="research-detail-icon">
+                                    <i class="fa-solid fa-people-group"></i>
+                                </span>
+                                <span class="research-detail-text">
+                                    <span>${project.team}</span>
+                                </span>
                             </div>` : ''}
+
                             ${project.location ? `
                             <div class="research-detail-item">
-                                <i class="iconoir-graduation-cap research-detail-icon"></i>
-                                <a>${project.location}</a>
+                                <span class="research-detail-icon">
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                </span>
+                                <span class="research-detail-text">
+                                    <span>${project.location}</span>
+                                </span>
                             </div>` : ''}
                             ${(project.paper || project.video || project.abstract || project.dissertation || project.poster || project.preprint || project.news) ? `
                             <div class="research-project-link-btns">
@@ -505,6 +524,7 @@
                 </div>
             </div>
 
+            <div id="contactform-placeholder"></div>
             <div id="footer-placeholder" class="footer"></div>
         </div>
 </body>
