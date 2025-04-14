@@ -2213,6 +2213,10 @@ to {
     opacity: 0.95; /* or 1 */
   }
   
+  .contact-button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
   
   
   #contact-form-wrapper {

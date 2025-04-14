@@ -105,67 +105,59 @@ function loadContactForm() {
     .then(html => {
       document.getElementById("contactform-placeholder").innerHTML = html;
 
-      // Attach open/close logic
-      const contactBtns = document.getElementsByClassName("contact-btn");
       const contactOverlay = document.getElementById("contact-overlay");
-      const closeBtn = document.getElementById("close-contact");
 
-      if (contactBtns.length && contactOverlay && closeBtn) {
-        Array.from(contactBtns).forEach(btn => {
-          btn.addEventListener("click", () => {
-            contactOverlay.classList.add("active");
-          });
-        });
+      // ✅ Attach contact open/close using delegation for safety
+      document.addEventListener("click", function (e) {
+        if (e.target.closest(".contact-btn")) {
+          contactOverlay?.classList.add("active");
+        }
 
-        closeBtn.addEventListener("click", () => {
-          contactOverlay.classList.remove("active");
-        });
+        if (
+          e.target.id === "close-contact" ||
+          e.target.closest("#close-contact") ||
+          e.target === contactOverlay
+        ) {
+          contactOverlay?.classList.remove("active");
+        }
+      });
 
-        window.addEventListener("click", (e) => {
-          if (e.target === contactOverlay) {
-            contactOverlay.classList.remove("active");
-          }
-        });
-      }
-
-      // ✅ Attach form submission logic AFTER contact form is loaded
+      // ✅ Attach form submission logic AFTER injection
       const form = document.getElementById("contact-form");
-      const submitButton = form.querySelector("button[type='submit']");
+      const submitButton = form?.querySelector("button[type='submit']");
 
       if (form && submitButton) {
         form.addEventListener("submit", function (e) {
-          e.preventDefault(); // Prevent normal submit
+          e.preventDefault();
 
           const formData = new FormData(form);
 
           fetch("https://formspree.io/f/mblgween", {
             method: "POST",
-            headers: {
-              Accept: "application/json"
-            },
+            headers: { Accept: "application/json" },
             body: formData
           })
             .then(response => {
               if (response.ok) {
+                // ✅ Feedback
                 submitButton.innerHTML = "Sent!";
                 submitButton.style.backgroundColor = "#396426";
                 submitButton.disabled = true;
 
+                // ✅ Clear URL
+                if (window.history.replaceState) {
+                  const url = location.protocol + "//" + location.host + location.pathname;
+                  window.history.replaceState({}, document.title, url);
+                }
 
-              if (window.history.replaceState) {
-                const url = window.location.protocol + "//" + window.location.host + window.location.pathname;
-                window.history.replaceState({}, document.title, url);
-              }
-
-              setTimeout(() => {
-                form.reset();
-                document.getElementById("contact-overlay").style.display = "none";
-                submitButton.innerHTML = `<i class="fa-solid fa-paper-plane"></i>`;
-                submitButton.style.backgroundColor = "#1e293b";
-                submitButton.disabled = false;
-              }, 4000);
-
-
+                // ✅ Reset and close after delay
+                setTimeout(() => {
+                  form.reset();
+                  contactOverlay?.classList.remove("active");
+                  submitButton.innerHTML = `<i class="fa-solid fa-paper-plane"></i>`;
+                  submitButton.style.backgroundColor = "#1e293b";
+                  submitButton.disabled = false;
+                }, 4000);
               } else {
                 submitButton.innerHTML = "Error";
                 submitButton.style.backgroundColor = "#ef4444";
@@ -177,7 +169,7 @@ function loadContactForm() {
             });
         });
       } else {
-        console.warn("Form or submit button not found.");
+        console.warn("Contact form or submit button not found.");
       }
     })
     .catch(err => console.error("Contact form load error:", err));
