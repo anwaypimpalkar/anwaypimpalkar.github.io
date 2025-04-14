@@ -50,15 +50,6 @@
                     <div class="research-content-project-details">
                         <div class="research-title">${project.title}</div>
                         <div class="research-details">
-                            ${project.status ? `
-                            <div class="research-detail-item">
-                                <span class="research-detail-icon">
-                                    <i class="fa-solid fa-book-open-reader"></i>
-                                </span>
-                                <span class="research-detail-text">
-                                    <span>${project.status}</span>
-                                </span>
-                            </div>` : ''}
 
                             ${project.mention ? `
                             <div class="research-detail-item" style="color:#bc9f4c;">
@@ -67,6 +58,16 @@
                                 </span>
                                 <span class="research-detail-text">
                                     <span>${project.mention}</span>
+                                </span>
+                            </div>` : ''}
+                            
+                            ${project.status ? `
+                            <div class="research-detail-item">
+                                <span class="research-detail-icon">
+                                    <i class="fa-solid fa-book-open-reader"></i>
+                                </span>
+                                <span class="research-detail-text">
+                                    <span>${project.status}</span>
                                 </span>
                             </div>` : ''}
 
