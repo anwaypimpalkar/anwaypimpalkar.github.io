@@ -27,19 +27,6 @@
       "location": "Johns Hopkins University"
     },
     {
-      "title": "Pneumatactors: Soft 3D-Printed Multimodal Haptic Interfaces",
-      "paper": "",
-      "video": "https://www.youtube.com/watch?v=QHo6VvfkuQs",
-      "abstract": "",
-      "poster": "",
-      "status": "IEEE Haptics Symposium 2024",
-      "mention": "",
-      "team": "Jeremy D. Brown PhD",
-      "description": "Introducing pnuematactors, pneumatic tactors to provide decoupled pressure and vibrational stimuli.  Unlike traditional vibration motors, pneumatactors provide co-located, non-vibratory stimuli that can target slowly adapting mechanoreceptors, enabling more naturalistic, perceptually rich interactions. Designed for wearable human-machine interfaces, they offer a promising solution for delivering tactile feedback in motor training, rehabilitation, and immersive VR/AR applications.",
-      "image": "/assets/images/projects/Pneumatactors.png",
-      "location": "Johns Hopkins University"
-    },
-    {
       "title": "At First Contact: Vibrations Encode Object Stiffness",
       "paper": "",
       "preprint": "https://arxiv.org/abs/2411.18507",
