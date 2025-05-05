@@ -1,7 +1,7 @@
 :root {
     --main-bg-color: white;
-    --main-selection-bg-color: #474747;
-    --main-selection-color: #cccccc;
+    --main-selection-bg-color: #3a5f78;
+    --main-selection-color: #eaeaea;
 }
 
 .html { 
@@ -622,8 +622,8 @@ td {
 
 .link {
     text-decoration: underline;
-    text-decoration-thickness: 0.5px;
-    /* color:#cccccc; */
+    text-decoration-thickness: 0.07em;
+    text-underline-offset: 0.15em;
     cursor: pointer;
 }
 
