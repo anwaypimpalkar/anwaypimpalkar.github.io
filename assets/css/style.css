@@ -621,6 +621,7 @@ td {
 }
 
 .link {
+    color: #252525;
     text-decoration: underline;
     text-decoration-thickness: 0.07em;
     text-underline-offset: 0.15em;
@@ -1943,6 +1944,13 @@ to {
         margin-left: auto;
     }
 
+    .research-content-project-cover video {
+        width: 100%;
+        height: 100%; /* Set a height to maintain aspect ratio */
+        object-fit: contain; /* Maintain aspect ratio */
+        margin-left: auto;
+    }
+
     .research-title {
         font-size: 24px;
         font-weight: bold;
@@ -2013,6 +2021,13 @@ to {
     }
 
     .research-content-project-cover img {
+        width: 100%;
+        height: 100%; /* Set a height to maintain aspect ratio */
+        object-fit: contain; /* Maintain aspect ratio */
+        margin-left: auto;
+    }
+
+    .research-content-project-cover video {
         width: 100%;
         height: 100%; /* Set a height to maintain aspect ratio */
         object-fit: contain; /* Maintain aspect ratio */

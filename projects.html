@@ -104,8 +104,13 @@
                         <div class="research-description">${project.description}</div>
                     </div>
                     <div class="research-content-project-cover">
-                        <img src="${project.image}">
+                        ${project.image.slice(-3).toLowerCase() === "mp4" ?
+                                `<video src="${project.image}" autoplay loop muted playsinline preload="auto"
+                                oncontextmenu="return false;" 
+                                style="pointer-events: none;"></video>` :
+                                `<img src="${project.image}" alt="Project Image">`}
                     </div>
+
                 `;
                         container.appendChild(box);
                     });

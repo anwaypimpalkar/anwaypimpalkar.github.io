@@ -23,7 +23,7 @@
       "mention": "Best Student Paper Finalist",
       "team": "A. Michael West Jr. PhD, Jing Xu PhD, Jeremy D. Brown PhD",
       "description": "This project aims to evaluate how people perceive and match different forms of sensory stimuli in the context of neurorehabilitation tasks. Using a cross-modal matching paradigm, we calibrate visual and haptic stimuli in a way that establishes perceptual equity. This allows us to isolate true differences in task performance from simple differences in perceived intensity. Through statistical modeling and optimization, we propose a streamlined protocol that dramatically reduces experiment time to attain this equity, crucial for practical applications in clinical settings.",
-      "image": "/assets/images/projects/Placeholder.png",
+      "image": "/assets/images/projects/CrossModalMatching.mp4",
       "location": "Johns Hopkins University"
     },
     {
