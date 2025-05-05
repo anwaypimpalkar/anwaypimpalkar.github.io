@@ -14196,7 +14196,7 @@ class LinkAnnotationElement extends AnnotationElement {
     link.setAttribute("data-element-id", data.id);
     let isBound = false;
     if (data.url) {
-      linkService.addLinkAttributes(link, data.url, data.newWindow);
+      linkService.addLinkAttributes(link, data.url, true);
       isBound = true;
     } else if (data.action) {
       this._bindNamedAction(link, data.action);
