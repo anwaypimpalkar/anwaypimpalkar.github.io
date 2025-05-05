@@ -22,7 +22,7 @@
       "status": "International Conference on Rehabilitation Robotics at RehabWeek, 2025 (Accepted)",
       "mention": "Best Student Paper Finalist",
       "team": "A. Michael West Jr. PhD, Jing Xu PhD, Jeremy D. Brown PhD",
-      "description": "This project aims to evaluate how people perceive and match different forms of sensory stimuli in the context of neurorehabilitation tasks. Using a cross-modal matching paradigm, we calibrate visual and haptic stimuli in a way that establishes perceptual equity. This allows us to isolate true differences in task performance from simple differences in perceived intensity. Through statistical modeling and optimization, we propose a streamlined protocol that dramatically reduces experiment time to attain this equity, crucial for practical applications in clinical settings.",
+      "description": "Multimodal rehabilitation often assumes equal perception across sensory channels — an assumption that breaks down, especially in stroke patients. This project calibrates visual and haptic stimuli through cross-modal matching to establish perceptual equity. By aligning subjective intensities, we isolate true performance differences from perceptual confounds. Using statistical modeling and Monte Carlo optimization, we develop a streamlined calibration protocol that cuts session time by over 5× — enabling practical clinical use.",
       "image": "/assets/images/projects/CrossModalMatching.mp4",
       "location": "Johns Hopkins University"
     },
