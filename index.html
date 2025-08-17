@@ -35,6 +35,8 @@
     <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
     <script src="/assets/js/script.js"></script>
 
+
+
     <script>
         window.onscroll = function () {
             var height = $(window).height();
@@ -155,6 +157,39 @@
                                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                                 loading="lazy"></iframe>
                         </div>
+                    </div>
+                    <div class="updates-content">
+                        <h3 style="justify-content: left; text-align: left;">Updates</h3>
+                        <style>
+                            #news-updates {
+                                display: table;
+                                width: 100%;
+                                border-collapse: collapse;
+                                margin-top: 1em;
+                            }
+                            .news-row {
+                                display: table-row;
+                                border-bottom: 1px solid #e0e0e0;
+                            }
+                            .news-row:last-child {
+                                border-bottom: none;
+                            }
+                            .news-date, .news-text {
+                                display: table-cell;
+                                padding: 0.5em 1em;
+                                vertical-align: top;
+                            }
+                            .news-date {
+                                width: 120px;
+                                font-weight: bold;
+                                color: #555;
+                                white-space: nowrap;
+                            }
+                            .news-text p {
+                                margin: 0;
+                            }
+                        </style>
+                        <div id="news-updates"></div>
                     </div>
                 </div>
                 <div id="contactform-placeholder"></div>
