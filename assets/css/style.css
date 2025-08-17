@@ -1376,12 +1376,22 @@ to {
 
 }
 
-.bio-page h2 {
+.bio-page h2, h3 {
     display: flex;
     color: #162634;
     padding: 0.5em 0;
     justify-content: center;
     text-align: center;
+}
+
+.updates-content {
+    row-gap: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+#news-updates p {
+    color: #162634;
 }
 
 .bio-content-other {
