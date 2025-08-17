@@ -1,27 +1,39 @@
 [
-    {
+  {
+    "date": "Aug 2025",
+    "text": "I've started my PhD at <a href=\"https://seas.harvard.edu\" target=\"_blank\" class=\"harvard link\">Harvard University</a>!"
+  },
+  {
+    "date": "Jun 2025",
+    "text": "Excited to be awarded the <a href=\"https://www.gemfellowship.org/2025-gem-fellows/\" target=\"_blank\" class=\"link\">GEM Associate Fellowship</a>!"
+  },
+  {
       "date": "Apr 2025",
-      "text": "Thrilled to be awarded the <a href=\"https://ndseg.org\" target=\"_blank\">NDSEG Fellowship</a>, 3 years of full PhD funding to keep building cool neurotech!"
+      "text": "Thrilled to be awarded the <a href=\"http://ndseg.sysplus.com/\" target=\"_blank\" class=\"link\">NDSEG Fellowship</a>, 3 years of full PhD funding to keep building cool neurotech!"
     },
     {
       "date": "Mar 2025",
-      "text": "Our paper <i>Optimizing Cross-Modal Matching for Multimodal Motor Rehab</i> is a Best Student Paper finalist at <a href=\"https://www.rehabweek.org\" target=\"_blank\">ICORR 2025</a>! Catch me on the podium at RehabWeek in Chicago this May."
+      "text": "Our <a href=\"https://ieeexplore.ieee.org/abstract/document/11063112\" target=\"_blank\" class=\"link\">new paper</a>, <i>Optimizing Cross-Modal Matching for Multimodal Motor Rehab</i> is a Best Student Paper finalist at <a href=\"https://www.rehabweek.org\" target=\"_blank\" class=\"link\">ICORR 2025</a>!"
     },
     {
       "date": "Feb 2025",
-      "text": "Honored to be nominated for the Harvard SEAS Prize Fellowship, 6 years of tuition and 2 years of stipend to support my PhD journey."
+      "text": "Honored to be nominated for the Harvard SEAS Prize Fellowship – 6 years of tuition and 2 years of stipend to support my PhD journey."
     },
     {
       "date": "Oct 2024",
-      "text": "Gave a sneak peek of my multimodal-feedback based motor rehabilitation work at <a href=\"https://www.bmes.org/annualmeeting\" target=\"_blank\">BMES 2024</a> in Baltimore."
+      "text": "Gave a sneak peek of my multimodal-feedback based motor rehabilitation work at <a href=\"https://www.bmes.org/annualmeeting\" target=\"_blank\" class=\"link\">BMES 2024</a> in Baltimore."
     },
     {
       "date": "Aug 2024",
-      "text": "Wrapped up an exciting summer at <a href=\"https://bionics.seas.harvard.edu\" target=\"_blank\">Harvard’s BIONICs Lab</a>, diving into the edges (and limits) of peripheral neural interfaces in medicine."
+      "text": "Wrapped up an exciting summer at <a href=\"https://bionics.seas.harvard.edu\" target=\"_blank\" class=\"harvard link\">Harvard’s BIONICs Lab</a>, exploring the frontiers – and boundaries – of peripheral neural interfaces in medicine."
     },
     {
       "date": "Apr 2024",
-      "text": "Presented my pneumatactor-based soft haptic interfaces at <a href=\"https://2024.hapticssymposium.org\" target=\"_blank\">IEEE Haptics Symposium 2024</a> in sunny Long Beach!"
+      "text": "I presented my pneumatactor-based soft haptic interfaces at <a href=\"https://2024.hapticssymposium.org\" target=\"_blank\" class=\"link\">IEEE Haptics Symposium 2024</a> in sunny Long Beach, CA!"
+    },
+    {
+      "date": "Aug 2023",
+      "text": "I've started my Master's in Biomedical Engineering at <a href=\"https://www.bme.jhu.edu\" target=\"_blank\" class=\"hopkins link\">Johns Hopkins University</a>!"
     }
   ]
   
