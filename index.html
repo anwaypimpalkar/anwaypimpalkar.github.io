@@ -19,24 +19,65 @@
     <meta property="og:image" content="https://anway.me/assets/img/preview.jpg">
     <meta property="og:url" content="https://anway.me">
 
+
     <link rel="stylesheet" href="assets/css/typed.css">
-
     <link rel="icon" type="image/x-icon" href="/assets/favicon-sm.png">
-
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;600&display=swap" rel="stylesheet">
-
     <link href="/assets/fontawesome/css/fontawesome.css" rel="stylesheet">
     <link href="/assets/fontawesome/css/brands.css" rel="stylesheet">
     <link href="assets/fontawesome/css/solid.css" rel="stylesheet">
     <script src="/assets/js/script.js"></script>
 
+    <!-- JSON-LD: Person + Website (fill in your real links) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+        {
+            "@type": "Person",
+            "@id": "https://anway.me/#me",
+            "name": "Anway Pimpalkar",
+            "givenName": "Anway",
+            "familyName": "Pimpalkar",
+            "image": "https://anway.me/assets/images/home/AnwayPimpalkar.webp",
+            "url": "https://anway.me/",
+            "jobTitle": "PhD Student, Electrical Engineering",
+            "affiliation": [
+            {"@type": "CollegeOrUniversity", "name": "Harvard University", "url": "https://www.seas.harvard.edu"},
+            {"@type": "CollegeOrUniversity", "name": "Johns Hopkins University", "url": "https://www.jhu.edu"}
+            ],
+            "sameAs": [
+            "https://www.linkedin.com/in/anwaypimpalkar",
+            "https://scholar.google.com/citations?user=9FS5qs0AAAAJ",
+            "https://orcid.org/0000-0003-2535-2697",
+            "https://github.com/anwaypimpalkar/"
+            ]
+        },
+        {
+            "@type": "WebSite",
+            "@id": "https://anway.me/#website",
+            "url": "https://anway.me/",
+            "name": "Anway Pimpalkar",
+            "publisher": {"@id": "https://anway.me/#me"},
+            "inLanguage": "en-US",
+            "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://www.google.com/search?q=anway+pimpalkar",
+            "query-input": "required name=search_term_string"
+            }
+        }
+        ]
+    }
+    </script>
 
+    <!-- JS (defer to avoid blocking & keep DOM clean) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" defer></script>
+    <script src="/assets/js/script.js" defer></script>
 
     <script>
         window.onscroll = function () {
@@ -115,7 +156,7 @@
                 <div class="scrollable-content">
                     <div class="page-content" style="height: 70vh; justify-content: center;">
                         <div class="typed-box">
-                            <h1>Hi, I'm Anway.</h1>
+                            <h1>Hi, I’m <span itemprop="name">Anway Pimpalkar</span>.</h1>
                         </div>
                         <div class="typed-box">
                             <h2>I build <span class="typed-para"></span></h2>
