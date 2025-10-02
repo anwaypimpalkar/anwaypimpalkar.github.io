@@ -17,12 +17,12 @@ async function loadProjectsData() {
   const loader = window.DataLoader;
 
   if (loader) {
-    const workbookRecords = await loader.readWorkbook("data/projects.xlsx");
+    const workbookRecords = await loader.readWorkbook("/data/projects.xlsx");
     if (workbookRecords.length) {
       return loader.normalizeRecords(workbookRecords);
     }
 
-    const csvText = await loader.readCsv("data/projects.csv");
+    const csvText = await loader.readCsv("/data/projects.csv");
     if (csvText) {
       const csvRecords = parseCSV(csvText);
       return loader.normalizeRecords(csvRecords);
@@ -31,7 +31,7 @@ async function loadProjectsData() {
     return [];
   }
 
-  const csvText = await readCsvFallback("data/projects.csv");
+  const csvText = await readCsvFallback("/data/projects.csv");
   return csvText ? normalizeRecords(parseCSV(csvText)) : [];
 }
 

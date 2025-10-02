@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>News & Updates • Anway Pimpalkar</title>
+    <meta
+      name="description"
+      content="Stay up to date on news, awards, and milestones from Anway Pimpalkar's neural interface research."
+    />
+    <meta name="author" content="Anway Pimpalkar" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://anway.me/news" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="News & Updates • Anway Pimpalkar" />
+    <meta
+      property="og:description"
+      content="Latest announcements, awards, and milestones from Anway Pimpalkar's research journey."
+    />
+    <meta property="og:url" content="https://anway.me/news" />
+    <meta
+      property="og:image"
+      content="https://anway.me/assets/anway/anway_pimpalkar.jpg"
+    />
+    <meta property="og:image:alt" content="Portrait of Anway Pimpalkar" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="News & Updates • Anway Pimpalkar" />
+    <meta
+      name="twitter:description"
+      content="Latest announcements, awards, and milestones from Anway Pimpalkar's research journey."
+    />
+    <meta
+      name="twitter:image"
+      content="https://anway.me/assets/anway/anway_pimpalkar.jpg"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css"
+    />
+
+    <script
+      src="https://kit.fontawesome.com/59c3a7ed5b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <a class="skip_link" href="#main-content">Skip to main content</a>
+    <header class="site-header">
+      <nav class="navbar" aria-label="Primary">
+        <a class="nav_link" href="/">Anway</a>
+        <a class="nav_link" href="/projects/">Projects</a>
+        <a class="nav_link" href="/news/" aria-current="page">News</a>
+      </nav>
+    </header>
+    <main class="content" id="main-content">
+      <div class="spacer_med"></div>
+      <div class="name_big">
+        <span class="name_main" id="news-heading">News</span>
+      </div>
+      <div id="news-controls" class="news_filters"></div>
+      <section class="news_timeline" id="news-timeline">
+        <!-- <div class="news_timeline_headers">
+          <div>Year</div>
+          <div>Month</div>
+          <div>Update</div>
+        </div> -->
+        <div class="news_rows" id="news-rows"></div>
+      </section>
+      <div data-footer></div>
+    </main>
+    <script src="/js/data-loader.js" defer></script>
+    <script src="/js/news.js" defer></script>
+    <script src="/js/footer.js" defer></script>
+    <script src="/js/last-updated.js" defer></script>
+  </body>
+</html>

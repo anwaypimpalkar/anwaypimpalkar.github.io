@@ -3,7 +3,7 @@ const injectFooter = async () => {
   if (!container) return;
 
   try {
-    const response = await fetch('footer.html');
+    const response = await fetch('/footer.html');
     if (!response.ok) {
       throw new Error(`Failed to load footer.html: ${response.status}`);
     }

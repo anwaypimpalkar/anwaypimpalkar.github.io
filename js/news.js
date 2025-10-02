@@ -347,12 +347,12 @@ async function loadNewsData() {
   const loader = window.DataLoader;
 
   if (loader) {
-    const workbookRecords = await loader.readWorkbook("data/news.xlsx");
+    const workbookRecords = await loader.readWorkbook("/data/news.xlsx");
     if (workbookRecords.length) {
       return loader.normalizeRecords(workbookRecords).map(tagEntry);
     }
 
-    const csvText = await loader.readCsv("data/news.csv");
+    const csvText = await loader.readCsv("/data/news.csv");
     if (csvText) {
       const csvRecords = parseNewsCSV(csvText);
       return loader.normalizeRecords(csvRecords).map(tagEntry);
@@ -361,7 +361,7 @@ async function loadNewsData() {
     return [];
   }
 
-  const csvText = await readCsvFallback("data/news.csv");
+  const csvText = await readCsvFallback("/data/news.csv");
   if (!csvText) {
     return [];
   }
