@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const target = document.getElementById("typing-text");
   if (!target) return;
 
-  const words = ["neural interfaces.", "clinical AI tools.", "medical robots."];
+  const words = ["medical robots.", "neural interfaces.", "clinical AI tools."];
   let wordIndex = 0;
   let charIndex = 0;
   let deleting = false;

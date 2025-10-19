@@ -1,6 +1,8 @@
 let publicationsData = [];
 const activeTypeFilters = new Set();
 const activeThemeFilters = new Set();
+let isChronologicalView = false;
+const FALLBACK_YEAR_HEADER = "Undated";
 
 async function loadPublications() {
   try {
@@ -140,23 +142,24 @@ function renderPublications(publications = publicationsData) {
 
   root.textContent = "";
 
-  const sections = new Map();
-  publications.forEach((publication) => {
-    const sectionName = publication.section || "Publications";
-    if (!sections.has(sectionName)) {
-      sections.set(sectionName, []);
-    }
-    sections.get(sectionName).push(publication);
-  });
+  const groups = isChronologicalView
+    ? createYearGroups(publications)
+    : createSectionGroups(publications);
 
-  sections.forEach((items, sectionName) => {
+  groups.forEach(({ label, items }) => {
+    if (!items.length) {
+      return;
+    }
+
     const section = document.createElement("section");
     section.className = "publications";
 
-    const header = document.createElement("h2");
-    header.className = "section_header";
-    header.textContent = sectionName;
-    section.appendChild(header);
+    if (label) {
+      const header = document.createElement("h2");
+      header.className = "section_header";
+      header.textContent = label;
+      section.appendChild(header);
+    }
 
     items.forEach((publication) => {
       section.appendChild(buildPublicationCard(publication));
@@ -168,6 +171,86 @@ function renderPublications(publications = publicationsData) {
   requestAnimationFrame(() => {
     animatePublications();
   });
+}
+
+function createSectionGroups(publications) {
+  const sections = new Map();
+
+  publications.forEach((publication) => {
+    const sectionName = publication.section || "Publications";
+    if (!sections.has(sectionName)) {
+      sections.set(sectionName, []);
+    }
+    sections.get(sectionName).push(publication);
+  });
+
+  return Array.from(sections.entries()).map(([label, items]) => ({
+    label,
+    items,
+  }));
+}
+
+function createYearGroups(publications) {
+  if (!publications || !publications.length) {
+    return [];
+  }
+
+  const enriched = publications.map((publication, index) => {
+    const rawYear = (publication.year || "").trim();
+    return {
+      publication,
+      index,
+      yearLabel: rawYear || FALLBACK_YEAR_HEADER,
+      yearNumber: extractYearNumber(rawYear),
+    };
+  });
+
+  enriched.sort((a, b) => {
+    const aYear = a.yearNumber;
+    const bYear = b.yearNumber;
+
+    if (aYear === bYear) {
+      return a.index - b.index;
+    }
+
+    if (aYear === null) {
+      return 1;
+    }
+    if (bYear === null) {
+      return -1;
+    }
+
+    return bYear - aYear;
+  });
+
+  const groups = [];
+  enriched.forEach(({ publication, yearLabel }) => {
+    const lastGroup = groups[groups.length - 1];
+    if (!lastGroup || lastGroup.label !== yearLabel) {
+      groups.push({
+        label: yearLabel,
+        items: [publication],
+      });
+    } else {
+      lastGroup.items.push(publication);
+    }
+  });
+
+  return groups;
+}
+
+function extractYearNumber(yearValue) {
+  if (!yearValue) {
+    return null;
+  }
+
+  const match = String(yearValue).match(/\d{4}/);
+  if (!match) {
+    return null;
+  }
+
+  const year = Number.parseInt(match[0], 10);
+  return Number.isNaN(year) ? null : year;
 }
 
 function buildPublicationCard(publication) {
@@ -455,34 +538,31 @@ function initFilters(publications) {
 
   controls.textContent = "";
 
-  const typeSet = new Set();
   const themeSet = new Set();
 
   publications.forEach((publication) => {
-    if (publication.type) {
-      typeSet.add(publication.type.toLowerCase());
-    }
     parseThemes(publication.themes).forEach((theme) => {
       themeSet.add(theme.toLowerCase());
     });
   });
 
-  if (!typeSet.size && !themeSet.size) {
-    return;
-  }
-
   const fragment = document.createDocumentFragment();
+  let themeGroup = null;
 
   if (themeSet.size) {
-    fragment.appendChild(
-      createFilterGroup("What", Array.from(themeSet).sort(), "theme")
-    );
+    themeGroup = createFilterGroup("", Array.from(themeSet).sort(), "theme");
+    fragment.appendChild(themeGroup);
   }
 
-  if (typeSet.size) {
-    fragment.appendChild(
-      createFilterGroup("Where", Array.from(typeSet).sort(), "type")
-    );
+  const chronologicalToggle = createChronologicalToggle();
+  if (themeGroup) {
+    themeGroup.appendChild(chronologicalToggle);
+  } else {
+    fragment.appendChild(chronologicalToggle);
+  }
+
+  if (!fragment.childNodes.length) {
+    return;
   }
 
   controls.appendChild(fragment);
@@ -492,10 +572,12 @@ function createFilterGroup(label, values, kind) {
   const group = document.createElement("div");
   group.className = "filter_group";
 
-  const heading = document.createElement("span");
-  heading.className = "filter_group_label";
-  heading.textContent = label;
-  group.appendChild(heading);
+  if (label) {
+    const heading = document.createElement("span");
+    heading.className = "filter_group_label";
+    heading.textContent = label;
+    group.appendChild(heading);
+  }
 
   const chips = document.createElement("div");
   chips.className = "filter_group_chips";
@@ -528,6 +610,36 @@ function createFilterGroup(label, values, kind) {
 
   group.appendChild(chips);
   return group;
+}
+
+function createChronologicalToggle() {
+  const container = document.createElement("div");
+  container.className = "filter_sort_container";
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "filter_chip filter_chip-sort";
+  button.setAttribute("aria-pressed", isChronologicalView ? "true" : "false");
+  button.classList.toggle("is-active", isChronologicalView);
+
+  const label = document.createElement("span");
+  label.className = "filter_sort_label";
+  label.textContent = "Chronological";
+  button.appendChild(label);
+
+  const icon = document.createElement("i");
+  icon.className = "iconoir-nav-arrow-down filter_sort_icon";
+  icon.setAttribute("aria-hidden", "true");
+  button.appendChild(icon);
+
+  button.addEventListener("click", () => {
+    isChronologicalView = !isChronologicalView;
+    button.setAttribute("aria-pressed", isChronologicalView ? "true" : "false");
+    button.classList.toggle("is-active", isChronologicalView);
+    renderPublications(applyFilters());
+  });
+
+  container.appendChild(button);
+  return container;
 }
 
 function toggleFilter(kind, value, chip) {

@@ -404,6 +404,7 @@ h2 {
   align-items: center;
   gap: 0.75em;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .filter_group_label {
@@ -434,6 +435,23 @@ h2 {
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.filter_sort_container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 0.75em;
+}
+
+.filter_sort_label {
+  font-size: 14px;
+  color: inherit;
+}
+
+.filter_sort_icon {
+  font-size: 16px;
+  line-height: 1;
 }
 
 .filter_chip.is-active {
@@ -568,7 +586,8 @@ h2 {
 }
 
 .navbar {
-  position: fixed;
+  position: absolute;
+  /* position: fixed; */
   top: 1.5em;
   left: 50%;
   transform: translateX(-50%);
@@ -692,6 +711,19 @@ h2 {
   position: relative;
 }
 
+.venn-hover-indicator {
+  position: absolute;
+  bottom: 120px;
+  left: -32px;
+  pointer-events: none;
+  font-size: 16px;
+  /* font-weight: 600; */
+  /* letter-spacing: 0.12em; */
+  /* text-transform: uppercase; */
+  text-align: center;
+  color: var(--medium-grey);
+}
+
 .venn-diagram {
   position: relative;
   width: 420px;
@@ -722,8 +754,8 @@ h2 {
 }
 
 .circle span {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 18px;
+  font-weight: 500;
   max-width: 80%;
   display: inline-block;
   transform: translate(var(--label-tx), var(--label-ty));
@@ -923,7 +955,7 @@ h2 {
   }
 
   .circle span {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   .circle {
