@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #a51c30;
+      }
+
+      .cls-2 {
+        fill: #f2f2f2;
+        font-family: Avenir-Medium, Avenir;
+        font-size: 19.22px;
+        font-weight: 500;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="15" cy="15" r="15"/>
+  <text class="cls-2" transform="translate(2.54 21.28)"><tspan x="0" y="0">AP</tspan></text>
+</svg>
