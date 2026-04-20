@@ -276,7 +276,7 @@ function buildPublicationCard(publication) {
       video.playsInline = true;
       video.setAttribute(
         "aria-label",
-        publication.image_alt || publication.title || "Publication video"
+        publication.image_alt || publication.title || "Publication video",
       );
       media.appendChild(video);
     } else {
@@ -333,7 +333,7 @@ function buildPublicationCard(publication) {
     if (publication.year) {
       const separator = publication.journal ? ", " : "";
       journalEl.appendChild(
-        document.createTextNode(`${separator}${publication.year}`)
+        document.createTextNode(`${separator}${publication.year}`),
       );
     }
 
@@ -523,6 +523,10 @@ function formatTagLabel(value) {
     return "AI";
   }
 
+  if (normalized === "hci") {
+    return "HCI";
+  }
+
   return value
     .split(/[-_\s]/)
     .filter(Boolean)
@@ -664,7 +668,7 @@ function applyFilters() {
   return publicationsData.filter((publication) => {
     const type = (publication.type || "").toLowerCase();
     const themes = parseThemes(publication.themes).map((theme) =>
-      theme.toLowerCase()
+      theme.toLowerCase(),
     );
 
     const typeMatch = !activeTypeFilters.size || activeTypeFilters.has(type);
