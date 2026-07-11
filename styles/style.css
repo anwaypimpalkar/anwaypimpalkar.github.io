@@ -151,6 +151,7 @@ h2 {
 }
 
 .name_main {
+  margin: 0;
   font-size: clamp(2rem, 7vw, 3.125rem);
   text-align: center;
   font-weight: bold;
@@ -437,21 +438,31 @@ h2 {
   transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-.filter_sort_container {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  margin-top: 0.75em;
+.view_toggle {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--light-grey);
+  border-radius: 999px;
+  background: #fff;
 }
 
-.filter_sort_label {
+.view_toggle_btn {
+  font-family: inherit;
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0.3em 0.9em;
+  border-radius: 999px;
   font-size: 14px;
-  color: inherit;
+  font-weight: 500;
+  color: var(--medium-grey);
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.filter_sort_icon {
-  font-size: 16px;
-  line-height: 1;
+.view_toggle_btn.is-active {
+  background: rgba(92, 92, 92, 0.12);
+  color: var(--dark-grey);
 }
 
 .filter_chip.is-active {
