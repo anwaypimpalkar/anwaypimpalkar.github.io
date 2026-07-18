@@ -92,7 +92,7 @@ def format_tag_label(value):
     if normalized == "ai":
         return "AI"
     if normalized == "hci":
-        return "HCI"
+        return "Sensory Perception"
     parts = [p for p in re.split(r"[-_\s]", value) if p]
     return " ".join(p[:1].upper() + p[1:] for p in parts)
 

@@ -137,7 +137,9 @@ function matchesActiveFilters(card) {
   }
 
   const themes = (card.dataset.themes || "").split(";").filter(Boolean);
-  return Array.from(activeThemeFilters).every((theme) => themes.includes(theme));
+  return Array.from(activeThemeFilters).every((theme) =>
+    themes.includes(theme),
+  );
 }
 
 function formatTagLabel(value) {
@@ -146,7 +148,7 @@ function formatTagLabel(value) {
     return "AI";
   }
   if (normalized === "hci") {
-    return "HCI";
+    return "Sensory Perception";
   }
   return value
     .split(/[-_\s]/)
@@ -165,9 +167,12 @@ function initFilters() {
 
   const themeSet = new Set();
   allCards.forEach((card) => {
-    (card.dataset.themes || "").split(";").filter(Boolean).forEach((theme) => {
-      themeSet.add(theme);
-    });
+    (card.dataset.themes || "")
+      .split(";")
+      .filter(Boolean)
+      .forEach((theme) => {
+        themeSet.add(theme);
+      });
   });
 
   const fragment = document.createDocumentFragment();
