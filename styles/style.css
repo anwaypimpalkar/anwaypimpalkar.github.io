@@ -731,6 +731,20 @@ h2 {
     --fs-body: 15.5px;
   }
 
+  /* all three theme chips on one centred line. At 14px they need 424px and
+     wrap on any phone, so the type scales with the viewport down to a floor. */
+  .filter_group_chips {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .filter_chip {
+    font-size: clamp(9.5px, 3vw, 13px);
+    padding: 0.3em 0.55em;
+    white-space: nowrap;
+  }
+
   .content {
     width: 100%;
     margin-top: 2.5em;
