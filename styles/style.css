@@ -219,8 +219,10 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.1em;
+  gap: 0.5rem;
   color: var(--dark-grey);
+  /* lets .name_main size itself against this column's width */
+  container-type: inline-size;
 }
 
 .section_header {
@@ -230,7 +232,12 @@ h2 {
 
 .name_main {
   margin: 0;
-  font-size: clamp(2rem, 7vw, 3.125rem);
+  /* "Hi, I'm Anway Pimpalkar." measures 12.034em wide, so 100cqw / 12.034 =
+     8.31cqw makes it exactly fill the column; trimmed for subpixel rounding.
+     min() caps it at the old desktop size so it only grows on narrow screens.
+     Re-measure if the name or font-weight changes. */
+  font-size: min(8.28cqw, 3.125rem);
+  white-space: nowrap;
   text-align: center;
   font-weight: var(--fw-bold);
 }
@@ -531,7 +538,8 @@ h2 {
 
 .publication_description p {
   margin: 0;
-  font-size: 17px;
+  /* same size as body copy, desktop and mobile alike */
+  font-size: var(--fs-body);
   line-height: 1.55;
   color: var(--medium-grey);
 }
@@ -568,6 +576,10 @@ h2 {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    /* stacked layout only: photo / email / CV move above the paragraphs.
+       Done with order rather than in the HTML so desktop keeps them beside
+       the text. */
+    order: -1;
   }
 
   .about_photo {
@@ -713,6 +725,12 @@ h2 {
 }
 
 @media (max-width: 600px) {
+  /* smaller body text on phones; overriding the token keeps p, the email
+     address and the CV link in step, the same way they are on desktop */
+  :root {
+    --fs-body: 15.5px;
+  }
+
   .content {
     width: 100%;
     margin-top: 2.5em;
@@ -775,7 +793,7 @@ h2 {
 .thesis_formula {
   display: flex;
   align-items: baseline;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 0.35em;
   margin: 0 0 2em;
   /* The line is a fixed string, so its width scales linearly with font size.
@@ -827,16 +845,28 @@ h2 {
 }
 
 @media (max-width: 720px) {
-  /* stacked, so the fill-the-column sizing no longer applies */
+  /* Laid out as inline text rather than a flex column, so each joining word
+     stays on the end of the phrase before it:
+       personalization of
+       robots and structures to
+       augment human performance
+     The fill-the-column sizing no longer applies at this width. */
   .thesis_formula {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.5rem;
+    display: block;
+    text-align: center;
     font-size: 1.3rem;
+    line-height: 1.9;
   }
 
+  .thesis_term,
   .thesis_plus {
-    text-align: center;
+    display: inline;
+  }
+
+  /* forced break after "of" and "to" */
+  .thesis_plus::after {
+    content: "\A";
+    white-space: pre;
   }
 
   .thesis_phrase {
