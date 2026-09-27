@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
-Renders data/projects.xlsx and data/news.xlsx into static HTML and injects it
-into projects/index.html and news/index.html, between generated-content
-markers. Run this before pushing, any time either spreadsheet changes:
+Renders data/projects.xlsx into static HTML and injects it into index.html,
+between generated-content markers. Run this before pushing, any time the
+spreadsheet changes:
 
     python3 scripts/build_static_content.py
 
 Safe to re-run: each run deletes the previously generated block (found via
-its markers) and writes a fresh one in its place. The filter/sort behavior in
-js/publications.js and js/news.js runs on top of this static markup as
-progressive enhancement, so the page is fully readable (and crawlable)
-without JavaScript.
+its markers) and writes a fresh one in its place. The filter behavior in
+js/publications.js runs on top of this static markup as progressive
+enhancement, so the page is fully readable (and crawlable) without
+JavaScript.
 """
 
 import html
@@ -87,14 +87,67 @@ def parse_links(value):
     return links
 
 
+MONTH_NUMBERS = {
+    name: number
+    for number, names in enumerate(
+        [
+            ("jan", "january"),
+            ("feb", "february"),
+            ("mar", "march"),
+            ("apr", "april"),
+            ("may",),
+            ("jun", "june"),
+            ("jul", "july"),
+            ("aug", "august"),
+            ("sep", "sept", "september"),
+            ("oct", "october"),
+            ("nov", "november"),
+            ("dec", "december"),
+        ],
+        start=1,
+    )
+    for name in names
+}
+
+HIDE_VALUES = {"hide", "hidden", "no", "n", "false", "0", "off"}
+
+
+def is_shown(record):
+    """A row is published unless its `show` column explicitly says otherwise.
+
+    Defaulting to shown means a newly added row appears even if the column was
+    left blank, rather than disappearing silently.
+    """
+    return cell_to_str(record.get("show", "")).strip().lower() not in HIDE_VALUES
+
+
+def month_number(value):
+    """'Sep' -> 9. Unknown or blank sorts after every named month."""
+    key = cell_to_str(value).strip().lower().rstrip(".")
+    if key in MONTH_NUMBERS:
+        return MONTH_NUMBERS[key]
+    try:
+        number = int(key)
+    except (TypeError, ValueError):
+        return 0
+    return number if 1 <= number <= 12 else 0
+
+
+def slugify(value):
+    """'Robots and Structures' -> 'robots-and-structures'.
+
+    Theme values go into CSS class names, so they have to be single tokens: a
+    space would make the browser read one class as several and the styling
+    would silently disappear. Write themes in the spreadsheet however reads
+    best; this derives the slug.
+    """
+    slug = re.sub(r"[^a-z0-9]+", "-", value.strip().lower())
+    return slug.strip("-")
+
+
 def format_tag_label(value):
-    normalized = value.strip().lower()
-    if normalized == "ai":
-        return "AI"
-    if normalized == "hci":
-        return "Sensory Perception"
-    parts = [p for p in re.split(r"[-_\s]", value) if p]
-    return " ".join(p[:1].upper() + p[1:] for p in parts)
+    """The badge shows what the spreadsheet says, lowercased."""
+    return value.strip().lower()
 
 
 def is_video_asset(path):
@@ -141,7 +194,7 @@ def build_publication_card(record, index):
     parts.append(f' data-index="{index}"')
     parts.append(f' data-section="{esc(section)}"')
     parts.append(f' data-year="{esc(year)}"')
-    parts.append(f' data-themes="{esc(";".join(t.lower() for t in themes))}"')
+    parts.append(f' data-themes="{esc(";".join(slugify(t) for t in themes))}"')
     parts.append(">")
 
     if image:
@@ -182,11 +235,11 @@ def build_publication_card(record, index):
         toggle_row += (
             '<button type="button" class="publication_toggle_btn" aria-expanded="false" '
             'title="Show more details"><span class="publication_toggle_text">Summary</span>'
-            '<i class="iconoir-nav-arrow-down" aria-hidden="true"></i></button>'
+            '<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>'
         )
     if themes:
         tag_badges = "".join(
-            f'<span class="publication_tag publication_tag-theme publication_tag-theme-{esc(t.lower())}">'
+            f'<span class="publication_tag publication_tag-theme publication_tag-theme-{esc(slugify(t))}">'
             f"{esc(format_tag_label(t))}</span>"
             for t in themes
         )
@@ -204,91 +257,47 @@ def build_publication_card(record, index):
     return "".join(parts)
 
 
+FALLBACK_YEAR_HEADER = "Undated"
+
+
 def build_projects_html(records):
-    sections = {}
+    """Newest first, skipping rows the `show` column hides.
+
+    Rows are ordered by year, then month, then spreadsheet position.
+    groupByYear() in js/publications.js reproduces the grouping exactly, so the
+    markup the browser hydrates matches what was served.
+    """
+    entries = []
     for index, record in enumerate(records):
-        label = record.get("section", "") or "Publications"
-        sections.setdefault(label, []).append(build_publication_card(record, index))
-
-    out = []
-    for label, cards in sections.items():
-        out.append(f'<section class="publications" data-section="{esc(label)}">')
-        out.append(f'<h2 class="section_header">{esc(label)}</h2>')
-        out.extend(cards)
-        out.append("</section>")
-    return "\n".join(out)
-
-
-# ---------------------------------------------------------------------------
-# News
-# ---------------------------------------------------------------------------
-
-
-def build_news_entry(record, index):
-    year = record.get("year", "")
-    month = record.get("month", "")
-    headline = record.get("headline", "")
-    body = record.get("body", "")
-    image = record.get("image", "")
-    image_alt = record.get("image_alt", "")
-    tags = parse_list(record.get("tags", ""))
-    tags_lower = [t.lower() for t in tags]
-
-    parts = [
-        f'<div class="news_entry" style="--news-index: {index}" data-index="{index}" '
-        f'data-year="{esc(year)}" data-month="{esc(month.lower())}" '
-        f'data-tags="{esc(";".join(tags_lower))}"'
-    ]
-    if tags_lower:
-        parts.append(" hidden")
-    parts.append(">")
-
-    parts.append(f'<div class="news_month">{esc(month)}</div>')
-    parts.append('<div class="news_body">')
-
-    if year or month:
-        parts.append(
-            '<div class="news_entry_heading">'
-            f'<span class="news_year_label">{esc(year)}</span>'
-            f'<span class="news_month">{esc(month)}</span>'
-            "</div>"
-        )
-
-    if headline:
-        parts.append(f'<h3 class="news_headline">{esc(headline)}</h3>')
-
-    if body:
-        parts.append(f'<div class="news_text">{body}</div>')
-
-    if image:
-        alt_text = image_alt or f"{month} {year} news image".strip()
-        parts.append(media_html(image, alt_text, "news_media"))
-
-    parts.append("</div>")  # .news_body
-    parts.append("</div>")  # .news_entry
-    return "".join(parts)
-
-
-def build_news_html(records):
-    years = {}
-    for index, record in enumerate(records):
-        year = record.get("year", "")
-        years.setdefault(year, []).append(build_news_entry(record, index))
-
-    def year_sort_key(year):
+        if not is_shown(record):
+            continue
         try:
-            return -int(year)
+            year = int(record.get("year", ""))
         except (TypeError, ValueError):
-            return 0
+            year = None
+        entries.append((year, month_number(record.get("month", "")), index, record))
+
+    # undated last, then newest year, then newest month, then spreadsheet order
+    entries.sort(key=lambda e: (e[0] is None, -(e[0] or 0), -e[1], e[2]))
 
     out = []
-    for year in sorted(years, key=year_sort_key):
-        out.append(f'<div class="news_year_group" data-year="{esc(year)}">')
-        out.append(f'<div class="news_year">{esc(year)}</div>')
-        out.append('<div class="news_year_entries">')
-        out.extend(years[year])
-        out.append("</div>")
-        out.append("</div>")
+    current_label = None
+    # data-index is the position after sorting, not the spreadsheet row, so the
+    # JS -- which orders by data-index within a year -- reproduces this order
+    # instead of reshuffling the cards when it hydrates.
+    for position, (year, _month, _row, record) in enumerate(entries):
+        label = str(year) if year is not None else FALLBACK_YEAR_HEADER
+        if label != current_label:
+            if current_label is not None:
+                out.append("</section>")
+            out.append(f'<section class="publications" data-year="{esc(label)}">')
+            out.append(f'<h2 class="section_header">{esc(label)}</h2>')
+            current_label = label
+        out.append(build_publication_card(record, position))
+
+    if current_label is not None:
+        out.append("</section>")
+
     return "\n".join(out)
 
 
@@ -323,12 +332,14 @@ def process(page_path, container_id, generated_html):
 
 def main():
     projects_records = read_workbook(ROOT / "data" / "projects.xlsx")
-    news_records = read_workbook(ROOT / "data" / "news.xlsx")
 
-    process("projects/index.html", "publications-root", build_projects_html(projects_records))
-    process("news/index.html", "news-rows", build_news_html(news_records))
+    projects_html = build_projects_html(projects_records)
+    process("index.html", "publications-root", projects_html)
 
-    print(f"{len(projects_records)} projects, {len(news_records)} news entries.")
+    shown = sum(1 for record in projects_records if is_shown(record))
+    hidden = len(projects_records) - shown
+    hidden_note = f", {hidden} hidden" if hidden else ""
+    print(f"{shown} projects published{hidden_note}.")
 
 
 if __name__ == "__main__":

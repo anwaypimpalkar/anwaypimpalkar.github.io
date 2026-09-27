@@ -1,7 +1,22 @@
 const activeThemeFilters = new Set();
-let isChronologicalView = false;
 const FALLBACK_YEAR_HEADER = "Undated";
 let allCards = [];
+
+// Chip order, matching the thesis line on the home page. Anything not listed
+// here still shows up, sorted, after these.
+const THEME_ORDER = [
+  "personalization",
+  "robots-and-structures",
+  "performance",
+];
+
+function orderThemes(themeSet) {
+  const known = THEME_ORDER.filter((theme) => themeSet.has(theme));
+  const extra = Array.from(themeSet)
+    .filter((theme) => !THEME_ORDER.includes(theme))
+    .sort();
+  return [...known, ...extra];
+}
 
 function hydratePublications() {
   const root = document.getElementById("publications-root");
@@ -34,8 +49,8 @@ function wireToggleButton(card) {
       : "0px";
     if (arrowIcon) {
       arrowIcon.className = isOpen
-        ? "iconoir-nav-arrow-up"
-        : "iconoir-nav-arrow-down";
+        ? "fa-solid fa-chevron-up"
+        : "fa-solid fa-chevron-down";
     }
   });
 }
@@ -46,10 +61,7 @@ function renderPublications({ animate = false } = {}) {
     return;
   }
 
-  const visibleCards = allCards.filter(matchesActiveFilters);
-  const groups = isChronologicalView
-    ? groupByYear(visibleCards)
-    : groupBySection(visibleCards);
+  const groups = groupByYear(allCards.filter(matchesActiveFilters));
 
   root.textContent = "";
 
@@ -77,54 +89,37 @@ function renderPublications({ animate = false } = {}) {
   }
 }
 
-function groupBySection(cards) {
-  const bySection = new Map();
-  const sorted = [...cards].sort(
-    (a, b) => Number(a.dataset.index) - Number(b.dataset.index),
-  );
-
-  sorted.forEach((card) => {
-    const label = card.dataset.section || "Publications";
-    if (!bySection.has(label)) {
-      bySection.set(label, []);
-    }
-    bySection.get(label).push(card);
-  });
-
-  return Array.from(bySection.entries()).map(([label, items]) => ({
-    label,
-    items,
-  }));
-}
-
+// Newest year first; within a year, spreadsheet order. Mirrors
+// build_projects_html() in scripts/build_static_content.py so the hydrated
+// markup matches what was served.
 function groupByYear(cards) {
-  const enriched = cards
+  const sorted = [...cards]
     .map((card) => ({
       card,
       index: Number(card.dataset.index),
-      yearLabel: card.dataset.year || FALLBACK_YEAR_HEADER,
-      yearNumber: card.dataset.year ? Number(card.dataset.year) : null,
+      year: card.dataset.year ? Number(card.dataset.year) : null,
     }))
     .sort((a, b) => {
-      if (a.yearNumber === b.yearNumber) {
+      if (a.year === b.year) {
         return a.index - b.index;
       }
-      if (a.yearNumber === null) {
+      if (a.year === null) {
         return 1;
       }
-      if (b.yearNumber === null) {
+      if (b.year === null) {
         return -1;
       }
-      return b.yearNumber - a.yearNumber;
+      return b.year - a.year;
     });
 
   const groups = [];
-  enriched.forEach(({ card, yearLabel }) => {
-    const lastGroup = groups[groups.length - 1];
-    if (!lastGroup || lastGroup.label !== yearLabel) {
-      groups.push({ label: yearLabel, items: [card] });
+  sorted.forEach(({ card }) => {
+    const label = card.dataset.year || FALLBACK_YEAR_HEADER;
+    const last = groups[groups.length - 1];
+    if (!last || last.label !== label) {
+      groups.push({ label, items: [card] });
     } else {
-      lastGroup.items.push(card);
+      last.items.push(card);
     }
   });
 
@@ -142,19 +137,11 @@ function matchesActiveFilters(card) {
   );
 }
 
-function formatTagLabel(value) {
-  const normalized = value.trim().toLowerCase();
-  if (normalized === "ai") {
-    return "AI";
-  }
-  if (normalized === "hci") {
-    return "Sensory Perception";
-  }
-  return value
-    .split(/[-_\s]/)
-    .filter(Boolean)
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
+// Chips read from data-themes, which holds slugs. Turning the slug back into
+// words keeps the chip label identical to the badge the build script rendered,
+// with no list of theme names to keep in sync here.
+function formatTagLabel(slug) {
+  return slug.trim().toLowerCase().replace(/-/g, " ");
 }
 
 function initFilters() {
@@ -178,10 +165,8 @@ function initFilters() {
   const fragment = document.createDocumentFragment();
 
   if (themeSet.size) {
-    fragment.appendChild(createThemeFilterGroup(Array.from(themeSet).sort()));
+    fragment.appendChild(createThemeFilterGroup(orderThemes(themeSet)));
   }
-
-  fragment.appendChild(createViewToggleGroup());
 
   controls.appendChild(fragment);
 }
@@ -189,11 +174,9 @@ function initFilters() {
 function createThemeFilterGroup(values) {
   const group = document.createElement("div");
   group.className = "filter_group";
-
-  const heading = document.createElement("span");
-  heading.className = "filter_group_label";
-  heading.textContent = "Theme";
-  group.appendChild(heading);
+  // the visible "Theme" heading is gone, so name the group for screen readers
+  group.setAttribute("role", "group");
+  group.setAttribute("aria-label", "Filter by theme");
 
   const chips = document.createElement("div");
   chips.className = "filter_group_chips";
@@ -214,62 +197,6 @@ function createThemeFilterGroup(values) {
   });
 
   group.appendChild(chips);
-  return group;
-}
-
-function createViewToggleGroup() {
-  const group = document.createElement("div");
-  group.className = "filter_group";
-
-  const heading = document.createElement("span");
-  heading.className = "filter_group_label";
-  heading.textContent = "View by";
-  group.appendChild(heading);
-
-  const toggle = document.createElement("div");
-  toggle.className = "view_toggle";
-  toggle.setAttribute("role", "group");
-  toggle.setAttribute("aria-label", "View by");
-
-  const venuesBtn = document.createElement("button");
-  venuesBtn.type = "button";
-  venuesBtn.className = "view_toggle_btn";
-  venuesBtn.textContent = "Venues";
-
-  const chronoBtn = document.createElement("button");
-  chronoBtn.type = "button";
-  chronoBtn.className = "view_toggle_btn";
-  chronoBtn.textContent = "Chronological";
-
-  const syncViewButtons = () => {
-    venuesBtn.classList.toggle("is-active", !isChronologicalView);
-    venuesBtn.setAttribute("aria-pressed", (!isChronologicalView).toString());
-    chronoBtn.classList.toggle("is-active", isChronologicalView);
-    chronoBtn.setAttribute("aria-pressed", isChronologicalView.toString());
-  };
-  syncViewButtons();
-
-  venuesBtn.addEventListener("click", () => {
-    if (!isChronologicalView) {
-      return;
-    }
-    isChronologicalView = false;
-    syncViewButtons();
-    renderPublications({ animate: true });
-  });
-
-  chronoBtn.addEventListener("click", () => {
-    if (isChronologicalView) {
-      return;
-    }
-    isChronologicalView = true;
-    syncViewButtons();
-    renderPublications({ animate: true });
-  });
-
-  toggle.appendChild(venuesBtn);
-  toggle.appendChild(chronoBtn);
-  group.appendChild(toggle);
   return group;
 }
 

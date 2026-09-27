@@ -68,6 +68,13 @@
         ]
       }
     </script>
+    <link
+      rel="preload"
+      href="/assets/fonts/inter-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="stylesheet" href="/styles/style.css" />
     <script
       src="https://kit.fontawesome.com/59c3a7ed5b.js"
@@ -76,17 +83,10 @@
   </head>
   <body>
     <a class="skip_link" href="#main-content">Skip to main content</a>
-    <header class="site-header">
-      <nav class="navbar" aria-label="Primary">
-        <a class="nav_link" href="/" aria-current="page">anway</a>
-        <a class="nav_link" href="/projects/">projects</a>
-        <a class="nav_link" href="/news/">news</a>
-      </nav>
-    </header>
     <main class="content" id="main-content">
       <div class="spacer_med"></div>
       <div class="name_big">
-        <h1 class="name_main">Hi, I'm Anway.</h1>
+        <h1 class="name_main">Hi, I'm Anway Pimpalkar.</h1>
         <span class="name_sub"
           >I build <span class="typing" id="typing-text"></span
         ></span>
@@ -94,33 +94,25 @@
       <div class="about">
         <div class="about_text">
           <p>
-            I'm Anway Pimpalkar, a PhD student in Mechanical Engineering at
+            I am a PhD student in Mechanical Engineering at
             <a
               class="harvard link"
               href="https://www.seas.harvard.edu"
               target="_blank"
               >Harvard University</a
             >. <br /><br />
+            I build human-centered devices that sense, respond, and adapt to
+            improve how we move, think, and perform. My work spans human
+            performance at two levels: physical and cognitive.
+            <!--             
             I design mechanisms and devices that interface with the human body
             through sensory experience, grounded in both, mechanics and
             cognition. My current work focuses on multistable mechanisms for
             interactive devices that help manage stress and attention, building
             toward systems that sense, respond, and adapt to improve how we
-            move, think, and perform.
-            <!-- I am advised by
-            <a
-              class="link"
-              href="https://bertoldi.seas.harvard.edu/"
-              target="_blank"
-              >Prof. Katia Bertoldi</a
-            >
-            at Harvard and
-            <a class="link" href="https://www.l4te.org/" target="_blank"
-              >Prof. Giovanni Traverso</a
-            >
-            at MIT and the Broad Institute. -->
+            move, think, and perform. -->
             <br /><br />
-            I am supported by the
+            My research is supported by the
             <a class="link" href="https://ndseg.sysplus.com/" target="_blank"
               >NDSEG Fellowship</a
             >, the <a class="link">Harvard SEAS Prize Fellowship</a>, and the
@@ -130,7 +122,7 @@
               target="_blank"
               >GEM Associate Fellowship</a
             >. <br /><br />
-            Before moving to Cambridge, I received my Master's in Biomedical
+            Before moving to Harvard, I received my Master's in Biomedical
             Engineering from
             <a
               class="hopkins link"
@@ -158,6 +150,7 @@
             src="assets/anway/anway_pimpalkar.jpg"
             alt="Anway Pimpalkar"
             loading="lazy"
+            draggable="false"
           />
           <span class="address"
             ><span>apimpalkar</span><span style="display: none">nospam</span
@@ -175,61 +168,630 @@
         </aside>
       </div>
       <div class="spacer_sm"></div>
-      <!-- <div class="research">
-        <span class="section_header">
-          <h1>Research</h1>
-        </span>
-        <div class="research_venn">
-          <div class="venn-wrapper">
-            <div class="venn-diagram">
-              <div
-                class="circle circle-left"
-                data-title="Neuroscience & Cognition"
-                data-description="I study how peripheral nerves encode and modulate movement, sensation, and even disease processes. From restoring finger dexterity after stroke to exploring neural control of cancer growth, my research probes the neural mechanisms that shape behavior and health, using clinical studies and animal models to translate basic insights into therapy."
-                data-highlight="left"
-                tabindex="0"
-              >
-                <span>Neuroscience<br />and<br />Cognition</span>
+      <section class="research">
+        <h2 class="research_heading">Research</h2>
+        <p class="thesis_formula">
+          <span class="thesis_term thesis_term-how">
+            <span class="thesis_phrase">personalization</span>
+          </span>
+          <span class="thesis_plus">of</span>
+          <span class="thesis_term thesis_term-what">
+            <span class="thesis_phrase">robots and structures</span>
+          </span>
+          <span class="thesis_plus">to</span>
+          <span class="thesis_term thesis_term-why">
+            <span class="thesis_phrase">augment human performance</span>
+          </span>
+        </p>
+        <p>
+          No two bodies or minds are the same, yet most technology is built for
+          an average that fits no one. My research focuses on designing robots
+          and architected structures that adapt by reshaping their mechanical
+          behavior to match a specific person, task, or context. By
+          personalizing these systems, I aim to augment human performance on
+          both fronts: how we move and act in the world, and how we perceive and
+          think about it.
+        </p>
+        <p>
+          I work with Profs.
+          <a
+            class="link"
+            href="https://bertoldi.seas.harvard.edu/"
+            target="_blank"
+            >Katia Bertoldi</a
+          >
+          and
+          <a
+            class="link"
+            href="https://sladelab.seas.harvard.edu/"
+            target="_blank"
+            >Patrick Slade</a
+          >
+          at Harvard SEAS, and
+          <a
+            class="link"
+            href="https://research.childrenshospital.org/research-units/arnett-lab-research"
+            target="_blank"
+            >Anne Arnett</a
+          >
+          at Boston Children&rsquo;s Hospital.
+        </p>
+        <br />
+        <p>
+          You can read more about each of these threads in my publications
+          below, tagged by theme. See them all on
+          <a
+            class="icon_link"
+            href="https://scholar.google.com/citations?user=9FS5qs0AAAAJ"
+            target="_blank"
+            rel="noopener"
+            aria-label="Google Scholar"
+            title="Google Scholar"
+            ><i class="fa-brands fa-google-scholar" aria-hidden="true"></i></a
+          >.
+        </p>
+      </section>
+      <div id="publication-controls" class="publication_filters"></div>
+      <div id="publications-root">
+        <!-- BEGIN GENERATED CONTENT: run scripts/build_static_content.py to regenerate. DO NOT EDIT BY HAND. -->
+        <section class="publications" data-year="2026">
+          <h2 class="section_header">2026</h2>
+          <div
+            class="publication"
+            data-index="0"
+            data-section="In Conferences"
+            data-year="2026"
+            data-themes="personalization"
+          >
+            <div class="publication_media">
+              <video
+                src="/assets/images/publications/CrossModalMatching_BioRob.mp4"
+                autoplay
+                muted
+                loop
+                preload="metadata"
+                playsinline
+                aria-label="Cross-modal matching is not bidirectional: Implications for human multisensory feedback."
+              ></video>
+            </div>
+            <div class="publication_details">
+              <h3 class="publication_title">
+                Cross-modal matching is not bidirectional: Implications for
+                human multisensory feedback.
+              </h3>
+              <p class="publication_authors">
+                <span>A. Michael West Jr.</span>, <span>Berk Kasimcan</span>,
+                <span class="underline">Anway Pimpalkar</span>,
+                <span>Jing Xu</span>, <span>Jeremy D. Brown</span>
+              </p>
+              <p class="publication_journal">
+                <em
+                  >IEEE International Conference on Biomedical Robotics
+                  Biomechatronics (BioRob)</em
+                >, 2026
+              </p>
+              <div class="publication_toggle_row">
+                <button
+                  type="button"
+                  class="publication_toggle_btn"
+                  aria-expanded="false"
+                  title="Show more details"
+                >
+                  <span class="publication_toggle_text">Summary</span
+                  ><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="publication_tags">
+                  <span
+                    class="publication_tag publication_tag-theme publication_tag-theme-personalization"
+                    >personalization</span
+                  >
+                </div>
               </div>
-              <div
-                class="circle circle-right"
-                data-title="Robotics & Devices"
-                data-description="I design soft robotic systems and neural interfaces—such as multi-modal haptic actuators and smart implants—that merge electronics with biology. These devices deliver precise sensory feedback, capture high-resolution motor data, and ultimately aim to restore or augment human function in prosthetics, rehabilitation, and other biomedical applications."
-                data-highlight="right"
-                tabindex="0"
-              >
-                <span>Robotics<br />and<br />Devices</span>
-              </div>
-              <div
-                class="circle circle-bottom"
-                data-title="Human-Centric Design"
-                data-description="Every prototype is built around the person who will use it. Through iterative testing with patients, clinicians, and caregivers, I focus on usability, comfort, and accessibility so that advanced technologies—whether wearable, implantable, or handheld—fit seamlessly into daily life and reach diverse, underserved communities."
-                data-highlight="bottom"
-                tabindex="0"
-              >
-                <span>Human<br />Centric<br />Design</span>
+              <div class="publication_description" style="max-height: 0px">
+                <p>
+                  This work builds on another project, listed below,
+                  <em
+                    >"Optimizing cross-modal matching for multimodal motor
+                    rehabilitation."</em
+                  >
+                  <br /><br />
+                  Cross-modal matching (CMM) is widely used to calibrate sensory
+                  feedback across modalities, but it is typically assumed to be
+                  bidirectional and invertible. We test this assumption using
+                  visual–vibrotactile and co-located haptic (pressure–vibration)
+                  datasets and show that it does not hold. At the individual
+                  level, mappings are systematically non-invertible, with
+                  directional asymmetries arising from structured,
+                  intensity-dependent distortions rather than noise. As a
+                  result, CMM compresses the perceptual range of one modality
+                  relative to another, making the choice of mapping direction
+                  consequential. These findings show that CMM is not a neutral
+                  calibration step but a directional design decision that shapes
+                  perception and learning in human–machine systems.
+                </p>
               </div>
             </div>
-            <span class="venn-hover-indicator" aria-hidden="true">
-              hover for<br />more
-            </span>
           </div>
-          <div class="venn-description" id="venn-description">
-            <h2 id="venn-description-title">Building Neural Interfaces</h2>
-            <p id="venn-description-body">
-              I build soft robotic and neural interfaces that merge engineering
-              and biology to restore sensory and motor function. My work spans
-              haptics, neuroprosthetics, and bioelectronic medicine—developing
-              systems that sense, stimulate, and adapt to the body to enable
-              more natural human–machine interaction.
-            </p>
+        </section>
+        <section class="publications" data-year="2025">
+          <h2 class="section_header">2025</h2>
+          <div
+            class="publication"
+            data-index="1"
+            data-section="In Conferences"
+            data-year="2025"
+            data-themes="personalization"
+          >
+            <div class="publication_media">
+              <img
+                src="/assets/images/publications/SenseMatch.jpg"
+                alt="SenseMatch: Smartphone-based cross-modal matching for accessible perceptual assessments."
+                loading="lazy"
+              />
+            </div>
+            <div class="publication_details">
+              <h3 class="publication_title">
+                SenseMatch: Smartphone-based cross-modal matching for accessible
+                perceptual assessments.
+              </h3>
+              <p class="publication_authors">
+                <span>A. Michael West Jr.</span>,
+                <span class="underline">Anway Pimpalkar</span>,
+                <span>Jing Xu</span>, <span>Jeremy D. Brown</span>
+              </p>
+              <p class="publication_journal">
+                <em>IEEE EMBS Conference on Neural Engineering (NER)</em>,
+                2025<span class="publication_meta_separator"> &#8729; </span
+                ><a
+                  class="publication_meta_link link harvard"
+                  href="https://ieeexplore.ieee.org/document/11589033"
+                  target="_blank"
+                  rel="noopener"
+                  >Paper<i class="iconoir-arrow-up-right"></i
+                ></a>
+              </p>
+              <div class="publication_toggle_row">
+                <button
+                  type="button"
+                  class="publication_toggle_btn"
+                  aria-expanded="false"
+                  title="Show more details"
+                >
+                  <span class="publication_toggle_text">Summary</span
+                  ><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="publication_tags">
+                  <span
+                    class="publication_tag publication_tag-theme publication_tag-theme-personalization"
+                    >personalization</span
+                  >
+                </div>
+              </div>
+              <div class="publication_description" style="max-height: 0px">
+                <p>
+                  This work builds on another project, listed below,
+                  <em
+                    >"Optimizing cross-modal matching for multimodal motor
+                    rehabilitation."</em
+                  >
+                  <br /><br />
+                  After a stroke or neurological injury, many people struggle
+                  not just with movement, but also with sensing and controlling
+                  their hands. Rehab tools often mix visual, touch, and sound
+                  cues to help retrain the brain – but these cues need to be
+                  carefully balanced so one sensation doesn't overpower the
+                  others. That's where <em>cross-modal matching</em> comes in: a
+                  way to "calibrate" perception across senses. We built
+                  <em>SenseMatch</em>, a smartphone app that makes this
+                  calibration process easier and more accessible. In our study,
+                  we compared SenseMatch to a clinical rehab tool device. The
+                  long-term vision is big: with tools like SenseMatch, we can
+                  move toward objective, personalized measures of sensory
+                  deficits, helping to guide rehabilitation and track recovery
+                  beyond the clinic.
+                </p>
+              </div>
+            </div>
           </div>
-        </div>
-      </div> -->
+          <div
+            class="publication"
+            data-index="2"
+            data-section="In Journals"
+            data-year="2025"
+            data-themes="personalization"
+          >
+            <div class="publication_media">
+              <img
+                src="/assets/images/publications/JHU_AI_ECG.jpeg"
+                alt="Robert Stevens observes an electrocardiogram monitor"
+                loading="lazy"
+              />
+            </div>
+            <div class="publication_details">
+              <h3 class="publication_title">
+                Preoperative risk prediction of major cardiovascular events in
+                noncardiac surgery using the 12-lead electrocardiogram: an
+                explainable deep learning approach.
+              </h3>
+              <p class="publication_authors">
+                <span>Carl Harris</span>,
+                <span class="underline">Anway Pimpalkar</span>,
+                <span>Ataes Aggarwal</span>, <span>Jiyuan Yang</span>,
+                <span>Xiaojian Chen</span>, <span>Samuel Schmidgall</span>,
+                <span>Sampath Rapuri</span>, <span>Joseph L. Greenstein</span>,
+                <span>Casey O. Taylor</span>, <span>Robert D. Stevens</span>
+              </p>
+              <p class="publication_journal">
+                <em>British Journal of Anaesthesia</em>, 2025<span
+                  class="publication_meta_separator"
+                >
+                  &#8729; </span
+                ><a
+                  class="publication_meta_link link harvard"
+                  href="https://www.bjanaesthesia.org/article/S0007-0912(25)00546-X/fulltext"
+                  target="_blank"
+                  rel="noopener"
+                  >Paper<i class="iconoir-arrow-up-right"></i
+                ></a>
+              </p>
+              <div class="publication_toggle_row">
+                <button
+                  type="button"
+                  class="publication_toggle_btn"
+                  aria-expanded="false"
+                  title="Show more details"
+                >
+                  <span class="publication_toggle_text">Summary</span
+                  ><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="publication_tags">
+                  <span
+                    class="publication_tag publication_tag-theme publication_tag-theme-personalization"
+                    >personalization</span
+                  >
+                </div>
+              </div>
+              <div class="publication_description" style="max-height: 0px">
+                <p>
+                  Our deep learning fusion model integrates preoperative ECG
+                  waveforms clinical data to outperform traditional risk scores
+                  in predicting major postoperative outcomes. By using
+                  counterfactual ECGs, it offers interpretable insights, linking
+                  waveform features to risk. This innovation paves the way for
+                  personalized, actionable interventions in surgical care.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="publication"
+            data-index="3"
+            data-section="In Journals"
+            data-year="2025"
+            data-themes="robots-and-structures"
+          >
+            <div class="publication_media">
+              <img
+                src="/assets/images/publications/FirstContactStiffnessEstimation.png"
+                alt="Prosthetic hand with tactile sensor"
+                loading="lazy"
+              />
+            </div>
+            <div class="publication_details">
+              <h3 class="publication_title">
+                Vibrations at first contact encode object stiffness before grasp
+                completion.
+              </h3>
+              <p class="publication_authors">
+                <span class="underline">Anway Pimpalkar</span>,
+                <span>Ariel Slepyan</span>, <span>Nitish V. Thakor</span>
+              </p>
+              <p class="publication_journal">
+                <em>IEEE Sensors Letters</em>, 2025<span
+                  class="publication_meta_separator"
+                >
+                  &#8729; </span
+                ><a
+                  class="publication_meta_link link harvard"
+                  href="https://ieeexplore.ieee.org/abstract/document/11060835"
+                  target="_blank"
+                  rel="noopener"
+                  >Paper<i class="iconoir-arrow-up-right"></i
+                ></a>
+              </p>
+              <div class="publication_toggle_row">
+                <button
+                  type="button"
+                  class="publication_toggle_btn"
+                  aria-expanded="false"
+                  title="Show more details"
+                >
+                  <span class="publication_toggle_text">Summary</span
+                  ><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="publication_tags">
+                  <span
+                    class="publication_tag publication_tag-theme publication_tag-theme-robots-and-structures"
+                    >robots and structures</span
+                  >
+                </div>
+              </div>
+              <div class="publication_description" style="max-height: 0px">
+                <p>
+                  Have you ever noticed that when we grasp objects, one finger
+                  almost always makes contact before the others? Perhaps not,
+                  because this millisecond-scale gap is negligible to human
+                  perception. However, prosthetics and robotics can certainly
+                  take advantage of it. We used vibrations from this initial
+                  contact window to estimate object stiffness, enabling
+                  potential grip modulation by the other fingers.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="publication"
+            data-index="4"
+            data-section="In Conferences"
+            data-year="2025"
+            data-themes="personalization"
+          >
+            <div class="publication_media">
+              <video
+                src="/assets/images/publications/CrossModalMatching.mp4"
+                autoplay
+                muted
+                loop
+                preload="metadata"
+                playsinline
+                aria-label="Video demonstrating the process of cross-modal matching"
+              ></video>
+            </div>
+            <div class="publication_details">
+              <h3 class="publication_title">
+                Optimizing cross-modal matching for multimodal motor
+                rehabilitation.
+              </h3>
+              <p class="publication_authors">
+                <span class="underline">Anway Pimpalkar</span>,
+                <span>A. Michael West Jr.</span>, <span>Jing Xu</span>,
+                <span>Jeremy D. Brown</span>
+              </p>
+              <p class="publication_journal">
+                <em
+                  >International Conference on Rehabilitation Robotics
+                  (ICORR)</em
+                >, 2025<span class="publication_meta_separator"> &#8729; </span
+                ><a
+                  class="publication_meta_link link harvard"
+                  href="https://ieeexplore.ieee.org/document/11063112"
+                  target="_blank"
+                  rel="noopener"
+                  >Paper<i class="iconoir-arrow-up-right"></i
+                ></a>
+              </p>
+              <div class="publication_awards">
+                <span class="publication_award_badge"
+                  >Best Student Paper Finalist</span
+                >
+              </div>
+              <div class="publication_toggle_row">
+                <button
+                  type="button"
+                  class="publication_toggle_btn"
+                  aria-expanded="false"
+                  title="Show more details"
+                >
+                  <span class="publication_toggle_text">Summary</span
+                  ><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="publication_tags">
+                  <span
+                    class="publication_tag publication_tag-theme publication_tag-theme-personalization"
+                    >personalization</span
+                  >
+                </div>
+              </div>
+              <div class="publication_description" style="max-height: 0px">
+                <p>
+                  After a stroke or injury, many people struggle not just with
+                  movement, but also with sensing and controlling their hands.
+                  Rehab tools often mix visual, touch, and sound cues to help
+                  retrain the brain – but these cues need to be carefully
+                  balanced so one sensation doesn't overpower the others. That's
+                  where <em>cross-modal matching</em> comes in: a way to
+                  "calibrate" perception across senses. This project calibrates
+                  visual and haptic feedback stimuli through cross-modal
+                  matching to establish perceptual equity across the feedback
+                  channels. By aligning subjective intensities, we isolate true
+                  performance differences from perceptual confounds. Using
+                  statistical modeling and Monte Carlo optimization, we develop
+                  a streamlined calibration protocol that cuts session time by
+                  over 5×, enabling practical clinical use.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="publications" data-year="2024">
+          <h2 class="section_header">2024</h2>
+          <div
+            class="publication"
+            data-index="5"
+            data-section="In Conferences"
+            data-year="2024"
+            data-themes="robots-and-structures;performance"
+          >
+            <div class="publication_media">
+              <img
+                src="/assets/images/publications/HANDDevice.jpg"
+                alt="Stroke rehabilitation robot, called the HAND"
+                loading="lazy"
+              />
+            </div>
+            <div class="publication_details">
+              <h3 class="publication_title">
+                Visual-haptic feedback enhances finger individuation in a
+                virtual precision grip neurotraining task.
+              </h3>
+              <p class="publication_authors">
+                <span class="underline">Anway Pimpalkar</span>,
+                <span>Divya Rai</span>, <span>Uli Bartels</span>,
+                <span>Jing Xu</span>, <span>Jeremy D. Brown</span>
+              </p>
+              <p class="publication_journal">
+                <em>Biomedical Engineering Society Annual Meeting (BMES)</em>,
+                2024
+              </p>
+              <div class="publication_toggle_row">
+                <button
+                  type="button"
+                  class="publication_toggle_btn"
+                  aria-expanded="false"
+                  title="Show more details"
+                >
+                  <span class="publication_toggle_text">Summary</span
+                  ><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+                <div class="publication_tags">
+                  <span
+                    class="publication_tag publication_tag-theme publication_tag-theme-robots-and-structures"
+                    >robots and structures</span
+                  ><span
+                    class="publication_tag publication_tag-theme publication_tag-theme-performance"
+                    >performance</span
+                  >
+                </div>
+              </div>
+              <div class="publication_description" style="max-height: 0px">
+                <p>
+                  We are designing an experiment to explore how different forms
+                  of feedback — visual, haptic, and combined — affect motor
+                  performance in a precision grip task. Participants used
+                  isometric force to “pinch” virtual objects while receiving
+                  real-time feedback through either vision, vibration, or both.
+                  The study showed that while visual feedback alone often led to
+                  high success rates, combining it haptic feedback offered
+                  perceptual and learning benefits in specific contexts. These
+                  findings underscore the importance of tailoring multimodal
+                  feedback to user needs and task demands, especially in the
+                  design of next-generation rehabilitation tools for stroke
+                  recovery and sensorimotor training.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="publication"
+            data-index="6"
+            data-section="In Conferences"
+            data-year="2024"
+            data-themes="robots-and-structures"
+          >
+            <div class="publication_media">
+              <img
+                src="/assets/images/publications/Pneumatactors.png"
+                alt="Pneumatactor arrays for high frequency vibrotactile feedback."
+                loading="lazy"
+              />
+            </div>
+            <div class="publication_details">
+              <h3 class="publication_title">
+                Pneumatactors: Soft interface for co-located multimodal tactile
+                stimuli.
+              </h3>
+              <p class="publication_authors">
+                <span class="underline">Anway Pimpalkar</span>,
+                <span>Jeremy D. Brown</span>
+              </p>
+              <p class="publication_journal">
+                <em>IEEE Haptics Symposium</em>, 2024
+              </p>
+              <div class="publication_toggle_row">
+                <div class="publication_tags">
+                  <span
+                    class="publication_tag publication_tag-theme publication_tag-theme-robots-and-structures"
+                    >robots and structures</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="publications" data-year="2023">
+          <h2 class="section_header">2023</h2>
+          <div
+            class="publication"
+            data-index="7"
+            data-section="In Conferences"
+            data-year="2023"
+            data-themes=""
+          >
+            <div class="publication_media">
+              <img
+                src="/assets/images/publications/SkullStripping.png"
+                alt="Performance evaluation of vanilla, residual, and dense 2D U-Net architectures for skull stripping of augmented 3D T1-weighted MRI head scans."
+                loading="lazy"
+              />
+            </div>
+            <div class="publication_details">
+              <h3 class="publication_title">
+                Performance evaluation of vanilla, residual, and dense 2D U-Net
+                architectures for skull stripping of augmented 3D T1-weighted
+                MRI head scans.
+              </h3>
+              <p class="publication_authors">
+                <span class="underline">Anway Pimpalkar</span>,
+                <span>Rashmika Patole</span>, <span>Ketaki Kamble</span>,
+                <span>Mahesh H. Shindikar</span>
+              </p>
+              <p class="publication_journal">
+                <em
+                  >International Conference on Biomedical Engineering Science
+                  &amp; Technology</em
+                >, 2023<span class="publication_meta_separator"> &#8729; </span
+                ><a
+                  class="publication_meta_link link harvard"
+                  href="https://link.springer.com/chapter/10.1007/978-3-031-54547-4_11"
+                  target="_blank"
+                  rel="noopener"
+                  >Paper<i class="iconoir-arrow-up-right"></i
+                ></a>
+              </p>
+              <div class="publication_awards">
+                <span class="publication_award_badge">Best Paper Award</span>
+              </div>
+              <div class="publication_toggle_row">
+                <button
+                  type="button"
+                  class="publication_toggle_btn"
+                  aria-expanded="false"
+                  title="Show more details"
+                >
+                  <span class="publication_toggle_text">Summary</span
+                  ><i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div class="publication_description" style="max-height: 0px">
+                <p>
+                  In neuroimaging, skull stripping is vital for removing
+                  non-brain tissue from scans, improving accuracy in analysis,
+                  segmentation, and 3D modeling. While traditional methods are
+                  dependable, they struggle large, multi-scanner datasets. Deep
+                  learning, powered by U-Net architectures, provides a faster,
+                  more efficient solution, robust against multi-scanner
+                  variability.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- END GENERATED CONTENT -->
+      </div>
       <div data-footer></div>
     </main>
-    <script src="/js/venn.js" defer></script>
     <script src="/js/typing.js" defer></script>
+    <script src="/js/publications.js" defer></script>
     <script src="/js/footer.js" defer></script>
     <script src="/js/last-updated.js" defer></script>
   </body>
