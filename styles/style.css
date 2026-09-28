@@ -198,6 +198,10 @@ h2 {
   color: var(--dark-grey);
   font-size: var(--fs-body);
   font-weight: var(--fw-medium);
+  /* The icon buttons are 10px taller than their glyphs, so the gap below the
+     CV link reads as 10px larger than the flex gap. Match it above. Holds on
+     mobile too: the buttons shrink to 40px around a 20px glyph. */
+  margin-top: 10px;
 }
 
 .spacer_sm {
@@ -586,10 +590,6 @@ h2 {
     max-width: 12em;
   }
 
-  .address {
-    text-align: center;
-  }
-
   .social_links {
     align-items: center;
   }
@@ -682,23 +682,12 @@ h2 {
   user-select: none;
 }
 
-.address {
-  display: block;
-  color: var(--dark-grey);
-  font-size: var(--fs-body);
-  font-weight: var(--fw-regular);
-}
-
 .social_links {
   display: flex;
   flex-direction: row;
   gap: 0.1em;
   justify-content: center;
   width: 100%;
-}
-
-.footer .social_links {
-  margin-bottom: 1em;
 }
 
 .contact_link {
@@ -714,6 +703,60 @@ h2 {
 
 .contact_link i {
   font-size: 1.5rem;
+}
+
+/* the @ icon is a button, not a link, so reset the UA button styling */
+button.contact_link {
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* ---------- email popover ---------- */
+
+.email_pop_wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.email_pop {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6em;
+  padding: 0.5em 0.75em;
+  border: 1px solid var(--light-grey);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.email_pop[hidden] {
+  display: none;
+}
+
+.email_pop_address {
+  color: var(--dark-grey);
+}
+
+.email_pop_copy {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  color: var(--medium-grey);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .caption {
@@ -743,6 +786,15 @@ h2 {
     font-size: clamp(9.5px, 3vw, 13px);
     padding: 0.3em 0.55em;
     white-space: nowrap;
+  }
+
+  /* the @ is the leftmost icon, so a centred popover overflows the screen
+     edge on a phone; align it to the button's left edge and shrink it enough
+     to clear the right edge on a 320px screen */
+  .email_pop {
+    left: 0;
+    transform: none;
+    font-size: 12px;
   }
 
   .content {

@@ -152,12 +152,6 @@
             loading="lazy"
             draggable="false"
           />
-          <span class="address"
-            ><span>apimpalkar</span><span style="display: none">nospam</span
-            ><span>&#64;</span><span style="display: none">remove</span
-            ><span>seas</span><span>.</span><span>harvard</span><span>.</span
-            ><span>edu</span></span
-          >
           <a
             class="harvard link cv"
             href="/documents/AnwayPimpalkar_CV.pdf"
@@ -165,6 +159,51 @@
           >
             Curriculum vitae
           </a>
+          <div class="social_links">
+            <span class="email_pop_wrap">
+              <button
+                type="button"
+                class="contact_link"
+                id="email_toggle"
+                aria-expanded="false"
+                aria-controls="email_pop"
+                aria-label="Show email address"
+              >
+                <i class="fa-solid fa-at" aria-hidden="true"></i>
+              </button>
+              <span class="email_pop" id="email_pop" role="dialog" aria-label="Email address" hidden>
+                <span class="email_pop_address"></span>
+                <button type="button" class="email_pop_copy">copy</button>
+              </span>
+            </span>
+            <a
+              class="contact_link"
+              href="https://www.linkedin.com/in/anwaypimpalkar/"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+            >
+              <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+            </a>
+            <a
+              class="contact_link"
+              href="https://scholar.google.com/citations?user=9FS5qs0AAAAJ&hl=en"
+              target="_blank"
+              rel="noopener"
+              aria-label="Google Scholar"
+            >
+              <i class="fa-brands fa-google-scholar" aria-hidden="true"></i>
+            </a>
+            <a
+              class="contact_link"
+              href="https://github.com/anwaypimpalkar"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub"
+            >
+              <i class="fa-brands fa-github" aria-hidden="true"></i>
+            </a>
+          </div>
         </aside>
       </div>
       <div class="spacer_sm"></div>
@@ -795,6 +834,7 @@
       <div data-footer></div>
     </main>
     <script src="/js/typing.js" defer></script>
+    <script src="/js/email.js" defer></script>
     <script src="/js/publications.js" defer></script>
     <script src="/js/footer.js" defer></script>
     <script src="/js/last-updated.js" defer></script>
