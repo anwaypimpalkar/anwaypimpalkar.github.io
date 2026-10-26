@@ -183,14 +183,45 @@ h2 {
 
 /* a brand icon sitting inline in running text, e.g. the Google Scholar link */
 .icon_link {
-  text-decoration: none;
   /* inherit rather than naming a colour, so it always matches its paragraph */
   color: inherit;
+  text-decoration: none;
 }
 
 .icon_link i {
+  /* inline-block keeps the icon outside the underline in the fallback state */
+  display: inline-block;
   font-size: 1.05em;
   vertical-align: -0.05em;
+}
+
+/* The label is the link's accessible name, hidden while the icon renders. */
+.icon_link_label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(50%);
+}
+
+/* js/icon-fallback.js adds this when the icon font did not render. */
+.icon_link--no-icon {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+.icon_link--no-icon .icon_link_label {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip-path: none;
 }
 
 .cv {
@@ -870,6 +901,12 @@ button.contact_link {
   font-size: 2.86cqw;
 }
 
+.thesis_line {
+  /* the wrapper exists for the stacked layout; on desktop its children take
+     part in .thesis_formula's flex row directly, as if it weren't here */
+  display: contents;
+}
+
 .thesis_term {
   display: flex;
   flex-direction: column;
@@ -888,6 +925,70 @@ button.contact_link {
      em units keep it in proportion with the cqw-driven font size. */
   padding-bottom: 0.18em;
   border-bottom: 0.1em solid color-mix(in srgb, currentColor 40%, transparent);
+  /* anchors the sweeping guideline below */
+  position: relative;
+}
+
+/* A guideline that lights up along the statement, travelling left to right
+   across each phrase in turn. The overlay is the same colour and the same
+   thickness as the rule beneath it; what moves is a soft highlight in a
+   gradient, so only opacity varies along the line -- nothing grows or shifts.
+
+   The gradient is three times the width of the line with the bright band in
+   its middle third, so background-position walks the band across: 95% sits it
+   just off the left edge, 5% just off the right. Those are the first and last
+   positions where it is actually out of sight -- running the full 100% -> 0%
+   would spend about a fifth of the sweep animating it off-screen, which reads
+   as dead time between phrases. The sweep fills 33% of the cycle and the
+   delays below are a third of the cycle apart, so each phrase lights up as
+   the one before it finishes. */
+@keyframes thesis_pulse {
+  0% {
+    background-position: 95% 0;
+  }
+  33% {
+    background-position: 5% 0;
+  }
+  100% {
+    background-position: 5% 0;
+  }
+}
+
+.thesis_phrase::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  /* overlays the border-bottom exactly: same offset, same thickness */
+  bottom: -0.1em;
+  height: 0.1em;
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 40%,
+    currentColor 50%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 300% 100%;
+  background-repeat: no-repeat;
+  background-position: 5% 0;
+  animation: thesis_pulse 4.5s ease-in-out infinite;
+}
+
+/* one third of the cycle apart, so the three light up in sequence */
+.thesis_term-what .thesis_phrase::after {
+  animation-delay: 1.5s;
+}
+
+.thesis_term-why .thesis_phrase::after {
+  animation-delay: 3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thesis_phrase::after {
+    animation: none;
+  }
 }
 
 .thesis_plus {
@@ -911,31 +1012,30 @@ button.contact_link {
 }
 
 @media (max-width: 720px) {
-  /* Laid out as inline text rather than a flex column, so each joining word
-     stays on the end of the phrase before it:
-       personalization of
-       robots and structures to
-       augment human performance
-     The fill-the-column sizing no longer applies at this width. */
+  /* Stacked: each line is its own row, all flush left. The fill-the-column
+     sizing no longer applies at this width. */
   .thesis_formula {
-    display: block;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35em;
     font-size: 1.3rem;
-    line-height: 1.9;
+    line-height: 1.5;
   }
 
-  .thesis_term,
-  .thesis_plus {
-    display: inline;
-  }
-
-  /* forced break after "of" and "to" */
-  .thesis_plus::after {
-    content: "\A";
-    white-space: pre;
+  .thesis_line {
+    display: flex;
+    align-items: baseline;
+    gap: 0.3em;
+    width: fit-content;
+    max-width: 100%;
   }
 
   .thesis_phrase {
     white-space: normal;
+  }
+
+  .research_heading {
+    text-align: left;
   }
 }
