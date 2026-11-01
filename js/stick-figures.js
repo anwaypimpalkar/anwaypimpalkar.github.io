@@ -1761,8 +1761,12 @@ const setupTopButton = () => {
     button.classList.toggle("is-shown", shown());
     const r = button.getBoundingClientRect();
     const s = figureUnit();
+    // Everything is placed relative to the layer it is drawn in, not the
+    // window: a phone's overscroll bounce can shift the fixed layer and the
+    // fixed button by different amounts, and would leave the kid floating.
+    const origin = fig.g.ownerSVGElement.getBoundingClientRect();
     // standing on top of the button
-    const home = { x: r.left + r.width / 2, y: r.top };
+    const home = { x: r.left + r.width / 2 - origin.left, y: r.top - origin.top };
     const standOn = (pose, x, y, lift = 0) => ({ ...pose, hx: x, hy: y - (legDrop(pose.legs || STAND.legs, body) + lift) * s });
 
     if (tripAt === null) {
@@ -1795,7 +1799,10 @@ const setupTopButton = () => {
 
     const name = document.querySelector(".name_main");
     const nr = name.getBoundingClientRect();
-    const land = { x: letterX(name, "l") ?? nr.left + nr.width * 0.8, y: nr.top + 0.22 * fontSize(name) };
+    const land = {
+      x: (letterX(name, "l") ?? nr.left + nr.width * 0.8) - origin.left,
+      y: nr.top + 0.22 * fontSize(name) - origin.top,
+    };
     const standH = legDrop(STAND.legs, body) * s;
     let pose = null;
     let flash = 0;
@@ -1803,7 +1810,7 @@ const setupTopButton = () => {
     if (up < RISE) {
       // straight up and away, faster and faster
       const v = up / RISE;
-      pose = { ...ARROW, snap: 0, hx: launch.x, hy: lerp(launch.y, -60, v * v) - standH };
+      pose = { ...ARROW, snap: 0, hx: launch.x, hy: lerp(launch.y, -60 - origin.top, v * v) - standH };
       flash = 1 - clamp01(v / 0.4);
     } else if (up < SCROLL + 0.1) {
       fade = 0;
@@ -1814,7 +1821,7 @@ const setupTopButton = () => {
         ...mix({ ...POSE, ...ARROW }, { ...POSE, ...TUCK }, Math.sin(Math.PI * v)),
         rot: 720 * ease(v),
         hx: land.x,
-        hy: lerp(-80, land.y, v * v) - standH,
+        hy: lerp(-80 - origin.top, land.y, v * v) - standH,
       };
     } else {
       const v = up - SCROLL - 0.1 - FALL;
