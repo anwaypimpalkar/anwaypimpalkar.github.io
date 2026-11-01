@@ -596,8 +596,6 @@ h2 {
 
   .about {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
     margin: 3em 0 0;
     gap: 2.5em;
   }
@@ -619,10 +617,6 @@ h2 {
 
   .about_photo {
     max-width: 12em;
-  }
-
-  .social_links {
-    align-items: center;
   }
 
   .publication {
@@ -878,7 +872,7 @@ button.contact_link {
   font-weight: var(--fw-bold);
   color: var(--dark-grey);
   text-align: center;
-  margin: 0 0 0.9em;
+  margin: 0 0 1.4em;
 }
 
 /* body copy in this section, e.g. the paragraph under the thesis line.
@@ -1012,6 +1006,12 @@ button.contact_link {
 }
 
 @media (max-width: 720px) {
+  /* The extra room above the statement is headroom for the parade, which
+     doesn't run at this width (js/stick-figures.js), so close it back up. */
+  .research_heading {
+    margin-bottom: 0.9em;
+  }
+
   /* Stacked: each line is its own row, all flush left. The fill-the-column
      sizing no longer applies at this width. */
   .thesis_formula {
@@ -1034,7 +1034,218 @@ button.contact_link {
   .thesis_phrase {
     white-space: normal;
   }
+}
 
+/* ---------- stick figures (js/stick-figures.js) ---------- */
+
+/* Each figure lives in an SVG laid over its host, in the host's own pixel
+   coordinates, so the script can stand it on text it measures. The layer
+   ignores the pointer; only the circle around the figure takes clicks. */
+.thesis_formula,
+.footer {
+  position: relative;
+}
+
+.stick_layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.stick_layer-runner {
+  color: var(--dark-grey);
+}
+
+.stick_layer-sitter {
+  color: var(--medium-grey);
+}
+
+.stick_figure {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stick_far {
+  opacity: 0.5;
+}
+
+/* The three phrases' colours tell the story: the measuring scan takes the
+   colour of "personalization", the wearables it fits that of "robots and
+   structures", and what they then do -- trails, flames, sparks, juggled dots
+   -- that of "augment human performance". */
+.stick_scan {
+  stroke: var(--harvard);
+}
+
+.stick_scan_fill {
+  fill: var(--harvard);
+  stroke: none;
+}
+
+.stick_gear {
+  stroke: var(--hopkins);
+}
+
+.stick_gear_fill {
+  fill: var(--hopkins);
+  stroke: none;
+}
+
+.stick_sleeve {
+  stroke: var(--hopkins);
+  stroke-opacity: 0.45;
+}
+
+/* On reaching "augment human performance" a figure powers up, and its
+   wearable shifts into that phrase's colour. */
+.stick_gear,
+.stick_gear_fill,
+.stick_sleeve {
+  transition:
+    stroke 0.5s,
+    fill 0.5s;
+}
+
+.stick_figure-charged .stick_gear,
+.stick_figure-charged .stick_sleeve {
+  stroke: var(--coep);
+}
+
+.stick_figure-charged .stick_gear_fill {
+  fill: var(--coep);
+}
+
+.stick_fx {
+  stroke: var(--coep);
+}
+
+.stick_fx_fill {
+  fill: var(--coep);
+  stroke: none;
+}
+
+.stick_dash {
+  stroke-dasharray: 2 3;
+}
+
+/* butt caps: round ones overlap at every joint and bead the fading trail */
+.stick_trail {
+  stroke: var(--coep);
+  stroke-linecap: butt;
+}
+
+.stick_z {
+  fill: currentColor;
+  stroke: none;
+  font-weight: var(--fw-semibold);
+}
+
+.stick_hit {
+  fill: transparent;
+  stroke: none;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+/* figures around the page: one layer over the whole document, and one fixed
+   to the screen for the back-to-top kid */
+.stick_layer-page {
+  color: var(--dark-grey);
+}
+
+.stick_layer-screen {
+  position: fixed;
+  z-index: 11;
+  color: var(--dark-grey);
+}
+
+.stick_award {
+  stroke: var(--award);
+}
+
+.stick_podium {
+  fill: var(--award-background);
+  stroke: var(--award);
+  stroke-width: 1px;
+}
+
+.stick_stairs {
+  stroke: var(--light-grey);
+  stroke-linecap: butt;
+  stroke-linejoin: miter;
+}
+
+/* the step level with each year's heading */
+.stick_landing {
+  stroke: var(--medium-grey);
+}
+
+/* back to top: a round chevron button that turns up in the corner once the
+   page has been scrolled */
+.to_top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--light-grey);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--medium-grey);
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition:
+    opacity 0.25s,
+    transform 0.25s,
+    visibility 0.25s,
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.to_top.is-shown {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.to_top:hover {
+  color: var(--dark-grey);
+  border-color: var(--medium-grey);
+}
+
+.to_top:focus-visible {
+  outline: 2px solid var(--medium-grey);
+  outline-offset: 2px;
+}
+
+/* the word that stands in if the icon font fails, sized to fit the circle */
+.to_top.icon_link--no-icon {
+  font-size: 11px;
+  text-decoration: none;
+}
+
+/* ---------- stacked layout: one left edge ---------- */
+
+/* Once the photo column drops above the text, the text hangs off the
+   content's left edge. The paragraphs and year headings are already flush
+   left, so the section heading joins them. The name and typing line above,
+   and the footer below, stay centred like the photo card, framing the page.
+   Kept last in the file so it overrides the base rules above. */
+@media (max-width: 900px) {
   .research_heading {
     text-align: left;
   }

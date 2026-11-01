@@ -2,13 +2,10 @@
 // only. If the icon font never renders -- the Font Awesome kit is blocked,
 // offline, or still failing -- the label is revealed so the link still reads.
 document.addEventListener("DOMContentLoaded", () => {
-  const links = document.querySelectorAll(".icon_link");
-  if (!links.length) {
-    return;
-  }
-
+  // looked up on every check, so icon links added by other scripts after
+  // load (the back-to-top button) are covered too
   const sync = () => {
-    links.forEach((link) => {
+    document.querySelectorAll(".icon_link").forEach((link) => {
       const icon = link.querySelector("i");
       if (!icon) {
         return;
