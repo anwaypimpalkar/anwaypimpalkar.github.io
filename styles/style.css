@@ -1168,6 +1168,17 @@ button.contact_link {
   stroke: var(--award);
 }
 
+/* the Kilroy peeking over "human": a light grey, well back from the text */
+.stick_kilroy {
+  color: color-mix(in srgb, var(--medium-grey) 30%, var(--light-grey));
+}
+
+/* its eyes, filled dots */
+.stick_eye {
+  fill: currentColor;
+  stroke: none;
+}
+
 .stick_podium {
   fill: var(--award-background);
   stroke: var(--award);

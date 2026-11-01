@@ -5,9 +5,10 @@
 // clapping; after the last lands they bow together and run off the end of
 // the line, leaving it as they found it -- and after a pause, the parade
 // sets out again. A ninth figure sits on the footer and naps when the page
-// is left alone. Smaller ones elsewhere: award badges get a podium, a
-// walker goes down a staircase of years beside the publications, and the
-// kid rides the back-to-top button.
+// is left alone. Smaller ones elsewhere: a Kilroy peeks over "human" in
+// the introduction and waves, award badges get a podium, a walker goes down a
+// staircase of years beside the publications, and the kid rides the
+// back-to-top button.
 //
 // Everything is inline SVG drawn in currentColor. A pose is plain numbers,
 // and each figure's route is a list of timed segments, so every frame is a
@@ -1483,6 +1484,108 @@ const setupStairs = () => {
   kick();
 };
 
+/* "I build human-centered devices": a Kilroy peeking over the word "human"
+   as if it were a wall -- the top of a head with two eyes. Every few
+   seconds a hand comes up from behind the word and waves, and straight away
+   whenever the word is pointed at. Everything
+   below the letters' top edge is clipped away, so it sits behind the word;
+   it fits in the space the line above already leaves and moves no text. */
+const setupWaver = () => {
+  const word = document.querySelector(".waver_spot");
+  if (!word) return;
+  const svg = page();
+  const EVERY = 5;
+  const WAVE = 1.6;
+  let hoverAt = -Infinity;
+  let visible = false;
+
+  // the wall: nothing below the top of the letters is drawn
+  const defs = make(svg, "defs");
+  const clip = make(defs, "clipPath");
+  clip.id = "stick-kilroy-wall";
+  const above = make(clip, "rect");
+
+  const g = make(svg, "g", "stick_figure stick_kilroy");
+  g.setAttribute("clip-path", "url(#stick-kilroy-wall)");
+  const head = make(g, "circle");
+  const eyes = [make(g, "circle", "stick_eye"), make(g, "circle", "stick_eye")];
+  const arm = make(g, "line");
+  const fingers = [make(g, "line"), make(g, "line"), make(g, "line")];
+
+  const step = (now) => {
+    const t = now / 1000;
+    const r = onPage(word);
+    const size = fontSize(word);
+    const R = 0.4 * size;
+    // the top of the short letters ("uman"), so the hands rest on them and
+    // the "h" stands up beside them like part of the wall
+    const wall = r.top + 0.42 * size;
+    const cx = (r.left + r.right) / 2;
+
+    above.setAttribute("x", r.left - 4 * R);
+    above.setAttribute("y", wall - 6 * R);
+    above.setAttribute("width", r.right - r.left + 8 * R);
+    above.setAttribute("height", 6 * R);
+
+    // how far the waving hand is up: lifted, waved, back on the wall
+    const since = t - hoverAt < WAVE ? t - hoverAt : t % EVERY;
+    const raise = reduceMotion.matches
+      ? 0
+      : ease(clamp01(since / 0.25)) * ease(clamp01((WAVE - since) / 0.25));
+    const flap = rad(22 * Math.sin(t * 12) * raise);
+
+    // the top of the head over the wall, eyes glancing towards the wave
+    const hy = wall - 0.5 * R;
+    head.setAttribute("cx", cx);
+    head.setAttribute("cy", hy);
+    head.setAttribute("r", R);
+    eyes.forEach((eye, i) => {
+      eye.setAttribute("cx", cx + (i ? 0.38 : -0.38) * R + 0.12 * R * raise);
+      eye.setAttribute("cy", hy - 0.12 * R);
+      eye.setAttribute("r", 0.13 * R);
+    });
+
+    // a hand comes up from behind the word, off to the right, to wave
+    const handX = cx + 2.1 * R;
+    const reach = 2.4 * R;
+    const lifted = {
+      x: handX + 0.4 * R + Math.sin(flap) * reach,
+      y: wall + 0.6 * R - Math.cos(flap) * reach,
+    };
+    const hand = lerpPt({ x: handX, y: wall + 0.6 * R }, lifted, raise);
+    arm.setAttribute("x1", handX);
+    arm.setAttribute("y1", wall + 1.2 * R);
+    arm.setAttribute("x2", hand.x);
+    arm.setAttribute("y2", hand.y);
+    // an open hand: three fingers fanned out from the end of the arm
+    fingers.forEach((finger, i) => {
+      const a = flap + rad((i - 1) * 32);
+      finger.setAttribute("x1", hand.x);
+      finger.setAttribute("y1", hand.y);
+      finger.setAttribute("x2", hand.x + Math.sin(a) * 0.6 * R);
+      finger.setAttribute("y2", hand.y - Math.cos(a) * 0.6 * R);
+    });
+    [arm, ...fingers].forEach((el) => {
+      el.style.opacity = clamp01(raise * 3);
+    });
+
+    g.setAttribute("stroke-width", Math.max(1.2, 0.2 * R));
+    return !reduceMotion.matches && (visible || t - hoverAt < WAVE);
+  };
+
+  const kick = animator(step);
+  new IntersectionObserver((entries) => {
+    visible = entries.some((e) => e.isIntersecting);
+    if (visible) kick();
+  }).observe(word);
+  word.addEventListener("pointerenter", () => {
+    hoverAt = performance.now() / 1000;
+    kick();
+  });
+  new ResizeObserver(kick).observe(word.parentElement);
+  kick();
+};
+
 /* Back to top: a round chevron button turns up in the bottom right once the
    page has been scrolled, with the kid from the parade standing on it. Press it
    and the kid snaps its domes and launches off the top of the screen with
@@ -1764,6 +1867,7 @@ const initStickFigures = () => {
   setupPodium();
   setupStairs();
   setupTopButton();
+  setupWaver();
   const footer = document.querySelector(".footer");
   if (footer) setupSitter(footer);
 };
