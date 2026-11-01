@@ -661,6 +661,23 @@ h2 {
   color: var(--medium-grey);
 }
 
+/* The slash between "homemade" and the date, drawn rather than set as an
+   icon so the figure lying back on it knows exactly where it runs; about
+   as long as he is. */
+.footer_slash {
+  display: inline-block;
+  width: 1.3em;
+  height: 0.8em;
+  vertical-align: -0.1em;
+  margin: 0 0.3em;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 /* Layout container: keep content centered with responsive width */
 .content {
   width: min(960px, 90vw);
@@ -1139,6 +1156,31 @@ button.contact_link {
   stroke-linecap: butt;
 }
 
+.stick_sun {
+  stroke: var(--award);
+}
+
+.stick_cover {
+  fill: var(--harvard);
+  stroke: none;
+}
+
+.stick_page_edges {
+  stroke: color-mix(in srgb, var(--harvard) 25%, white);
+  stroke-linecap: butt;
+}
+
+
+.stick_crater {
+  fill: var(--light-grey);
+  stroke: none;
+}
+
+.stick_moon {
+  fill: currentColor;
+  stroke: none;
+}
+
 .stick_z {
   fill: currentColor;
   stroke: none;
@@ -1194,6 +1236,16 @@ button.contact_link {
 /* the step level with each year's heading */
 .stick_landing {
   stroke: var(--medium-grey);
+}
+
+/* the pool at the foot of the stairs */
+.stick_water {
+  stroke: var(--light-grey);
+}
+
+.stick_shark {
+  fill: var(--medium-grey);
+  stroke: none;
 }
 
 /* back to top: a round chevron button that turns up in the corner once the

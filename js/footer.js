@@ -3,7 +3,9 @@ const injectFooter = async () => {
   if (!container) return;
 
   try {
-    const response = await fetch('/footer.html');
+    // versioned like the stylesheet and scripts, so a change reaches
+    // returning visitors with the code that expects it
+    const response = await fetch('/footer.html?v=2');
     if (!response.ok) {
       throw new Error(`Failed to load footer.html: ${response.status}`);
     }

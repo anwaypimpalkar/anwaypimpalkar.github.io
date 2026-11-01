@@ -1,14 +1,15 @@
 // Stick figures. A parade of eight crosses the research statement once it
 // scrolls into view: each walks "personalization of", is measured and fitted
 // with a different wearable at "robots and structures", and shows off what it
-// does through "augment human performance". Each then stands and watches the next one,
-// clapping; after the last lands they bow together and run off the end of
-// the line, leaving it as they found it -- and after a pause, the parade
-// sets out again. A ninth figure sits on the footer and naps when the page
-// is left alone. Smaller ones elsewhere: a Kilroy peeks over "human" in
-// the introduction and waves, award badges get a podium, a walker goes down a
-// staircase of years beside the publications, and the kid rides the
-// back-to-top button.
+// does through "augment human performance". Each then stands and watches
+// the next one, clapping; once the last has landed they all turn round and
+// run off the end of the line, leaving it as they found it -- and after a
+// pause, the parade sets out again. A ninth figure lies back on the
+// footer's slash, reading or asleep by the time of day in Cambridge.
+// Smaller ones elsewhere: a Kilroy peeks over "human" in the introduction
+// and waves, award badges get a podium, a walker goes down a staircase of
+// years beside the publications (to a pool of sharks), and the kid rides
+// the back-to-top button.
 //
 // Everything is inline SVG drawn in currentColor. A pose is plain numbers,
 // and each figure's route is a list of timed segments, so every frame is a
@@ -17,7 +18,7 @@
 const SVG_NS = "http://www.w3.org/2000/svg";
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 // Phone widths, where the research statement stacks into lines: the figures
-// around the research section sit those out, leaving the footer napper and
+// around the research section sit those out, leaving the footer sunbather and
 // the back-to-top kid.
 const phone = window.matchMedia("(max-width: 720px)");
 
@@ -25,6 +26,11 @@ const phone = window.matchMedia("(max-width: 720px)");
 // from straight down, positive towards the way the figure faces.
 const BONE = { thigh: 5.5, shin: 5.5, torso: 10.5, arm: 4.5, head: 3.5 };
 const BODY = { thigh: 1, shin: 1, torso: 1, arm: 1, head: 1, scale: 1 };
+// The figures around the page -- the stair walker, the back-to-top kid and
+// the footer reader -- share one size, set from the body text: about 0.8px
+// to a unit, so standing they are some 24px tall.
+const figureUnit = () =>
+  0.047 * (parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--fs-body")) || 16);
 
 const rad = (deg) => (deg * Math.PI) / 180;
 const clamp01 = (v) => Math.min(1, Math.max(0, v));
@@ -244,11 +250,14 @@ const TUCK = { lean: 30, nod: 25, legs: [[125, -15], [118, -20]], arms: [[85, 15
 const SALUTE = { lean: -8, nod: -10, legs: [[0, 0], [0, 0]], arms: [[220, 225], [140, 135]] };
 const ARROW = { lean: 0, nod: 0, legs: [[4, 0], [-4, 0]], arms: [[175, 180], [185, 180]] };
 const HANDS_UP = { lean: 0, arms: [[230, 215], [130, 145]] };
+// standing and squatting turned a little towards us, so both arms and both
+// legs show instead of one stick in front of the other
+const OPEN = { legs: [[16, 16], [-14, -14]], arms: [[38, 20], [-34, -16]] };
+const OPEN_CROUCH = { ...CROUCH, legs: [[55, -30], [30, -50]], arms: [[-45, -25], [-15, -5]] };
+const OPEN_SQUAT = { ...DEEP_CROUCH, legs: [[80, -50], [55, -75]], arms: [[-55, -30], [-25, -10]] };
 const BOW = { lean: 65, nod: 10, legs: [[0, 0], [0, 0]], arms: [[-20, -10], [70, 110]] };
 // bent double over the feet, fitting something on
 const STOOP = { lean: 60, nod: 20, legs: [[72, -25], [66, -30]], arms: [[8, 0], [0, -8]] };
-// seated on the line, legs over the end of it
-const DANGLE = { lean: -10, legs: [[80, 14], [86, 6]], arms: [[-24, -24], [-30, -30]] };
 
 const WALK = { thigh: 28, knee: 40, arm: 20, elbow: 12, lean: 3 };
 const JOG = { thigh: 32, knee: 60, arm: 30, elbow: 50, lean: 8 };
@@ -280,8 +289,8 @@ const gait = (style) => (phase, amp) => {
 
 // Each member brings a body, how it moves before and after its wearable,
 // gear() to put the wearable on, routine() for "augment human performance",
-// draw() for its props, and optionally how it stands to watch, bows and
-// drops off the end. Routes are built through a director
+// draw() for its props, and optionally how it stands to watch and drops
+// off the end. Routes are built through a director
 // (see below), which supplies add, stride, flight and wear.
 
 const drawShoes = (fig, j, pose, u) => {
@@ -588,7 +597,6 @@ const racer = {
     d.add(0.45, (v) => ({ hx: lerp(x(0.85), x1, ease(v)), ...CHAIR, lift: 1.5 * Math.sin(Math.PI * v), arms: [[40, 80], [45, 85]] }));
   },
   watch: { ...CHAIR, arms: [[35, 110], [40, 115]] },
-  bow: { ...CHAIR, lean: 40, arms: [[60, 80], [65, 85]] },
   drop: { ...CHAIR, arms: [[150, 170], [160, 175]] },
   draw(fig, j, pose, u) {
     if (!pose.chair) return;
@@ -911,24 +919,31 @@ const DROP = 0.7;
 
 // One member's whole route, ending at its spot x in the line-up. The last
 // segment is the afterparty, sized and filled in once everyone is scheduled.
-const plan = (m, member, spot) => {
+const plan = (m, member, spot, last) => {
   const r = director(m, member);
   const { d } = r;
   d.add(ENTER, () => ({ hx: m.start }));
-  d.stride(m.start, m.shoesAt ?? spot, member.walk.speed, member.walk.gait, member.walk.freq);
+  const walk = (x0, x1) => d.stride(x0, x1, member.walk.speed, member.walk.gait, member.walk.freq);
   if (m.shoesAt !== null) {
-    d.mark("gear");
-    // hands up to be measured: a sweep from head to toe, then the fitting
+    // hands up on the last letter of "personalization" to be measured, a
+    // sweep from head to toe, then on to the fitting
+    walk(m.start, m.scanAt);
+    d.mark("scan");
     d.add(1.0, (v) => ({
-      hx: m.shoesAt,
+      hx: m.scanAt,
       ...(member.scan || HANDS_UP),
       scan: clamp01(v / 0.6),
       scanAlpha: 1 - ease(clamp01((v - 0.8) / 0.2)),
     }), 0.2);
+    d.mark("scanned");
+    walk(m.scanAt, m.shoesAt);
+    d.mark("gear");
     member.gear(d, m.shoesAt);
     d.mark("geared");
     const runEnd = m.tumbleAt ?? spot;
     d.stride(m.shoesAt, runEnd, member.run.speed, member.run.gait, member.run.freq, 0.3, m.tumbleAt === null ? 0.3 : 0.15);
+  } else {
+    walk(m.start, spot);
   }
   if (m.tumbleAt !== null) {
     d.mark("routine");
@@ -939,19 +954,20 @@ const plan = (m, member, spot) => {
     member.routine(d, m.tumbleAt, Math.max(spot, m.tumbleAt + 4 * d.u));
   }
   d.mark("done");
-  // turn round to watch whoever comes next
-  d.add(0.5, () => ({ hx: spot, ...WATCH, ...(member.watch || {}), sx: -1 }), 0.5);
+  // turn round to watch whoever comes next; the last one in has nobody to
+  // watch, and stays facing the way out
+  d.add(0.5, () => ({ hx: spot, ...WATCH, ...(member.watch || {}), sx: last ? 1 : -1 }), 0.5);
   d.mark("watching");
   d.add(1, (v, s) => r.after(s));
   return r;
 };
 
-// Watching: facing back down the line, clapping each landing. Then, all
-// together, a turn and a bow; then one by one, a run off the end of the
-// line, a hop off the edge, and a drop out of sight.
+// Watching: facing back down the line, clapping each landing, the last one
+// included. Then all turn round together, and one by one run off the end
+// of the line, hop off the edge, and drop out of sight.
 const afterparty = (m, member, T, cue) => {
   const u = m.u * (member.body || BODY).scale;
-  const watch = { hx: cue.spot, ...WATCH, ...(member.watch || {}), sx: -1 };
+  const watch = { hx: cue.spot, ...WATCH, ...(member.watch || {}), sx: cue.last ? 1 : -1 };
 
   if (T >= cue.exitAt) {
     const e = T - cue.exitAt;
@@ -982,9 +998,8 @@ const afterparty = (m, member, T, cue) => {
     const env = ease(clamp01((T - clap) / 0.15)) * ease(clamp01((clap + 1.2 - T) / 0.15));
     pose = mix(pose, { ...pose, arms: [[60 + 8 * k, 95], [60 - 8 * k, 85]] }, env);
   }
-  const turn = ease(clamp01((T - cue.bowAt + 0.4) / 0.3));
-  const bow = Math.sin(Math.PI * clamp01((T - cue.bowAt) / 0.9));
-  return { ...mix(pose, { ...pose, ...(member.bow || BOW) }, bow), sx: lerp(-1, 1, turn) };
+  const turn = ease(clamp01((T - cue.turnAt) / 0.3));
+  return { ...pose, sx: cue.last ? 1 : lerp(-1, 1, turn) };
 };
 
 const poseAt = (segs, t) => {
@@ -1020,6 +1035,7 @@ const schedule = (routes) => {
     starts.push(
       Math.max(
         before + 1.4,
+        after("scan", "scanned", 0.3),
         after("gear", "geared", 0.5),
         after("routine", "done", 0.25),
         after("done", "done", 0.6)
@@ -1027,6 +1043,21 @@ const schedule = (routes) => {
     );
   }
   return starts;
+};
+
+// The middle of the last letter `ch` (or just the last letter) in an
+// element's own text, in viewport pixels
+const letterX = (el, ch) => {
+  const text = [...el.childNodes].reverse().find((n) => n.nodeType === Node.TEXT_NODE && n.textContent.trim());
+  if (!text) return null;
+  const str = text.textContent;
+  const i = ch ? str.lastIndexOf(ch) : str.trimEnd().length - 1;
+  if (i < 0) return null;
+  const range = document.createRange();
+  range.setStart(text, i);
+  range.setEnd(text, i + 1);
+  const r = range.getBoundingClientRect();
+  return (r.left + r.right) / 2;
 };
 
 const setupParade = () => {
@@ -1057,6 +1088,11 @@ const setupParade = () => {
       const piece = row.find((p) => p.el.closest(term));
       return piece ? piece.rect.left - origin.left + 2 * u : null;
     };
+    const lastLetter = (term) => {
+      const piece = row.find((p) => p.el.closest(term));
+      const x = piece && letterX(piece.el);
+      return x == null ? null : x - origin.left;
+    };
     const right = row[row.length - 1].rect.right - origin.left;
     const spots = [right - 2 * u];
     for (let i = 1; i < CAST.length; i += 1) {
@@ -1072,6 +1108,7 @@ const setupParade = () => {
       sky: origin.top + window.scrollY + ground,
       edge: right + u,
       start: row[0].rect.left - origin.left + 3 * u,
+      scanAt: lastLetter(".thesis_term-how") ?? startOf(".thesis_term-what"),
       shoesAt: startOf(".thesis_term-what"),
       tumbleAt: startOf(".thesis_term-why"),
       spots,
@@ -1083,17 +1120,18 @@ const setupParade = () => {
 
   const render = (now) => {
     const m = measure();
-    const routes = CAST.map((member, i) => plan(m, member, m.spots[i]));
+    const routes = CAST.map((member, i) => plan(m, member, m.spots[i], i === CAST.length - 1));
     const starts = schedule(routes);
     const elapsed = (now - startedAt) / 1000;
 
-    // the curtain call starts a beat after the last landing
+    // once the applause for the last landing dies down, everyone turns for
+    // the end of the line, the front of the line-up first
     const landed = routes.map((r, i) => starts[i] + r.marks.done);
-    const bowAt = Math.max(...landed) + 1;
+    const turnAt = Math.max(...landed) + 1.3;
     let done = 0;
     routes.forEach((r, i) => {
       const run = Math.max(0.2, (m.edge - m.spots[i]) / (3 * m.size));
-      const cue = { spot: m.spots[i], claps: landed.slice(i + 1), bowAt: bowAt + i * 0.1, exitAt: bowAt + 1.4 + i * 0.35, run };
+      const cue = { spot: m.spots[i], last: i === CAST.length - 1, claps: landed.slice(i + 1), turnAt: turnAt + i * 0.08, exitAt: turnAt + 0.5 + i * 0.35, run };
       const begins = starts[i] + r.marks.watching;
       const ends = cue.exitAt + run + DROP;
       r.segs[r.segs.length - 1].dur = Math.max(0.01, ends - begins);
@@ -1264,13 +1302,13 @@ const setupPodium = () => {
       const wave = Math.sin((e - UP) * 7);
       return {
         ...POSE,
-        ...STAND,
+        ...OPEN,
         shoes: [1, 1],
         lean: -6,
         nod: -8,
         arms: [[CHEER[0][0] + 8 * wave, CHEER[0][1]], [CHEER[1][0] - 8 * wave, CHEER[1][1]]],
         hx: centre,
-        hy: top - legDrop(STAND.legs) * s,
+        hy: top - legDrop(OPEN.legs) * s,
       };
     };
 
@@ -1316,19 +1354,71 @@ const setupPodium = () => {
   });
 };
 
+// The pool at the foot of the stairs: a rippling surface with two shark
+// fins going round in it, one always across from the other, each bigger and
+// bolder on the near side of the circle and smaller and fainter round the
+// back. The fins are clipped to the surface, so nothing shows below it.
+const makePool = (parent, defs) => {
+  const clip = make(defs, "clipPath");
+  clip.id = "stick-pool-surface";
+  const above = make(clip, "polygon");
+  const g = make(parent, "g");
+  g.setAttribute("clip-path", "url(#stick-pool-surface)");
+  const fins = [make(g, "path", "stick_shark"), make(g, "path", "stick_shark")];
+  const water = make(parent, "polyline", "stick_water");
+  water.setAttribute("stroke-width", 1.2);
+
+  return (pool, t) => {
+    const cx = (pool.x0 + pool.x1) / 2;
+    const w = pool.x1 - pool.x0;
+    const surface = [];
+    for (let i = 0; i <= 24; i += 1) {
+      const x = pool.x0 + (w * i) / 24;
+      surface.push({ x, y: pool.y + 1.2 * Math.sin(x * 0.35 - t * 2.2) });
+    }
+    const pts = (list) => list.map((p) => `${p.x},${p.y}`).join(" ");
+    water.setAttribute("points", pts(surface));
+    above.setAttribute("points", pts([...surface, { x: pool.x1, y: pool.y - 60 }, { x: pool.x0, y: pool.y - 60 }]));
+
+    fins.forEach((fin, i) => {
+      const a = t * 0.8 + i * Math.PI;
+      const near = (Math.sin(a) + 1) / 2;
+      const x = cx + 0.32 * w * Math.cos(a);
+      // which way it is heading across the screen: left along the near
+      // side, right round the back, and at the ends of the circle, turning,
+      // seen nose or tail on, a narrow sliver
+      const across = -Math.sin(a);
+      const side = Math.sign(across) * Math.max(0.15, Math.abs(across));
+      const k = 0.8 + 0.3 * near;
+      // a dorsal fin: the leading edge bowed out and swept back to the
+      // tip, the trailing edge curving in under it. Its base sits below the
+      // surface, for the clip to cut off.
+      const P = (dx, dy) => `${x + side * dx * k},${pool.y + 3 + dy * k}`;
+      fin.setAttribute(
+        "d",
+        `M${P(5, 0)} Q${P(3, -9)} ${P(-3, -10)} Q${P(-1.5, -5)} ${P(-4.5, 0)} Z`
+      );
+      fin.style.opacity = 0.25 + 0.75 * near;
+    });
+  };
+};
+
 /* The years as a staircase: a zig-zag flight of small steps runs down the
    left margin of the publications, the step level with each year's heading
    marked as its landing. A figure walks down it as the page scrolls (and
    back up when it scrolls back), stopping on whichever year is nearest. Only
    the stretch around the figure is lit, as if by a torch, fading out above
-   and below. It needs the margin: where there is no room beside the text,
-   there are no stairs. */
+   and below. The flight stops dead after the last entry, over a pool where
+   sharks circle; reach the edge and the figure teeters.
+   It needs the margin: where there is no room beside the text, there are
+   no stairs. */
 const setupStairs = () => {
   const root = document.getElementById("publications-root");
   if (!root || reduceMotion.matches) return;
   const fig = quietFigure(page());
-  const RISE = 12;
-  const TREAD = 9;
+  // the steps, in figure units, so they fit the walker's stride
+  const RISE = 18.5;
+  const TREAD = 14;
   const PACE = 22;
   const CATCH_UP = 6;
   const LIGHT = 170;
@@ -1349,8 +1439,9 @@ const setupStairs = () => {
   mask.setAttribute("maskUnits", "userSpaceOnUse");
   const lit = make(mask, "rect");
   lit.setAttribute("fill", "url(#stick-stairs-glow)");
-  // the figure's back layer is where the stairs are drawn
+  // the figure's back layer is where the stairs are drawn, and the pool
   fig.g.firstChild.setAttribute("mask", "url(#stick-stairs-light)");
+  const drawPool = makePool(fig.g.firstChild, defs);
   let p = null;
   let phase = 0;
   let moving = 0;
@@ -1361,9 +1452,12 @@ const setupStairs = () => {
     const headers = [...root.querySelectorAll(".section_header")];
     if (!headers.length) return null;
     const box = onPage(root);
+    const u = figureUnit();
+    const rise = RISE * u;
+    const tread = TREAD * u;
     // set back from the text so it doesn't crowd the year headings
     const right = box.left - 26;
-    const steps = Math.floor(Math.min(54, right - 6) / TREAD);
+    const steps = Math.floor(Math.min(66, right - 6) / tread);
     if (steps < 3) return null;
     const years = headers.map((h) => {
       const r = onPage(h);
@@ -1375,14 +1469,17 @@ const setupStairs = () => {
     let dir = -1;
     for (let y = years[0]; y <= box.bottom; ) {
       for (let k = 0; k < steps && y <= box.bottom; k += 1) {
-        treads.push({ x0: x, x1: x + dir * TREAD, y, dir });
-        x += dir * TREAD;
-        y += RISE;
+        treads.push({ x0: x, x1: x + dir * tread, y, dir });
+        x += dir * tread;
+        y += rise;
       }
       dir = -dir;
     }
-    const landings = years.map((y) => Math.min(treads.length - 1, Math.round((y - years[0]) / RISE)));
-    return { treads, landings };
+    const landings = years.map((y) => Math.min(treads.length - 1, Math.round((y - years[0]) / rise)));
+    // the pool under the drop, as wide as the flights
+    const xs = treads.flatMap((tr) => [tr.x0, tr.x1]);
+    const pool = { x0: Math.min(...xs) - 10, x1: Math.max(...xs) + 10, y: treads[treads.length - 1].y + 32 };
+    return { treads, landings, pool, u, rise };
   };
 
   // where the feet are at a point p along the treads: walking along one,
@@ -1393,14 +1490,14 @@ const setupStairs = () => {
     const f = Math.min(1, q - i);
     const a = st.treads[i];
     const b = st.treads[Math.min(n - 1, i + 1)];
-    const inset = 3;
+    const inset = 4 * st.u;
     if (f < 0.65 || i === n - 1) {
       return { x: lerp(a.x0 + a.dir * inset, a.x1 - a.dir * inset, Math.min(1, f / 0.65)), y: a.y, dir: a.dir, air: 0 };
     }
     const v = (f - 0.65) / 0.35;
     return {
       x: lerp(a.x1 - a.dir * inset, b.x0 + b.dir * inset, v),
-      y: lerp(a.y, b.y, v) - 6 * 4 * v * (1 - v),
+      y: lerp(a.y, b.y, v) - 7.5 * st.u * 4 * v * (1 - v),
       dir: v < 0.5 ? a.dir : b.dir,
       air: Math.sin(Math.PI * v),
     };
@@ -1419,10 +1516,14 @@ const setupStairs = () => {
     const top = st.treads[0].y;
 
     // follow the middle of the screen down the stairs, settling on a year's
-    // landing when the middle is right beside it
-    let goal = Math.min(n - 1, Math.max(0, (window.scrollY + window.innerHeight * 0.55 - top) / RISE));
+    // landing when the middle is right beside it. Nearing the end of the
+    // page the point it follows slides to the bottom of the screen, so
+    // scrolled all the way down it walks right out to the edge.
+    const remaining = document.documentElement.scrollHeight - window.innerHeight - window.scrollY;
+    const follow = 0.55 + 0.45 * clamp01(1 - remaining / (0.6 * window.innerHeight));
+    let goal = Math.min(n - 0.42, Math.max(0, (window.scrollY + window.innerHeight * follow - top) / st.rise));
     const near = st.landings.reduce((best, l) => (Math.abs(l - goal) < Math.abs(best - goal) ? l : best), st.landings[0]);
-    if (Math.abs(near - goal) * RISE < 30) goal = near;
+    if (Math.abs(near - goal) * st.rise < 30) goal = near;
     if (p === null) p = goal;
     // a walk when close; when the page has moved far, a run quick enough to
     // catch up in about half a second, so it never trails off the screen
@@ -1432,26 +1533,41 @@ const setupStairs = () => {
     p += dp;
     moving += ((Math.abs(dp) > 0.0001 ? 1 : 0) - moving) * Math.min(1, dt * 10);
 
-    const s = (fontSize(root.querySelector(".section_header")) * 0.75) / 30;
+    const s = st.u;
     const feet = feetAt(st, p);
     phase += Math.abs(dp) * 1.6;
     const walk = gait(WALK)(phase, moving * (1 - feet.air));
-    const pose = {
+    // stood still, it turns a little towards us
+    const stride = mix({ ...POSE, ...OPEN }, { ...POSE, ...walk }, moving);
+    let pose = {
       ...POSE,
       ...STAND,
-      ...mix({ ...POSE, ...walk }, { ...POSE, ...CROUCH }, feet.air * 0.6),
+      ...mix(stride, { ...POSE, ...CROUCH }, feet.air * 0.6),
       // facing the way it is going: down the flight, or back up it
       sx: (dp < 0 ? -1 : 1) * feet.dir,
       hx: feet.x,
     };
+    // at the edge, every few seconds, a wobble: leaning out over the
+    // pool, arms windmilling, and back
+    const t = now / 1000;
+    const edge = clamp01((p - (n - 0.5)) / 0.08) * (1 - moving);
+    const wobble = edge * bump((t % 4) / 1.4, 0.5, 0.5);
+    if (wobble > 0) {
+      const spin = t * 11;
+      pose = mix(pose, {
+        ...pose,
+        lean: 14 + 10 * Math.sin(t * 7),
+        nod: 20,
+        arms: [[180 + 70 * Math.sin(spin), 190 + 70 * Math.sin(spin)], [180 + 70 * Math.sin(spin + Math.PI), 190 + 70 * Math.sin(spin + Math.PI)]],
+      }, ease(wobble));
+    }
     pose.hy = feet.y - legDrop(pose.legs) * s;
 
     // light the stretch of stairs around the figure. The mask's own region
     // has to move with it too: left to its default, it covers only the
     // first screenful of the page and hides every step below that.
-    const xs = st.treads.flatMap((tr) => [tr.x0, tr.x1]);
-    const left = Math.min(...xs) - 4;
-    const area = { x: left, y: feet.y - LIGHT, width: Math.max(...xs) + 4 - left, height: 2 * LIGHT };
+    const left = st.pool.x0 - 4;
+    const area = { x: left, y: feet.y - LIGHT, width: st.pool.x1 + 4 - left, height: 2 * LIGHT };
     Object.entries(area).forEach(([key, value]) => {
       mask.setAttribute(key, value);
       lit.setAttribute(key, value);
@@ -1462,18 +1578,24 @@ const setupStairs = () => {
 
     drawFigure(fig, pose, s, {
       draw: (f) => {
+        // each tread and the riser under it, except the last, which just
+        // ends: a short lip, then the drop
         const outline = [];
-        st.treads.forEach((tr) => {
-          outline.push({ x: tr.x0, y: tr.y }, { x: tr.x1, y: tr.y }, { x: tr.x1, y: tr.y + RISE });
+        st.treads.forEach((tr, i) => {
+          const end = i === n - 1 ? 3 : st.rise;
+          outline.push({ x: tr.x0, y: tr.y }, { x: tr.x1, y: tr.y }, { x: tr.x1, y: tr.y + end });
         });
         f.back.poly("stairs", outline, 1, "stick_stairs");
+        drawPool(st.pool, t);
         st.landings.forEach((l, i) => {
           const tr = st.treads[l];
           f.back.line(`landing${i}`, { x: tr.x0, y: tr.y }, { x: tr.x1, y: tr.y }, 1.6, "stick_landing");
         });
       },
     });
-    return Math.abs(goal - p) > 0.001 || moving > 0.01;
+    // the pool keeps circling while it is on screen
+    const poolShown = st.pool.y > window.scrollY - 40 && st.pool.y < window.scrollY + window.innerHeight + 40;
+    return Math.abs(goal - p) > 0.001 || moving > 0.01 || poolShown;
   };
 
   const kick = animator(step);
@@ -1547,7 +1669,7 @@ const setupWaver = () => {
 
     // a hand comes up from behind the word, off to the right, to wave
     const handX = cx + 2.1 * R;
-    const reach = 2.4 * R;
+    const reach = 1.7 * R;
     const lifted = {
       x: handX + 0.4 * R + Math.sin(flap) * reach,
       y: wall + 0.6 * R - Math.cos(flap) * reach,
@@ -1603,8 +1725,13 @@ const setupTopButton = () => {
   document.body.appendChild(button);
 
   const fig = quietFigure(fixedLayer());
-  const body = kid.body;
+  // the same build as the other figures around the page; the popper shoes
+  // still mark it as the parade's kid
+  const body = BODY;
   const domes = { domes: [1, 1], snap: 0 };
+  // waiting on the button turned a little the other way from the rest,
+  // towards the page
+  const IDLE = { ...OPEN, sx: -1 };
   const SQUAT = 0.25;
   const RISE = 0.6;
   const SCROLL = 1.0;
@@ -1633,7 +1760,7 @@ const setupTopButton = () => {
     const t = now / 1000;
     button.classList.toggle("is-shown", shown());
     const r = button.getBoundingClientRect();
-    const s = ((fontSize(button) * 2.6) / 30) * body.scale;
+    const s = figureUnit();
     // standing on top of the button
     const home = { x: r.left + r.width / 2, y: r.top };
     const standOn = (pose, x, y, lift = 0) => ({ ...pose, hx: x, hy: y - (legDrop(pose.legs || STAND.legs, body) + lift) * s });
@@ -1644,14 +1771,14 @@ const setupTopButton = () => {
       const still = reduceMotion.matches;
       // waiting: a hop now and then, a crouch when you point at the button
       const hop = still ? 0 : Math.max(0, Math.sin((t * Math.PI * 2) / 4.5)) ** 12;
-      const pose = hover && !still ? { ...DEEP_CROUCH, snap: 0.5 } : { ...STAND };
+      const pose = hover && !still ? { ...OPEN_SQUAT, sx: -1, snap: 0.5 } : { ...IDLE };
       drawKid(standOn(pose, home.x, home.y, 3 * hop), s);
       return shown() || alpha > 0.01;
     }
 
     const e = t - tripAt;
     if (e < SQUAT) {
-      drawKid(standOn({ ...DEEP_CROUCH, snap: ease(e / SQUAT) }, home.x, home.y), s);
+      drawKid(standOn({ ...OPEN_SQUAT, sx: -1, snap: ease(e / SQUAT) }, home.x, home.y), s);
       return true;
     }
     if (!launch) {
@@ -1668,7 +1795,7 @@ const setupTopButton = () => {
 
     const name = document.querySelector(".name_main");
     const nr = name.getBoundingClientRect();
-    const land = { x: nr.left + nr.width * 0.86, y: nr.top + 0.22 * fontSize(name) };
+    const land = { x: letterX(name, "l") ?? nr.left + nr.width * 0.8, y: nr.top + 0.22 * fontSize(name) };
     const standH = legDrop(STAND.legs, body) * s;
     let pose = null;
     let flash = 0;
@@ -1691,8 +1818,8 @@ const setupTopButton = () => {
       };
     } else {
       const v = up - SCROLL - 0.1 - FALL;
-      if (v < 0.2) pose = standOn({ ...CROUCH, snap: 1 - v / 0.2 }, land.x, land.y);
-      else if (v < 0.9) pose = standOn({ ...SALUTE }, land.x, land.y);
+      if (v < 0.2) pose = standOn({ ...OPEN_CROUCH, snap: 1 - v / 0.2 }, land.x, land.y);
+      else if (v < 0.9) pose = standOn({ ...SALUTE, legs: OPEN.legs }, land.x, land.y);
       else if (v < 1.3) {
         const w = (v - 0.9) / 0.4;
         pose = standOn({ ...ARROW }, land.x, land.y, 10 * Math.sin(Math.PI * w));
@@ -1745,7 +1872,29 @@ const setupTopButton = () => {
   kick();
 };
 
-/* ---------- the sitter on the footer ---------- */
+/* ---------- the sunbather on the footer ---------- */
+
+// Is the sun up in Cambridge, Massachusetts? A rough sunrise equation, good
+// to a few minutes, worked in UTC so the footer keeps my hours whatever the
+// visitor's clock says.
+const HOME = { lat: 42.37, lon: -71.11 };
+// ?sky=day or ?sky=night in the address fixes it either way, for showing off
+const FORCED_SKY = new URLSearchParams(window.location.search).get("sky");
+const sunUp = (date = new Date()) => {
+  if (FORCED_SKY === "day" || FORCED_SKY === "night") return FORCED_SKY === "day";
+  const day = (date - Date.UTC(date.getUTCFullYear(), 0, 0)) / 864e5;
+  const lat = rad(HOME.lat);
+  const tilt = rad(-23.44 * Math.cos((2 * Math.PI * (day + 10)) / 365));
+  // half the day's length in hours, counting the sun as up while any of it
+  // shows over the horizon
+  const cosHalf = (Math.sin(rad(-0.83)) - Math.sin(lat) * Math.sin(tilt)) / (Math.cos(lat) * Math.cos(tilt));
+  const half = (Math.acos(Math.min(1, Math.max(-1, cosHalf))) * 12) / Math.PI;
+  // solar noon in UTC, nudged by the equation of time
+  const b = (2 * Math.PI * (day - 81)) / 364;
+  const noon = 12 - HOME.lon / 15 - (9.87 * Math.sin(2 * b) - 7.53 * Math.cos(b) - 1.5 * Math.sin(b)) / 60;
+  const fromNoon = (((((day % 1) * 24 - noon) % 24) + 36) % 24) - 12;
+  return Math.abs(fromNoon) < half;
+};
 
 const drawZs = (fig, j, pose, u, env) => {
   if (!(pose.z > 0.02)) return;
@@ -1762,68 +1911,181 @@ const drawZs = (fig, j, pose, u, env) => {
   });
 };
 
-const setupSitter = (footer) => {
-  const line = footer.querySelector("p");
-  if (!line || footer.querySelector(".stick_layer")) return;
+// The sky over the slash: a turning sun by day, by night a crescent moon and
+// a couple of twinkling stars. `day` runs 0 to 1 as one gives way to the other.
+const drawSky = (fig, centre, r, t, day) => {
+  const night = 1 - day;
+  if (day > 0.02) {
+    const sun = 0.6 * r;
+    fig.back.ring("sun", centre, sun, 0.3 * sun, "stick_sun", day);
+    for (let i = 0; i < 8; i += 1) {
+      const a = rad(i * 45 + t * 12);
+      const dir = { x: Math.sin(a), y: Math.cos(a) };
+      fig.back.line(
+        `ray${i}`,
+        { x: centre.x + dir.x * 1.6 * sun, y: centre.y + dir.y * 1.6 * sun },
+        { x: centre.x + dir.x * 2.2 * sun, y: centre.y + dir.y * 2.2 * sun },
+        0.3 * sun,
+        "stick_sun",
+        day
+      );
+    }
+  }
+  if (night > 0.02) {
+    // A crescent: the moon's disc less a slightly smaller shadow disc set
+    // off up and to the left. Its outline runs round the lit edge of the
+    // disc, then back along the shadow's edge inside it.
+    const R = 1.3 * r;
+    const shadow = { x: centre.x - 0.5 * R, y: centre.y - 0.2 * R, r: 0.9 * R };
+    const from = Math.atan2(shadow.y - centre.y, shadow.x - centre.x);
+    const inShadow = (p) => Math.hypot(p.x - shadow.x, p.y - shadow.y) < shadow.r;
+    const inDisc = (p) => Math.hypot(p.x - centre.x, p.y - centre.y) < R;
+    const ring = (c, radius) =>
+      Array.from({ length: 97 }, (_, i) => {
+        const a = from + (i / 96) * 2 * Math.PI;
+        return { x: c.x + radius * Math.cos(a), y: c.y + radius * Math.sin(a) };
+      });
+    const lit = ring(centre, R).filter((p) => !inShadow(p));
+    const edge = ring(shadow, shadow.r).filter(inDisc).reverse();
+    fig.back.shape("moon", [...lit, ...edge], "stick_moon", night);
+    // craters, on the lit part
+    [[0.55, -0.35, 0.16], [0.72, 0.18, 0.12], [0.38, 0.58, 0.11]].forEach(([dx, dy, size], i) => {
+      fig.back.dot(`crater${i}`, { x: centre.x + dx * R, y: centre.y + dy * R }, size * R, "stick_crater", night);
+    });
+    [[-2.2, 0.3, 0], [-1.3, -1.3, 1.7]].forEach(([dx, dy, lag], i) => {
+      const twinkle = 0.55 + 0.45 * Math.sin(t * 1.8 + lag);
+      fig.back.dot(`star${i}`, { x: centre.x + dx * R, y: centre.y + dy * R }, 0.12 * R, "stick_moon", night * twinkle);
+    });
+  }
+};
+
+// The book, held up to read by day. Seen side on, like the rest of him: a
+// slim block square to his gaze, cover out and the page edges towards him.
+const drawBook = (fig, j, u, day) => {
+  if (day > 0.02) {
+    const hand = j.arms[0].hand;
+    const dx = hand.x - j.head.x;
+    const dy = hand.y - j.head.y;
+    const len = Math.hypot(dx, dy) || 1;
+    const away = { x: dx / len, y: dy / len };
+    const side = { x: -away.y, y: away.x };
+    const at = (a, s) => ({ x: hand.x + away.x * a * u + side.x * s * u, y: hand.y + away.y * a * u + side.y * s * u });
+    const H = 2.6;
+    fig.front.shape("cover", [at(-0.2, -H), at(1.1, -H), at(1.1, H), at(-0.2, H)], "stick_cover", day);
+    fig.front.line("pages", at(-0.2, -H + 0.5), at(-0.2, H - 0.5), 0.6 * u, "stick_page_edges", day);
+  }
+};
+
+// The footer's slash, a figure laid back along it: reading in the sun while
+// it is up in Cambridge, asleep under the moon once it sets. Click it for a
+// wave (and, at night, a start).
+const setupSunbather = (footer) => {
+  const slash = footer.querySelector(".footer_slash");
+  if (!slash || footer.querySelector(".stick_layer")) return;
 
   const fig = createFigure(createLayer(footer, "stick_layer-sitter"));
-  const NAP_AFTER = 30000;
   const WAVE = 1.6;
   const BLEND = 0.6;
 
+  // the slash runs corner to corner of its box, top left to bottom right
+  // the ends of the slash, as drawn
   const measure = () => {
     const origin = fig.g.ownerSVGElement.getBoundingClientRect();
-    const range = document.createRange();
-    range.selectNodeContents(line);
-    const text = range.getBoundingClientRect();
-    const size = parseFloat(getComputedStyle(line).fontSize);
-    const u = (size * 1.7) / 30;
-    return { u, hx: text.right - origin.left, ground: text.top - origin.top + 0.22 * size };
+    const ctm = slash.getScreenCTM();
+    const [top, end] = [...slash.querySelector("polyline").points].map((p) => {
+      const q = p.matrixTransform(ctm);
+      return { x: q.x - origin.left, y: q.y - origin.top };
+    });
+    const len = Math.hypot(end.x - top.x, end.y - top.y);
+    const along = { x: (end.x - top.x) / len, y: (end.y - top.y) / len };
+    const u = figureUnit();
+    // the hip a little over halfway down, resting just clear of the line:
+    // head up the slope, feet down it
+    const lift = 1.3 * u;
+    const hip = { x: top.x + along.x * 18 * u + along.y * lift, y: top.y + along.y * 18 * u - along.x * lift };
+    const size = parseFloat(getComputedStyle(slash).fontSize);
+    return { u, hip, slope: (Math.atan2(along.y, along.x) * 180) / Math.PI, sky: { x: end.x + 0.5 * size, y: top.y - 0.4 * size }, size };
   };
 
-  let mode = "swing";
-  let modeAt = 0;
+  let mode = "rest";
+  let modeAt = -Infinity;
   let from = null;
   let wokeUp = false;
   let frame = 0;
   let visible = false;
-  let napTimer = 0;
   let lastPose = null;
+  let day = sunUp();
+  let dayAt = -Infinity;
 
-  const poseFor = (mode, m, t, since) => {
-    const swing = Math.sin((2 * Math.PI * t) / 1.9);
-    const seat = { ...POSE, ...DANGLE, hx: m.hx, hy: m.ground - 0.8 * m.u, z: 0 };
-    if (mode === "nap") {
-      return { ...seat, lean: 18, nod: 40, legs: [[80, 10], [84, 4]], arms: [[18, 75], [24, 80]], z: 1 };
-    }
-    const legs = [[80, 10 + 20 * swing], [86, 10 - 20 * swing]];
-    if (mode === "wave") {
-      const jolt = wokeUp ? Math.sin(Math.PI * clamp01(since / 0.35)) * 3 * m.u : 0;
-      return {
-        ...seat,
-        hy: seat.hy - jolt,
-        lean: -4,
-        legs,
-        arms: [seat.arms[0], [160, 160 + 28 * Math.sin(2 * Math.PI * 2.6 * since)]],
-      };
-    }
-    return { ...seat, legs };
+  const poseFor = (m, t, since) => {
+    // down the slash towards the feet, and up it, the back propped a little
+    // off it so the head rests clear, towards the head
+    const down = 90 - m.slope;
+    const back = 270 - m.slope - 14;
+    const off = back - 66;
+    const flat = { ...POSE, lean: 180 - back, hx: m.hip.x, hy: m.hip.y, z: 0 };
+    const breath = Math.sin(t * 1.4);
+    const rest = day
+      ? {
+          // reading, the book held up over the chest, knees up and one foot
+          // tapping now and then
+          ...flat,
+          nod: 14,
+          legs: [[down + 22, down - 18 + 10 * Math.max(0, Math.sin(t * 2.2)) ** 4], [down + 50, down - 46]],
+          arms: [[back - 122, back - 76], [back - 128, back - 70]],
+        }
+      : {
+          // dozed off, hands on the belly, breathing slowly
+          ...flat,
+          lean: flat.lean + 1.2 * breath,
+          nod: 4,
+          legs: [[down + 14, down - 10], [down + 30, down - 26]],
+          arms: [[back - 138, back - 156], [back - 130, back - 154]],
+          z: 1,
+        };
+    if (mode !== "wave") return rest;
+    // up on one elbow to wave, straight up off the slash, the book kept in
+    // the other hand
+    const jolt = wokeUp ? Math.sin(Math.PI * clamp01(since / 0.35)) : 0;
+    return {
+      ...rest,
+      lean: rest.lean + 18 + 10 * jolt,
+      nod: 10 + 30 * jolt,
+      arms: [rest.arms[0], [off - 15, off - 30 + 28 * Math.sin(2 * Math.PI * 2.6 * since)]],
+      z: 0,
+    };
   };
 
-  const setMode = (next) => {
+  const blendFrom = (t) => {
     from = lastPose;
-    mode = next;
-    modeAt = performance.now() / 1000;
+    modeAt = t;
   };
 
   const render = (now) => {
     const m = measure();
     const t = now / 1000;
-    if (mode === "wave" && t - modeAt > WAVE) setMode("swing");
-    let pose = poseFor(mode, m, t, t - modeAt);
+    const up = sunUp();
+    if (up !== day) {
+      day = up;
+      dayAt = t;
+      blendFrom(t);
+    }
+    if (mode === "wave" && t - modeAt > WAVE) {
+      mode = "rest";
+      blendFrom(t);
+    }
+    let pose = poseFor(m, t, t - modeAt);
     if (from) pose = mix(from, pose, ease(clamp01((t - modeAt) / BLEND)));
     lastPose = pose;
-    drawFigure(fig, pose, m.u, { time: t, draw: drawZs });
+    const turn = ease(clamp01((t - dayAt) / BLEND));
+    drawFigure(fig, pose, m.u, {
+      time: t,
+      draw: (f, j, ps, u, env) => {
+        drawSky(f, m.sky, 0.27 * m.size, reduceMotion.matches ? 0 : t, day ? turn : 1 - turn);
+        drawZs(f, j, ps, u, env);
+        drawBook(f, j, u, day ? turn : 1 - turn);
+      },
+    });
   };
 
   const tick = (now) => {
@@ -1831,26 +2093,22 @@ const setupSitter = (footer) => {
     frame = visible ? requestAnimationFrame(tick) : 0;
   };
 
+  // the slash moves if the text reflows once web fonts arrive
+  document.fonts.addEventListener("loadingdone", () => render(reduceMotion.matches ? 0 : performance.now()));
+
   if (reduceMotion.matches) {
     new ResizeObserver(() => render(0)).observe(footer);
     render(0);
+    // still turns from day to night, just without moving otherwise
+    setInterval(() => render(0), 60000);
     return;
   }
 
-  const rest = () => {
-    clearTimeout(napTimer);
-    napTimer = setTimeout(() => setMode("nap"), NAP_AFTER);
-  };
-
-  // activity only postpones the nap; once asleep it takes a click to wake
-  ["pointermove", "keydown", "scroll", "touchstart"].forEach((type) =>
-    window.addEventListener(type, () => mode !== "nap" && rest(), { passive: true })
-  );
-
   fig.hit.addEventListener("click", () => {
-    wokeUp = mode === "nap";
-    setMode("wave");
-    rest();
+    wokeUp = !day;
+    const t = performance.now() / 1000;
+    mode = "wave";
+    blendFrom(t);
   });
 
   new IntersectionObserver((entries) => {
@@ -1859,7 +2117,6 @@ const setupSitter = (footer) => {
   }).observe(footer);
 
   render(performance.now());
-  rest();
 };
 
 const initStickFigures = () => {
@@ -1869,7 +2126,7 @@ const initStickFigures = () => {
   setupTopButton();
   setupWaver();
   const footer = document.querySelector(".footer");
-  if (footer) setupSitter(footer);
+  if (footer) setupSunbather(footer);
 };
 
 if (document.readyState === "loading") {
@@ -1880,5 +2137,5 @@ if (document.readyState === "loading") {
 
 document.addEventListener("footer-loaded", (event) => {
   const footer = event.detail.container.querySelector(".footer");
-  if (footer) setupSitter(footer);
+  if (footer) setupSunbather(footer);
 });
