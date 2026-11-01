@@ -18,7 +18,7 @@
 const SVG_NS = "http://www.w3.org/2000/svg";
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 // Phone widths, where the research statement stacks into lines: the figures
-// around the research section sit those out, leaving the footer sunbather and
+// around the research section sit those out, leaving the footer reader and
 // the back-to-top kid.
 const phone = window.matchMedia("(max-width: 720px)");
 
@@ -1872,16 +1872,14 @@ const setupTopButton = () => {
   kick();
 };
 
-/* ---------- the sunbather on the footer ---------- */
+/* ---------- the reader on the footer ---------- */
 
 // Is the sun up in Cambridge, Massachusetts? A rough sunrise equation, good
 // to a few minutes, worked in UTC so the footer keeps my hours whatever the
-// visitor's clock says.
+// visitor's clock says. The fallback for when the weather service can't be
+// reached.
 const HOME = { lat: 42.37, lon: -71.11 };
-// ?sky=day or ?sky=night in the address fixes it either way, for showing off
-const FORCED_SKY = new URLSearchParams(window.location.search).get("sky");
 const sunUp = (date = new Date()) => {
-  if (FORCED_SKY === "day" || FORCED_SKY === "night") return FORCED_SKY === "day";
   const day = (date - Date.UTC(date.getUTCFullYear(), 0, 0)) / 864e5;
   const lat = rad(HOME.lat);
   const tilt = rad(-23.44 * Math.cos((2 * Math.PI * (day + 10)) / 365));
@@ -1895,6 +1893,79 @@ const sunUp = (date = new Date()) => {
   const fromNoon = (((((day % 1) * 24 - noon) % 24) + 36) % 24) - 12;
   return Math.abs(fromNoon) < half;
 };
+
+// The weather in Cambridge, from Open-Meteo (free, no key): today's sunrise
+// and sunset, and what it is doing now, as one of five kinds. Kept for 20
+// minutes in the visitor's browser, so it is asked for rarely; until it
+// answers, or if it never does, the sky is clear and the sunrise equation
+// says whether it is day.
+const WEATHER_URL =
+  "https://api.open-meteo.com/v1/forecast?latitude=42.37&longitude=-71.11" +
+  "&current=weather_code&daily=sunrise,sunset&timezone=America%2FNew_York&timeformat=unixtime&forecast_days=1";
+const WEATHERS = ["clear", "cloudy", "rain", "snow", "storm"];
+// WMO weather codes
+const weatherKind = (code) => {
+  if (code >= 95) return "storm";
+  if ((code >= 71 && code <= 77) || code === 85 || code === 86) return "snow";
+  if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) return "rain";
+  // overcast and fog alike
+  if (code === 2 || code === 3 || code === 45 || code === 48) return "cloudy";
+  return "clear";
+};
+
+// ?sky= in the address fixes the sky for showing off: day or night, any of
+// the five weathers, or both, as in ?sky=night-snow
+const FORCED_SKY = (() => {
+  const words = (new URLSearchParams(window.location.search).get("sky") || "").toLowerCase().split(/[^a-z]+/);
+  return {
+    day: words.includes("day") ? true : words.includes("night") ? false : null,
+    weather: WEATHERS.find((w) => words.includes(w)) || null,
+  };
+})();
+
+const cambridgeSky = (() => {
+  const KEY = "stick-weather";
+  const FRESH = 20 * 60 * 1000;
+  let data = null;
+  let askedAt = -Infinity;
+  try {
+    const saved = JSON.parse(localStorage.getItem(KEY));
+    if (saved && Date.now() - saved.at < FRESH) data = saved;
+  } catch (error) {
+    // no storage: just ask
+  }
+  const ask = () => {
+    // once a minute at most, so a failing service isn't hammered
+    if (Date.now() - askedAt < 60000) return;
+    askedAt = Date.now();
+    fetch(WEATHER_URL)
+      .then((response) => (response.ok ? response.json() : Promise.reject(response.status)))
+      .then((json) => {
+        data = {
+          at: Date.now(),
+          weather: weatherKind(json.current.weather_code),
+          sunrise: json.daily.sunrise[0] * 1000,
+          sunset: json.daily.sunset[0] * 1000,
+        };
+        try {
+          localStorage.setItem(KEY, JSON.stringify(data));
+        } catch (error) {
+          // fine without
+        }
+      })
+      .catch(() => {});
+  };
+  return () => {
+    const forced = FORCED_SKY.day !== null && FORCED_SKY.weather !== null;
+    if (!forced && (!data || Date.now() - data.at > FRESH)) ask();
+    const now = Date.now();
+    const known = data ? now >= data.sunrise && now < data.sunset : sunUp();
+    return {
+      day: FORCED_SKY.day ?? known,
+      weather: FORCED_SKY.weather ?? (data ? data.weather : "clear"),
+    };
+  };
+})();
 
 const drawZs = (fig, j, pose, u, env) => {
   if (!(pose.z > 0.02)) return;
@@ -1911,13 +1982,18 @@ const drawZs = (fig, j, pose, u, env) => {
   });
 };
 
-// The sky over the slash: a turning sun by day, by night a crescent moon and
-// a couple of twinkling stars. `day` runs 0 to 1 as one gives way to the other.
-const drawSky = (fig, centre, r, t, day) => {
-  const night = 1 - day;
-  if (day > 0.02) {
+// a deterministic scatter: the fractional part of i times an irrational
+const scatter = (i, k = 0.618034) => (i * k) % 1;
+
+// The sun or the moon. A turning sun by day; by night a crescent with
+// craters and a couple of twinkling stars. `day` runs 0 to 1 as one gives
+// way to the other; `shown` dims them behind weather, and `stars` the stars.
+const drawSunMoon = (fig, centre, r, t, day, shown, stars) => {
+  const sunA = day * shown;
+  const moonA = (1 - day) * shown;
+  if (sunA > 0.02) {
     const sun = 0.6 * r;
-    fig.back.ring("sun", centre, sun, 0.3 * sun, "stick_sun", day);
+    fig.back.ring("sun", centre, sun, 0.3 * sun, "stick_sun", sunA);
     for (let i = 0; i < 8; i += 1) {
       const a = rad(i * 45 + t * 12);
       const dir = { x: Math.sin(a), y: Math.cos(a) };
@@ -1927,11 +2003,11 @@ const drawSky = (fig, centre, r, t, day) => {
         { x: centre.x + dir.x * 2.2 * sun, y: centre.y + dir.y * 2.2 * sun },
         0.3 * sun,
         "stick_sun",
-        day
+        sunA
       );
     }
   }
-  if (night > 0.02) {
+  if (moonA > 0.02) {
     // A crescent: the moon's disc less a slightly smaller shadow disc set
     // off up and to the left. Its outline runs round the lit edge of the
     // disc, then back along the shadow's edge inside it.
@@ -1947,39 +2023,198 @@ const drawSky = (fig, centre, r, t, day) => {
       });
     const lit = ring(centre, R).filter((p) => !inShadow(p));
     const edge = ring(shadow, shadow.r).filter(inDisc).reverse();
-    fig.back.shape("moon", [...lit, ...edge], "stick_moon", night);
+    fig.back.shape("moon", [...lit, ...edge], "stick_moon", moonA);
     // craters, on the lit part
     [[0.55, -0.35, 0.16], [0.72, 0.18, 0.12], [0.38, 0.58, 0.11]].forEach(([dx, dy, size], i) => {
-      fig.back.dot(`crater${i}`, { x: centre.x + dx * R, y: centre.y + dy * R }, size * R, "stick_crater", night);
+      fig.back.dot(`crater${i}`, { x: centre.x + dx * R, y: centre.y + dy * R }, size * R, "stick_crater", moonA);
     });
     [[-2.2, 0.3, 0], [-1.3, -1.3, 1.7]].forEach(([dx, dy, lag], i) => {
       const twinkle = 0.55 + 0.45 * Math.sin(t * 1.8 + lag);
-      fig.back.dot(`star${i}`, { x: centre.x + dx * R, y: centre.y + dy * R }, 0.12 * R, "stick_moon", night * twinkle);
+      fig.back.dot(`star${i}`, { x: centre.x + dx * R, y: centre.y + dy * R }, 0.12 * R, "stick_moon", moonA * stars * twinkle);
     });
   }
+};
+
+// A cloud's outline, worked out once: four puffs over a flat bottom, traced
+// by walking out from the middle until outside all of them. In units of the
+// cloud's size, about three across.
+const CLOUD = (() => {
+  const puffs = [[-0.95, 0, 0.5], [-0.3, -0.3, 0.68], [0.45, -0.15, 0.58], [1.0, 0.08, 0.42]];
+  const inside = (x, y) =>
+    puffs.some(([px, py, r]) => (x - px) ** 2 + (y - py) ** 2 < r * r) || (Math.abs(x) < 1.05 && y > -0.1 && y < 0.5);
+  return Array.from({ length: 90 }, (_, i) => {
+    const a = (i / 90) * 2 * Math.PI;
+    let d = 0;
+    while (inside(d * Math.cos(a), 0.1 + d * Math.sin(a))) d += 0.01;
+    return { x: d * Math.cos(a), y: 0.1 + d * Math.sin(a) };
+  });
+})();
+
+const drawCloud = (fig, name, c, size, alpha) => {
+  if (alpha <= 0.02) return;
+  fig.back.shape(name, CLOUD.map((p) => ({ x: c.x + p.x * size, y: c.y + p.y * size })), "stick_cloud", alpha);
+};
+
+// The umbrella, held up in the near hand along the forearm: a crook
+// handle, the shaft, a domed canopy of three panels with ribs running down
+// to the points of its scalloped edge, and a tip on top. Returns the
+// canopy's top edge so the rain can stop at it.
+const umbrellaAt = (j, u) => {
+  const arm = j.arms[1];
+  const len = Math.hypot(arm.hand.x - arm.elbow.x, arm.hand.y - arm.elbow.y) || 1;
+  const axis = { x: (arm.hand.x - arm.elbow.x) / len, y: (arm.hand.y - arm.elbow.y) / len };
+  const side = { x: -axis.y, y: axis.x };
+  const at = (base, a, s) => ({ x: base.x + axis.x * a + side.x * s, y: base.y + axis.y * a + side.y * s });
+  const hub = at(arm.hand, 8 * u, 0);
+  const R = 8 * u;
+  const H = 0.8 * R;
+  // the dome, from one rib point over the top to the other
+  const dome = Array.from({ length: 21 }, (_, i) => {
+    const phi = (i / 20) * Math.PI;
+    return at(hub, H * Math.sin(phi), R * Math.cos(phi));
+  });
+  // back along the edge: three round scallops, each arching well up
+  // between two rib points, so there is no straight bottom line
+  const edge = Array.from({ length: 46 }, (_, i) => {
+    const v = -1 + (2 * i) / 45;
+    const w = (((v + 1) * 1.5) % 1) * 2 - 1;
+    return at(hub, 0.3 * R * Math.sqrt(Math.max(0, 1 - w * w)), R * v);
+  });
+  const apex = at(hub, H, 0);
+  const ribs = [-1, -1 / 3, 1 / 3, 1].map((v) => [apex, at(hub, 0, R * v)]);
+  // the crook: round from the bottom of the shaft and back up
+  const foot = at(arm.hand, -1.6 * u, 0);
+  const crook = Array.from({ length: 7 }, (_, i) => {
+    const a = (i / 6) * Math.PI;
+    return at(foot, -0.9 * u * Math.sin(a), -0.9 * u * (1 - Math.cos(a)));
+  });
+  const top = dome.slice().sort((a, b) => a.x - b.x);
+  // the dome ends on the far rib point, where the edge begins
+  return { canopy: [...dome, ...edge], ribs, shaft: [foot, at(apex, 1.2 * u, 0)], crook, top };
+};
+
+const drawUmbrella = (fig, um, u, alpha) => {
+  if (!um || alpha <= 0.02) return;
+  fig.front.poly("crook", um.crook, 0.9 * u, "", alpha);
+  fig.front.line("shaft", um.shaft[0], um.shaft[1], 0.9 * u, "", alpha);
+  fig.front.shape("canopy", um.canopy, "stick_umbrella", alpha);
+  um.ribs.slice(1, 3).forEach(([a, b], i) => fig.front.line(`rib${i}`, a, b, 0.45 * u, "stick_rib", alpha));
+};
+
+// At night, in the wet, a little house-shaped tent pitched over him: two
+// walls and a pitched roof.
+const tentAt = (m) => {
+  const pad = 0.3 * m.size;
+  const left = m.top.x - pad;
+  const right = m.end.x + pad;
+  const floor = m.end.y + 2;
+  const eaves = m.top.y - 0.35 * m.size;
+  const ridge = { x: (left + right) / 2, y: m.top.y - 1.0 * m.size };
+  return {
+    outline: [{ x: left, y: floor }, { x: left, y: eaves }, ridge, { x: right, y: eaves }, { x: right, y: floor }],
+    top: [{ x: left, y: eaves }, ridge, { x: right, y: eaves }],
+  };
+};
+
+const drawTent = (fig, tent, alpha) => {
+  if (alpha <= 0.02) return;
+  fig.front.poly("tent", tent.outline, 1, "stick_tent", alpha);
+};
+
+// Out of the rain? Each cover is a run of points along its top edge, left
+// to right; anything below that edge is sheltered.
+const sheltered = (covers, p) =>
+  covers.some((edge) => {
+    if (p.x < edge[0].x || p.x > edge[edge.length - 1].x) return false;
+    const k = edge.findIndex((q) => q.x >= p.x);
+    const a = edge[Math.max(0, k - 1)];
+    const b = edge[k];
+    return p.y > lerp(a.y, b.y, (p.x - a.x) / (b.x - a.x || 1)) - 1;
+  });
+
+// rain from the cloud to the ground: evenly spaced columns of fine
+// streaks, falling together, stopping at whatever covers him
+const drawRain = (fig, area, t, alpha, covers) => {
+  const N = 12;
+  for (let i = 0; i < N; i += 1) {
+    const x = area.x0 + ((i + 0.5) / N) * (area.x1 - area.x0);
+    const v = (t * 1.5 + scatter(i)) % 1;
+    const y = lerp(area.y0, area.y1, v);
+    const tip = { x: x - 0.5, y };
+    if (alpha > 0.02 && !sheltered(covers, tip)) {
+      fig.back.line(`drop${i}`, { x, y: y - 2.2 }, tip, 0.55, "stick_rain", alpha * Math.sin(Math.PI * v));
+    }
+  }
+};
+
+// snowflakes, evenly spread, drifting down together with a gentle sway,
+// settling on whatever covers him
+const drawSnow = (fig, area, t, alpha, covers) => {
+  if (alpha <= 0.02) return;
+  const N = 12;
+  for (let i = 0; i < N; i += 1) {
+    const v = (t * 0.25 + scatter(i)) % 1;
+    const x = area.x0 + ((i + 0.5) / N) * (area.x1 - area.x0) + 1.2 * Math.sin(t * 1.3 + v * 6);
+    const flake = { x, y: lerp(area.y0, area.y1, v) };
+    if (!sheltered(covers, flake)) fig.back.dot(`flake${i}`, flake, 0.55, "stick_flake", alpha * Math.sin(Math.PI * v));
+  }
+};
+
+// now and then a fork of lightning out of the cloud, flickering twice
+const drawBolt = (fig, from, size, t, alpha) => {
+  const phase = t % 4.7;
+  const flash = phase < 0.1 || (phase > 0.2 && phase < 0.28) ? 1 : 0;
+  if (alpha * flash <= 0.02) return;
+  const s = size;
+  const pts = [[0, 0], [-0.25, 0.35], [0.1, 0.4], [-0.15, 0.85]].map(([dx, dy]) => ({ x: from.x + dx * s, y: from.y + dy * s }));
+  fig.back.poly("bolt", pts, 1.1, "stick_bolt", alpha);
+};
+
+// a woolly hat for the snow: over the crown, with a bobble
+const drawHat = (fig, j, alpha) => {
+  if (alpha <= 0.02) return;
+  const len = Math.hypot(j.head.x - j.neck.x, j.head.y - j.neck.y) || 1;
+  const crown = Math.atan2((j.head.y - j.neck.y) / len, (j.head.x - j.neck.x) / len);
+  const r = j.headR * 1.08;
+  const pts = Array.from({ length: 13 }, (_, i) => {
+    const a = crown - rad(80) + (i / 12) * rad(160);
+    return { x: j.head.x + r * Math.cos(a), y: j.head.y + r * Math.sin(a) };
+  });
+  fig.front.shape("hat", pts, "stick_hat", alpha);
+  fig.front.dot("bobble", { x: j.head.x + 1.3 * r * Math.cos(crown), y: j.head.y + 1.3 * r * Math.sin(crown) }, 0.3 * r, "stick_hat", alpha);
 };
 
 // The book, held up to read by day. Seen side on, like the rest of him: a
 // slim block square to his gaze, cover out and the page edges towards him.
-const drawBook = (fig, j, u, day) => {
-  if (day > 0.02) {
-    const hand = j.arms[0].hand;
-    const dx = hand.x - j.head.x;
-    const dy = hand.y - j.head.y;
-    const len = Math.hypot(dx, dy) || 1;
-    const away = { x: dx / len, y: dy / len };
-    const side = { x: -away.y, y: away.x };
-    const at = (a, s) => ({ x: hand.x + away.x * a * u + side.x * s * u, y: hand.y + away.y * a * u + side.y * s * u });
-    const H = 2.6;
-    fig.front.shape("cover", [at(-0.2, -H), at(1.1, -H), at(1.1, H), at(-0.2, H)], "stick_cover", day);
-    fig.front.line("pages", at(-0.2, -H + 0.5), at(-0.2, H - 0.5), 0.6 * u, "stick_page_edges", day);
-  }
+const drawBook = (fig, j, u, alpha) => {
+  if (alpha <= 0.02) return;
+  const hand = j.arms[0].hand;
+  const dx = hand.x - j.head.x;
+  const dy = hand.y - j.head.y;
+  const len = Math.hypot(dx, dy) || 1;
+  const away = { x: dx / len, y: dy / len };
+  const side = { x: -away.y, y: away.x };
+  const at = (a, s) => ({ x: hand.x + away.x * a * u + side.x * s * u, y: hand.y + away.y * a * u + side.y * s * u });
+  const H = 2.6;
+  fig.front.shape("cover", [at(-0.2, -H), at(1.1, -H), at(1.1, H), at(-0.2, H)], "stick_cover", alpha);
+  fig.front.line("pages", at(-0.2, -H + 0.5), at(-0.2, H - 0.5), 0.6 * u, "stick_page_edges", alpha);
 };
 
-// The footer's slash, a figure laid back along it: reading in the sun while
-// it is up in Cambridge, asleep under the moon once it sets. Click it for a
-// wave (and, at night, a start).
-const setupSunbather = (footer) => {
+// how much each weather lets the sun or moon, and the stars, show through
+const SKY_SHOWS = {
+  clear: { body: 1, stars: 1 },
+  cloudy: { body: 1, stars: 0.4 },
+  rain: { body: 0, stars: 0 },
+  snow: { body: 0, stars: 0 },
+  storm: { body: 0, stars: 0 },
+};
+
+// The footer's slash, a figure laid back along it, under Cambridge's sky
+// as it is right now: reading while the sun is up, asleep once it sets, and
+// dressed for the weather -- an umbrella in the day's rain and storms, a
+// tent over him on a wet or snowy night, and a hat in snow.
+// Click it for a wave (and, at night, a start).
+const setupReader = (footer) => {
   const slash = footer.querySelector(".footer_slash");
   if (!slash || footer.querySelector(".stick_layer")) return;
 
@@ -1987,7 +2222,6 @@ const setupSunbather = (footer) => {
   const WAVE = 1.6;
   const BLEND = 0.6;
 
-  // the slash runs corner to corner of its box, top left to bottom right
   // the ends of the slash, as drawn
   const measure = () => {
     const origin = fig.g.ownerSVGElement.getBoundingClientRect();
@@ -2004,7 +2238,7 @@ const setupSunbather = (footer) => {
     const lift = 1.3 * u;
     const hip = { x: top.x + along.x * 18 * u + along.y * lift, y: top.y + along.y * 18 * u - along.x * lift };
     const size = parseFloat(getComputedStyle(slash).fontSize);
-    return { u, hip, slope: (Math.atan2(along.y, along.x) * 180) / Math.PI, sky: { x: end.x + 0.5 * size, y: top.y - 0.4 * size }, size };
+    return { u, top, end, hip, slope: (Math.atan2(along.y, along.x) * 180) / Math.PI, sky: { x: end.x + 0.5 * size, y: top.y - 0.4 * size }, size };
   };
 
   let mode = "rest";
@@ -2014,8 +2248,10 @@ const setupSunbather = (footer) => {
   let frame = 0;
   let visible = false;
   let lastPose = null;
-  let day = sunUp();
+  let { day, weather } = cambridgeSky();
   let dayAt = -Infinity;
+  let was = weather;
+  let weatherAt = -Infinity;
 
   const poseFor = (m, t, since) => {
     // down the slash towards the feet, and up it, the back propped a little
@@ -2023,16 +2259,32 @@ const setupSunbather = (footer) => {
     const down = 90 - m.slope;
     const back = 270 - m.slope - 14;
     const off = back - 66;
-    const flat = { ...POSE, lean: 180 - back, hx: m.hip.x, hy: m.hip.y, z: 0 };
+    // in the wet, an umbrella by day; in rain or snow, a tent by night
+    const wet = weather === "rain" || weather === "storm";
+    const brollied = wet && day;
+    const flat = {
+      ...POSE,
+      lean: 180 - back,
+      hx: m.hip.x,
+      hy: m.hip.y,
+      z: 0,
+      book: 0,
+      umbrella: brollied ? 1 : 0,
+      tent: (wet || weather === "snow") && !day ? 1 : 0,
+      hat: weather === "snow" ? 1 : 0,
+    };
     const breath = Math.sin(t * 1.4);
+    // the near hand holds the umbrella up over the head
+    const brolly = [back - 134, back - 24];
     const rest = day
       ? {
           // reading, the book held up over the chest, knees up and one foot
           // tapping now and then
           ...flat,
           nod: 14,
+          book: 1,
           legs: [[down + 22, down - 18 + 10 * Math.max(0, Math.sin(t * 2.2)) ** 4], [down + 50, down - 46]],
-          arms: [[back - 122, back - 76], [back - 128, back - 70]],
+          arms: [[back - 122, back - 76], brollied ? brolly : [back - 128, back - 70]],
         }
       : {
           // dozed off, hands on the belly, breathing slowly
@@ -2044,14 +2296,16 @@ const setupSunbather = (footer) => {
           z: 1,
         };
     if (mode !== "wave") return rest;
-    // up on one elbow to wave, straight up off the slash, the book kept in
-    // the other hand
+    // up on one elbow to wave, straight up off the slash: with the free
+    // hand, or under the umbrella, putting the book down to keep it up
     const jolt = wokeUp ? Math.sin(Math.PI * clamp01(since / 0.35)) : 0;
+    const hello = [off - 15, off - 30 + 28 * Math.sin(2 * Math.PI * 2.6 * since)];
     return {
       ...rest,
       lean: rest.lean + 18 + 10 * jolt,
       nod: 10 + 30 * jolt,
-      arms: [rest.arms[0], [off - 15, off - 30 + 28 * Math.sin(2 * Math.PI * 2.6 * since)]],
+      arms: brollied ? [hello, rest.arms[1]] : [rest.arms[0], hello],
+      book: brollied ? 0 : rest.book,
       z: 0,
     };
   };
@@ -2064,10 +2318,16 @@ const setupSunbather = (footer) => {
   const render = (now) => {
     const m = measure();
     const t = now / 1000;
-    const up = sunUp();
-    if (up !== day) {
-      day = up;
+    const sky = cambridgeSky();
+    if (sky.day !== day) {
+      day = sky.day;
       dayAt = t;
+      blendFrom(t);
+    }
+    if (sky.weather !== weather) {
+      was = weather;
+      weather = sky.weather;
+      weatherAt = t;
       blendFrom(t);
     }
     if (mode === "wave" && t - modeAt > WAVE) {
@@ -2078,12 +2338,37 @@ const setupSunbather = (footer) => {
     if (from) pose = mix(from, pose, ease(clamp01((t - modeAt) / BLEND)));
     lastPose = pose;
     const turn = ease(clamp01((t - dayAt) / BLEND));
+    const sun = day ? turn : 1 - turn;
+    const change = ease(clamp01((t - weatherAt) / BLEND));
+    const amount = (kind) => (kind === weather ? change : 0) + (kind === was && was !== weather ? 1 - change : 0);
+    const T = reduceMotion.matches ? 0 : t;
+
     drawFigure(fig, pose, m.u, {
       time: t,
       draw: (f, j, ps, u, env) => {
-        drawSky(f, m.sky, 0.27 * m.size, reduceMotion.matches ? 0 : t, day ? turn : 1 - turn);
+        const shows = (key) => WEATHERS.reduce((sum, kind) => sum + amount(kind) * SKY_SHOWS[kind][key], 0);
+        // a cloud drifting back and forth across the sun or moon
+        const r = 0.27 * m.size;
+        drawSunMoon(f, m.sky, r, T, sun, shows("body"), shows("stars"));
+        drawCloud(f, "passing", { x: m.sky.x + 1.4 * r * Math.sin(T * 0.12), y: m.sky.y - 0.2 * m.size }, 0.42 * m.size, amount("cloudy"));
+        // rain, storm and snow come out of a cloud over him
+        // higher over the tent, to clear its roof
+        const overhead = { x: (m.top.x + m.end.x) / 2 + 0.2 * m.size, y: m.top.y - (1.5 + 0.4 * ps.tent) * m.size };
+        const c = 0.5 * m.size;
+        const falling = { x0: overhead.x - 1.2 * c, x1: overhead.x + 1.2 * c, y0: overhead.y + 0.45 * c, y1: m.end.y + 2 };
+        const wet = amount("rain") + amount("storm");
+        drawCloud(f, "overhead", overhead, c, wet + amount("snow"));
+        const um = ps.umbrella > 0.02 ? umbrellaAt(j, u) : null;
+        const tent = tentAt(m);
+        const covers = [...(um ? [um.top] : []), ...(ps.tent > 0.02 ? [tent.top] : [])];
+        drawRain(f, falling, T, wet, covers);
+        drawBolt(f, { x: overhead.x + 0.4 * c, y: overhead.y + 0.45 * c }, c, T, amount("storm"));
+        drawSnow(f, { ...falling, x0: falling.x0 - 0.3 * c, x1: falling.x1 + 0.6 * c }, T, amount("snow"), covers);
         drawZs(f, j, ps, u, env);
-        drawBook(f, j, u, day ? turn : 1 - turn);
+        drawBook(f, j, u, ps.book);
+        drawHat(f, j, ps.hat);
+        drawUmbrella(f, um, u, ps.umbrella);
+        drawTent(f, tent, ps.tent);
       },
     });
   };
@@ -2099,7 +2384,7 @@ const setupSunbather = (footer) => {
   if (reduceMotion.matches) {
     new ResizeObserver(() => render(0)).observe(footer);
     render(0);
-    // still turns from day to night, just without moving otherwise
+    // still follows the sky, just without moving otherwise
     setInterval(() => render(0), 60000);
     return;
   }
@@ -2126,7 +2411,7 @@ const initStickFigures = () => {
   setupTopButton();
   setupWaver();
   const footer = document.querySelector(".footer");
-  if (footer) setupSunbather(footer);
+  if (footer) setupReader(footer);
 };
 
 if (document.readyState === "loading") {
@@ -2137,5 +2422,5 @@ if (document.readyState === "loading") {
 
 document.addEventListener("footer-loaded", (event) => {
   const footer = event.detail.container.querySelector(".footer");
-  if (footer) setupSunbather(footer);
+  if (footer) setupReader(footer);
 });

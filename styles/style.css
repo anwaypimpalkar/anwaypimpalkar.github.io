@@ -1171,6 +1171,48 @@ button.contact_link {
 }
 
 
+/* the footer's weather */
+.stick_cloud {
+  fill: #fff;
+  stroke: currentColor;
+}
+
+.stick_rain {
+  stroke: currentColor;
+  stroke-linecap: round;
+}
+
+.stick_flake {
+  fill: currentColor;
+  stroke: none;
+}
+
+.stick_bolt {
+  stroke: var(--award);
+}
+
+.stick_umbrella {
+  fill: #fff;
+  stroke: currentColor;
+  stroke-width: 0.9px;
+}
+
+.stick_rib {
+  stroke: currentColor;
+  stroke-opacity: 0.6;
+}
+
+.stick_tent {
+  fill: none;
+  stroke: currentColor;
+  stroke-linejoin: round;
+}
+
+.stick_hat {
+  fill: currentColor;
+  stroke: none;
+}
+
 .stick_crater {
   fill: var(--light-grey);
   stroke: none;
