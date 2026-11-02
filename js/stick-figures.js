@@ -1400,8 +1400,10 @@ const makePool = (parent, defs) => {
     const cx = (pool.x0 + pool.x1) / 2;
     const w = pool.x1 - pool.x0;
     const surface = [];
-    for (let i = 0; i <= 24; i += 1) {
-      const x = pool.x0 + (w * i) / 24;
+    // a point about every pixel, so the ripples draw as smooth curves
+    const steps = Math.max(24, Math.ceil(w));
+    for (let i = 0; i <= steps; i += 1) {
+      const x = pool.x0 + (w * i) / steps;
       surface.push({ x, y: pool.y + 1.2 * Math.sin(x * 0.35 - t * 2.2) });
     }
     const pts = (list) => list.map((p) => `${p.x},${p.y}`).join(" ");
