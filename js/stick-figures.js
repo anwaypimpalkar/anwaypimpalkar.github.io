@@ -63,6 +63,16 @@ const mix = (a, b, v) => {
   return v < 0.5 ? a : b;
 };
 
+// The pose at v through a run of keyframes [[v0, pose0], [v1, pose1], ...],
+// eased between each pair, so a sequence of poses flows rather than cuts.
+const keyframes = (keys, v) => {
+  let i = 0;
+  while (i < keys.length - 2 && v > keys[i + 1][0]) i += 1;
+  const [v0, a] = keys[i];
+  const [v1, b] = keys[i + 1];
+  return mix({ ...POSE, ...a }, { ...POSE, ...b }, ease(clamp01((v - v0) / (v1 - v0))));
+};
+
 // how far below the hip the feet reach, so poses can be stood on a surface
 const legDrop = (legs, body = BODY) =>
   Math.max(
@@ -872,7 +882,9 @@ const director = (m, member) => {
     mark(name) {
       marks[name] = total;
     },
-    add(dur, fn, blend = 0) {
+    // Every segment eases in from wherever the last one left off, so poses
+    // flow into each other rather than cut; a short blend unless told.
+    add(dur, fn, blend = Math.min(0.2, dur * 0.4)) {
       const w = worn;
       segs.push({
         dur,
@@ -980,7 +992,8 @@ const afterparty = (m, member, T, cue) => {
       };
     }
     const f = clamp01((e - cue.run) / DROP);
-    return {
+    const off = {
+      ...POSE,
       ...watch,
       ...(member.drop || ARROW),
       hx: m.edge + 4 * u * f,
@@ -989,6 +1002,9 @@ const afterparty = (m, member, T, cue) => {
       lift: 6 * Math.sin(Math.PI * f) - 50 * f * f,
       alpha: 1 - ease(clamp01((f - 0.3) / 0.7)),
     };
+    // easing out of the run into the hop off the edge
+    const stride = { ...POSE, ...watch, ...member.run.gait(2 * Math.PI * member.run.freq * cue.run, 1), hx: off.hx, sx: 1 };
+    return mix(stride, off, ease(clamp01(f / 0.25)));
   }
 
   let pose = watch;
@@ -1010,7 +1026,11 @@ const poseAt = (segs, t) => {
       const s = Math.min(Math.max(t - t0, 0), seg.dur);
       const pose = seg.pose(clamp01(s / seg.dur), s);
       if (!seg.blend || !prev) return pose;
-      return mix(prev.pose(1, prev.dur), pose, ease(clamp01(s / seg.blend)));
+      // after a flip the spin is a whole number of turns: blend from the
+      // same angle nearest this one, rather than spinning all the way back
+      const from = prev.pose(1, prev.dur);
+      from.rot += 360 * Math.round((pose.rot - from.rot) / 360);
+      return mix(from, pose, ease(clamp01(s / seg.blend)));
     }
     t0 += seg.dur;
     prev = seg;
@@ -1298,18 +1318,26 @@ const setupPodium = () => {
         const pose = { ...POSE, shoes: [1, 1], ...mix({ ...POSE, ...CROUCH }, { ...POSE, ...CROUCH, ...TUCK }, tuck), sx: -1 };
         return { ...pose, hx: lerp(from, centre, v), hy: feet - legDrop(pose.legs) * s };
       }
-      // arms flung up in a wide V, waving a little
-      const wave = Math.sin((e - UP) * 7);
-      return {
-        ...POSE,
+      // ta-da: absorbing the landing, rising, and flinging the arms up in a
+      // wide V, then waving a little -- each pose eased into the next
+      const since = e - UP;
+      const wave = Math.sin(since * 7) * clamp01((since - 0.45) / 0.3);
+      const cheer = {
         ...OPEN,
-        shoes: [1, 1],
         lean: -6,
         nod: -8,
         arms: [[CHEER[0][0] + 8 * wave, CHEER[0][1]], [CHEER[1][0] - 8 * wave, CHEER[1][1]]],
-        hx: centre,
-        hy: top - legDrop(OPEN.legs) * s,
       };
+      const pose = keyframes(
+        [
+          [0, CROUCH],
+          [0.18, { ...OPEN, arms: [[20, 30], [-20, -10]] }],
+          [0.45, cheer],
+          [1, cheer],
+        ],
+        since
+      );
+      return { ...pose, shoes: [1, 1], sx: -1, hx: centre, hy: top - legDrop(pose.legs) * s };
     };
 
     // leaving freezes the pose and fades it, block and all
@@ -1445,6 +1473,10 @@ const setupStairs = () => {
   let p = null;
   let phase = 0;
   let moving = 0;
+  // which way it last walked (1 down the steps, -1 back up), and how it is
+  // facing, eased towards that so it turns rather than flips
+  let heading = 1;
+  let facing = 1;
   let last = 0;
 
   const build = () => {
@@ -1531,7 +1563,8 @@ const setupStairs = () => {
     const speed = Math.max(PACE, Math.abs(gap) * CATCH_UP);
     const dp = Math.sign(gap) * Math.min(Math.abs(gap), speed * dt);
     p += dp;
-    moving += ((Math.abs(dp) > 0.0001 ? 1 : 0) - moving) * Math.min(1, dt * 10);
+    moving += ((Math.abs(dp) > 0.0001 ? 1 : 0) - moving) * Math.min(1, dt * 6);
+    if (Math.abs(dp) > 0.0001) heading = Math.sign(dp);
 
     const s = st.u;
     const feet = feetAt(st, p);
@@ -1539,19 +1572,24 @@ const setupStairs = () => {
     const walk = gait(WALK)(phase, moving * (1 - feet.air));
     // stood still, it turns a little towards us
     const stride = mix({ ...POSE, ...OPEN }, { ...POSE, ...walk }, moving);
+    // facing the way it is going, down the flight or back up it, and
+    // turning to it over a moment, at each end of a flight too
+    const toward = heading * feet.dir;
+    facing += (toward - facing) * Math.min(1, dt * 12);
     let pose = {
       ...POSE,
       ...STAND,
       ...mix(stride, { ...POSE, ...CROUCH }, feet.air * 0.6),
-      // facing the way it is going: down the flight, or back up it
-      sx: (dp < 0 ? -1 : 1) * feet.dir,
+      sx: facing,
       hx: feet.x,
     };
-    // at the edge, every few seconds, a wobble: leaning out over the
-    // pool, arms windmilling, and back
+    // at the edge, every couple of seconds, a wobble: leaning out over
+    // the pool, arms windmilling, and back
     const t = now / 1000;
     const edge = clamp01((p - (n - 0.5)) / 0.08) * (1 - moving);
-    const wobble = edge * bump((t % 4) / 1.4, 0.5, 0.5);
+    // eased in and out, not started and stopped
+    const w = (t % 2.2) / 1.2;
+    const wobble = w < 1 ? edge * Math.sin(Math.PI * w) ** 2 : 0;
     if (wobble > 0) {
       const spin = t * 11;
       pose = mix(pose, {
@@ -1559,7 +1597,7 @@ const setupStairs = () => {
         lean: 14 + 10 * Math.sin(t * 7),
         nod: 20,
         arms: [[180 + 70 * Math.sin(spin), 190 + 70 * Math.sin(spin)], [180 + 70 * Math.sin(spin + Math.PI), 190 + 70 * Math.sin(spin + Math.PI)]],
-      }, ease(wobble));
+      }, wobble);
     }
     pose.hy = feet.y - legDrop(pose.legs) * s;
 
@@ -1595,7 +1633,7 @@ const setupStairs = () => {
     });
     // the pool keeps circling while it is on screen
     const poolShown = st.pool.y > window.scrollY - 40 && st.pool.y < window.scrollY + window.innerHeight + 40;
-    return Math.abs(goal - p) > 0.001 || moving > 0.01 || poolShown;
+    return Math.abs(goal - p) > 0.001 || moving > 0.01 || Math.abs(toward - facing) > 0.01 || poolShown;
   };
 
   const kick = animator(step);
@@ -1732,7 +1770,29 @@ const setupTopButton = () => {
   // waiting on the button turned a little the other way from the rest,
   // towards the page
   const IDLE = { ...OPEN, sx: -1 };
-  const SQUAT = 0.25;
+  // Crouching is keyframed, so it bends smoothly rather than jumping from
+  // standing to a squat: standing, knees giving and arms going back, then
+  // the full squat. `crouch` runs 0 to 1 through them.
+  const CROUCH_KEYS = [
+    [0, IDLE],
+    [0.45, { ...IDLE, lean: 12, legs: [[45, -15], [20, -35]], arms: [[-10, 0], [-30, -14]] }],
+    [1, { ...OPEN_SQUAT, sx: -1 }],
+  ];
+  const crouchPose = (k) => keyframes(CROUCH_KEYS, k);
+  // touching down on the name: absorbing the landing, straightening up, a
+  // salute held a moment, a dip, and a spring back up off it
+  const LANDING_KEYS = [
+    [0, ARROW],
+    [0.12, OPEN_CROUCH],
+    [0.4, OPEN],
+    [0.6, { ...SALUTE, legs: OPEN.legs }],
+    [0.9, { ...SALUTE, legs: OPEN.legs }],
+    [1.05, { ...OPEN_CROUCH, lean: 15, arms: [[-30, -10], [-20, -5]] }],
+    [1.15, ARROW],
+  ];
+  let crouch = 0;
+  let crouchFrom = 0;
+  const SQUAT = 0.35;
   const RISE = 0.6;
   const SCROLL = 1.0;
   const FALL = 0.6;
@@ -1773,16 +1833,20 @@ const setupTopButton = () => {
       alpha += ((shown() ? 1 : 0) - alpha) * Math.min(1, dt * 8);
       fig.g.style.opacity = alpha;
       const still = reduceMotion.matches;
-      // waiting: a hop now and then, a crouch when you point at the button
+      // waiting: a hop now and then, sinking into a crouch when you point
+      // at the button and rising again when you leave it
       const hop = still ? 0 : Math.max(0, Math.sin((t * Math.PI * 2) / 4.5)) ** 12;
-      const pose = hover && !still ? { ...OPEN_SQUAT, sx: -1, snap: 0.5 } : { ...IDLE };
-      drawKid(standOn(pose, home.x, home.y, 3 * hop), s);
+      crouch += ((hover && !still ? 1 : 0) - crouch) * Math.min(1, dt * 7);
+      const pose = { ...crouchPose(crouch), snap: 0.5 * crouch };
+      drawKid(standOn(pose, home.x, home.y, 3 * hop * (1 - crouch)), s);
       return shown() || alpha > 0.01;
     }
 
     const e = t - tripAt;
     if (e < SQUAT) {
-      drawKid(standOn({ ...OPEN_SQUAT, sx: -1, snap: ease(e / SQUAT) }, home.x, home.y), s);
+      // down the rest of the way into the squat, from however far it was
+      const v = ease(e / SQUAT);
+      drawKid(standOn({ ...crouchPose(lerp(crouchFrom, 1, v)), snap: v }, home.x, home.y), s);
       return true;
     }
     if (!launch) {
@@ -1825,17 +1889,21 @@ const setupTopButton = () => {
       };
     } else {
       const v = up - SCROLL - 0.1 - FALL;
-      if (v < 0.2) pose = standOn({ ...OPEN_CROUCH, snap: 1 - v / 0.2 }, land.x, land.y);
-      else if (v < 0.9) pose = standOn({ ...SALUTE, legs: OPEN.legs }, land.x, land.y);
-      else if (v < 1.3) {
-        const w = (v - 0.9) / 0.4;
-        pose = standOn({ ...ARROW }, land.x, land.y, 10 * Math.sin(Math.PI * w));
-        fade = 1 - w;
+      if (v < 1.4) {
+        const hop = clamp01((v - 1.1) / 0.3);
+        pose = standOn(
+          { ...keyframes(LANDING_KEYS, v), snap: 1 - ease(clamp01(v / 0.25)) },
+          land.x,
+          land.y,
+          10 * Math.sin(Math.PI * hop)
+        );
+        fade = 1 - ease(clamp01((v - 0.95) / 0.45));
       } else {
         // home again, on the button, for next time
         tripAt = null;
         launch = null;
         alpha = 0;
+        crouch = 0;
         fig.g.style.opacity = 0;
         const main = document.getElementById("main-content");
         if (main && document.activeElement === button) {
@@ -1873,6 +1941,7 @@ const setupTopButton = () => {
     }
     if (tripAt !== null) return;
     tripAt = performance.now() / 1000;
+    crouchFrom = crouch;
     hover = false;
     kick();
   });
@@ -2245,7 +2314,7 @@ const setupReader = (footer) => {
     const lift = 1.3 * u;
     const hip = { x: top.x + along.x * 18 * u + along.y * lift, y: top.y + along.y * 18 * u - along.x * lift };
     const size = parseFloat(getComputedStyle(slash).fontSize);
-    return { u, top, end, hip, slope: (Math.atan2(along.y, along.x) * 180) / Math.PI, sky: { x: end.x + 0.5 * size, y: top.y - 0.4 * size }, size };
+    return { u, top, end, hip, slope: (Math.atan2(along.y, along.x) * 180) / Math.PI, sky: { x: end.x + 0.5 * size, y: top.y - 1.5 * size }, size };
   };
 
   let mode = "rest";
@@ -2357,10 +2426,11 @@ const setupReader = (footer) => {
         // a cloud drifting back and forth across the sun or moon
         const r = 0.27 * m.size;
         drawSunMoon(f, m.sky, r, T, sun, shows("body"), shows("stars"));
-        drawCloud(f, "passing", { x: m.sky.x + 1.4 * r * Math.sin(T * 0.12), y: m.sky.y - 0.2 * m.size }, 0.42 * m.size, amount("cloudy"));
+        drawCloud(f, "passing", { x: m.sky.x + 1.4 * r * Math.sin(T * 0.12), y: m.sky.y }, 0.42 * m.size, amount("cloudy"));
         // rain, storm and snow come out of a cloud over him
-        // higher over the tent, to clear its roof
-        const overhead = { x: (m.top.x + m.end.x) / 2 + 0.2 * m.size, y: m.top.y - (1.5 + 0.4 * ps.tent) * m.size };
+        // as high as the sun and moon, higher still over the tent to clear
+        // its roof
+        const overhead = { x: (m.top.x + m.end.x) / 2 + 0.2 * m.size, y: m.sky.y - 0.4 * ps.tent * m.size };
         const c = 0.5 * m.size;
         const falling = { x0: overhead.x - 1.2 * c, x1: overhead.x + 1.2 * c, y0: overhead.y + 0.45 * c, y1: m.end.y + 2 };
         const wet = amount("rain") + amount("storm");

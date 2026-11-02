@@ -1264,7 +1264,7 @@ button.contact_link {
 }
 
 .stick_podium {
-  fill: var(--award-background);
+  fill: var(--award);
   stroke: var(--award);
   stroke-width: 1px;
 }
